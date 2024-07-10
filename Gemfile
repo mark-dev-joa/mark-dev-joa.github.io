@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+gem 'tzinfo'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem "jekyll-theme-chirpy", "~> 7.0", ">= 7.0.1"
 
 group :test do
