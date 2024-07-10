@@ -20,35 +20,36 @@ function init() {
   mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
 
+  //create a blue LineBasicMaterial
+  material = new THREE.LineBasicMaterial({ color: 0xff0000 });
+  const points = [];
+  points.push(new THREE.Vector3(0, 0, 0));
+  points.push(new THREE.Vector3(0, 100, 0));
+  //points.push(new THREE.Vector3(10, 0, 0));
+
+  geometry = new THREE.BufferGeometry().setFromPoints(points);
+  const line = new THREE.Line(geometry, material);
+  //scene.add(line);
+
   const size = 10;
   const divisions = 10;
 
   const gridHelper = new THREE.GridHelper(size, divisions);
   scene.add(gridHelper);
 
-  //create a blue LineBasicMaterial
-  const matLine = new THREE.LineBasicMaterial({ color: 0xff0000 });
-  const points = [];
-  points.push(new THREE.Vector3(0, 0, 0));
-  points.push(new THREE.Vector3(10, 0, 0));
-
-  points.push(new THREE.Vector3(0, 0, 0));
-  points.push(new THREE.Vector3(0, 10, 0));
-
-  points.push(new THREE.Vector3(0, 0, 0));
-  points.push(new THREE.Vector3(0, 0, 10));
-  //points.push(new THREE.Vector3(10, 0, 0));
-
-  const geomLine = new THREE.BufferGeometry().setFromPoints(points);
-  const line = new THREE.Line(geomLine, matLine);
-  scene.add(line);
-
-  // camera
-  camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10);
-  camera.position.set(0, 4, 2);
+  // orthgraphic camera
+  camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, 0.1, 1000);
+  camera.position.x = 0;
+  camera.position.z = 0;
+  camera.position.y = 1;
 
   const target = new THREE.Vector3(0, 0, 0);
   camera.lookAt(target);
+
+  // axes
+  const axes = new THREE.AxesHelper(50);
+  scene.add(axes);
+
 
   // renderer
   renderer = new THREE.WebGLRenderer({ antialias: true });

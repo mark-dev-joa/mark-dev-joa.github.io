@@ -1,27 +1,17 @@
 ---
-title: first post
+title: cross product in homogeneous coordinates
 author: mark
-date: 2019-08-11 00:34:00 +0800
 categories: [mathmatic, linear algebra]
 tags: [three.js]
+math: true
 ---
-
-## Three.js
-
-![Desktop View](/assets/avatar.png){: width="972" height="589" }
 
 <!-- Spinning Cube Demo -->
 <div class='threejs'>
     <div id='cube'></div>
 </div>
-dd
 
-
-
-## Introduction
-
-3D 그리기
 
 <!-- code -->
 <link rel="stylesheet" href="/assets/three/style.css">
-<script type="module" src='/assets/three/cube.js'></script>
+<script type="module" src='/assets/math/cross.product.in.homogeneous.js'></script>
