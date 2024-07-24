@@ -18,7 +18,7 @@ math: true
 
 $$ 
   \mathbf{p} = a\vec u + b\vec v
-$$
+$$`
 
 #### 두 벡터 $ \vec u $, $ \vec v $를 열벡터(Column Vector) $ \vec {u^t} $, $ \vec {v^t} $ 로 표현하고 행렬 $\mathbf{A}$를 정의합니다.
 
