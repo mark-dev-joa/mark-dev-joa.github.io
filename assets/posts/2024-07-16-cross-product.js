@@ -13,12 +13,18 @@ function init() {
   const b = new THREE.Vector3(1, 0, 0);
 
   a.normalize();
+  a.multiplyScalar(2);
   b.normalize();
+
+  //a.sca
 
   const x = a.y * b.z - a.z * b.y;
   const y = a.z * b.x - a.x * b.z;
   const z = a.x * b.y - a.y * b.x;
   const c = new THREE.Vector3(x, y, z);
+  //c.multiplyScalar(2);
+  console.log(c);
+
 
   const lineA = helper.drawArrowLine(a, 0xff0000);
   const lineB = helper.drawArrowLine(b, 0x0000ff);
