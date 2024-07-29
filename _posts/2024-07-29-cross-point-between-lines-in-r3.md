@@ -303,7 +303,7 @@ $ (o_2 - o_1) \cdot (d_2 \times (d_1 \times d_2)) = det(o_2 - o_1, d_2, d_1 \tim
 
     // Add the line to the scene
     scene.add(line);
-}
+  }
 
   function animate() {
     requestAnimationFrame(animate);
