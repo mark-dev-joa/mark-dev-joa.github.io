@@ -42,108 +42,109 @@ function init() {
   // camera controls
   controls = new OrbitControls(camera, renderer.domElement);
 
-
+  // 직선 1
   const origin1 = new THREE.Vector3(-5, 5, 3);
   const direction1 = new THREE.Vector3(1, 0, -1.4);
   direction1.sub(origin1);
   direction1.normalize();
+  drawLine(origin1, direction1, 10, scene, 0xaaaa00);
 
-  createLine(origin1, direction1, 10, scene, 0xff0000);
-
-  // Create the second line
+  // 직선 2
   const origin2 = new THREE.Vector3(5, 5, 2);
   const direction2 = new THREE.Vector3(0, 0, -2);
   direction2.sub(origin2);
   direction2.normalize();
-  createLine(origin2, direction2, 10, scene, 0x00ff00);
+  drawLine(origin2, direction2, 10, scene, 0x00ffbb);
 
-  // const a = origin2.clone().sub(origin1);
-  // const b = direction2.clone();
-  // const c = direction1.clone().cross(direction2);
-  // const cSquared = c.lengthSq();
+  // 교차점 근사
+  const intersectionPt = approximationIntersectionPoint(origin1, direction1, origin2, direction2);
+  console.log(intersectionPt);
 
-  // const matS = new THREE.Matrix3(
-  //   a.x, a.y, a.z,
-  //   b.x, b.y, b.z,
-  //   c.x, c.y, c.z
-  // );
+  if (intersectionPt === null)
+    return;
 
-  // console.log(matS);
-
-  // const detS = matS.determinant();
-
-  // const s = detS / cSquared;
-  // console.log(s);
-
-  // const r1 = origin1.clone().add(direction1.multiplyScalar(s));
-  // console.log(r1);
-
-  const r1 = _findIntersectionPoint(origin1, direction1, origin2, direction2);
+  // 교차점에 네모 출력
   let geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
   let material = new THREE.MeshNormalMaterial({ wireframe: true });
   let mesh = new THREE.Mesh(geometry, material);
-  mesh.position.x = r1.x;
-  mesh.position.y = r1.y;
-  mesh.position.z = r1.z;
+  mesh.position.x = intersectionPt.h.x;
+  mesh.position.y = intersectionPt.h.y;
+  mesh.position.z = intersectionPt.h.z;
   scene.add(mesh);
 
-  const r2 = _findIntersectionPoint(origin2, direction2, origin1, direction1);
-  geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-  material = new THREE.MeshNormalMaterial({ wireframe: true });
-  mesh = new THREE.Mesh(geometry, material);
-  mesh.position.x = r2.x;
-  mesh.position.y = r2.y;
-  mesh.position.z = r2.z;
-  scene.add(mesh);
-
+  // f, g 포인트 선으로 연결
   const points = [];
-  points.push(r1);
-  points.push(r2);
+  points.push(intersectionPt.f);
+  points.push(intersectionPt.g);
 
-  // Create the geometry and line
   const matLine = new THREE.LineBasicMaterial({ color: 0xffffff });
   const geomLine = new THREE.BufferGeometry().setFromPoints(points);
   const line = new THREE.Line(geomLine, matLine);
-
-  // Add the line to the scene
   scene.add(line);
 
-  const cp = r1.add(r2.clone().sub(r1.clone()).multiplyScalar(0.5));
-  geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
-  material = new THREE.MeshNormalMaterial();
-  mesh = new THREE.Mesh(geometry, material);
-  mesh.position.x = cp.x;
-  mesh.position.y = cp.y;
-  mesh.position.z = cp.z;
-  scene.add(mesh);
+  // f와 g를 연결하는 h 벡터
+  const vh = intersectionPt.f.clone().sub(intersectionPt.g);
+  // r과 수직인지 확인
+  let theta = direction1.clone().normalize().dot(vh.normalize());
+  console.log(Math.acos(theta) * 180 / Math.PI);
 
-
-  //createLine(origin1, direction1, s, scene, 0xff0000);
-
-  //const d1 = new THREE.Vector3(2, 2, 2);
+  // s와 수직인지 확인
+  theta = direction2.clone().normalize().dot(vh.normalize());
+  console.log(Math.acos(theta) * 180 / Math.PI);
 }
 
-function _findIntersectionPoint(origin1, dir1, origin2, dir2) {
-  const a = origin2.clone().sub(origin1);
-  const b = dir2.clone();
-  const c = dir1.clone().cross(dir2);
-  const lengthSq = c.lengthSq();
-
-  const matPt = new THREE.Matrix3(
+// 스케일러 값 구하기
+// ((Q-P) x s)*(r x s) = det(Q-F, s, (r x s))
+function _calcScalar(P, r, Q, s) {
+  //
+  const a = Q.clone().sub(P);
+  // s
+  const b = s.clone();
+  // r x s
+  const c = r.clone().cross(s);
+  // determinant of the matrix
+  const mat = new THREE.Matrix3(
     a.x, a.y, a.z,
     b.x, b.y, b.z,
     c.x, c.y, c.z
   );
-  const detS = matPt.determinant();
-  const s = detS / lengthSq;
+  const detmnt = mat.determinant();
 
-  console.log(matPt);
-  console.log(s);
+  // denomitor
+  const lengthSquared = c.lengthSq();
 
-  return origin1.clone().add(dir1.multiplyScalar(s));
+  // the two lines are parallel
+  if (lengthSquared === 0)
+    return null;
+
+  return detmnt / lengthSquared;
 }
 
-function createLine(origin, direction, length, scene, color) {
+// 교차점 근사하기
+function approximationIntersectionPoint(P, r, Q, s) {
+  // 람다 구하기
+  const lambda = _calcScalar(P, r, Q, s);
+  if (lambda === null)
+    return null;
+
+  // 뮤 구하기
+  const mu = _calcScalar(Q, s, P, r);
+
+  // null 이면 두 직선은 평행
+  if (mu === null)
+    return null;
+
+  // f와 g 구하기
+  const f = P.add(r.multiplyScalar(lambda));
+  const g = Q.add(s.multiplyScalar(mu));
+
+  // h 직선의 중점
+  // h = (g + f) / 2 = (g+f) * 0.5
+  return { h: g.clone().add(f).multiplyScalar(0.5), f, g };
+}
+
+//
+function drawLine(origin, direction, length, scene, color) {
   // Normalize the direction vector
   direction.normalize();
 
