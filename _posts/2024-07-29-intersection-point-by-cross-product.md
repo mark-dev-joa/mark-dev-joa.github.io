@@ -4,7 +4,6 @@ description: 벡터 외적의 성질을 이용해 교차점을 구해보자
 author: mark
 categories: [mathmatic, geometry]
 tags: [three.js]
-pin: true
 math: true
 mermaid: true
 ---

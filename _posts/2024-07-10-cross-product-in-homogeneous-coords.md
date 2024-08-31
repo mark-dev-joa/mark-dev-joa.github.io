@@ -6,6 +6,8 @@ tags: [three.js]
 math: true
 ---
 
+## homogeneous 좌표로 변환된 직선의 외적이 왜 교점이 되는가???? 작성중..
+
 <!-- Spinning Cube Demo -->
 <div class='threejs'>
     <div id='cube'></div>

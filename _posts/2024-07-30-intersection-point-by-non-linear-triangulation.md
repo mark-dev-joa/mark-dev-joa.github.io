@@ -4,7 +4,6 @@ description: 비선형 삼각측량법을 이용해 교차점을 구해보자
 author: mark
 categories: [mathmatic, geometry, mvg]
 tags: [three.js]
-pin: true
 math: true
 mermaid: true
 ---
