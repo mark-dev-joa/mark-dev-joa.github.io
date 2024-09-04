@@ -212,6 +212,41 @@ $$
 \end{bmatrix}
 $$
 
+최근에는 $skew_cf_x$ 는 사용하지 않는 추세
+
+$$
+\begin{bmatrix}
+  x_{img} \\ 
+  y_{img} \\ 
+  1 \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+  f_x & 0 & c_x \\
+  0 & f_y & c_y \\
+  0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+  u_{nd} \\ 
+  v_{nd} \\ 
+  1 \\
+\end{bmatrix}
+$$
+
+$$
+\begin{align}
+x_{img} = f_x * u_nd + c_x \\
+y_{img} = f_y * v_nd + c_y
+\end{align}
+$$
+
+$$
+\begin{align}
+u_nd = {(x_{img} - c_x) \over f_x } \\
+v_nd = {(y_{img} - c_y) \over f_y } \\
+\end{align}
+$$
+
 
 ## Reference
 
