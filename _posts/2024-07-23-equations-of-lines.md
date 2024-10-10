@@ -5,7 +5,6 @@ author: mark
 date: 2019-08-08 11:33:00 +0800
 categories: [mathmatic, geometry]
 tags: [three.js]
-pin: true
 math: true
 mermaid: true
 ---
