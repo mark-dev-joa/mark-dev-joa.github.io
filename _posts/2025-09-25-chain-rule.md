@@ -1,10 +1,11 @@
 ---
-layout: post
-title: "연쇄법칙(Chain Rule) 정리"
-date: 2025-09-25 21:00:00 +0900
+title: 연쇄법칙(Chain Rule) 정리
+description: 필요해서 정리하는 체인룰
 author: saint-crab
 categories: [math, calculus]
 tags: [derivative, chain-rule, taylor]
+math: true
+mermaid: true
 ---
 
 ## 정의
