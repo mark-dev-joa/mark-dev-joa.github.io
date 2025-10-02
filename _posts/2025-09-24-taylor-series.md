@@ -441,9 +441,11 @@ $$
 
 ##### $sinx$ 의 테일러 급수 정의
 
+{% raw %}
 $$
 sinx = \textcolor{red}{{1 \over 1!}x^1 - {1 \over 3!}x^3 + {1 \over 5!}x^5 - {1 \over 7!}x^7 + ...}
 $$
+{% endraw %}
 
 ##### $e^{ix}$ 정의의 초록식과 빨간식을 잘보면 $cosx, sinx$ 와 같다는 것을 알수 있다.
 
