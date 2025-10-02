@@ -158,7 +158,7 @@ $n\Delta x = x$ 로 두면 $ \Delta x = \frac{x}{n}$ 가 되고 식에 다시 �
 $$
 \begin{align}
 f(x) &= (1 + \frac{x}{n})^n \\
-f(x) &= \lim_{\Delta n \to \infin} (1 + \frac{x}{n})^n
+f(x) &= \lim_{\Delta n \to \infty} (1 + \frac{x}{n})^n
 \end{align}
 $$
 
@@ -166,8 +166,8 @@ $$
 
 $$
 \begin{align}
-e^x &= \lim_{\Delta n \to \infin} (1 + \frac{x}{n})^n \\
-e^1 &= \lim_{\Delta n \to \infin} (1 + \frac{1}{n})^n \\
+e^x &= \lim_{\Delta n \to \infty} (1 + \frac{x}{n})^n \\
+e^1 &= \lim_{\Delta n \to \infty} (1 + \frac{1}{n})^n \\
 \end{align}
 $$
 
@@ -175,7 +175,7 @@ $$
 
 $$
 \begin{align}
-e^1 &= \lim_{\Delta n \to \infin} (1 + \frac{1}{n})^n \\
+e^1 &= \lim_{\Delta n \to \infty} (1 + \frac{1}{n})^n \\
 e^x &= e^1 = {1 \over 0!}1^0 + {1 \over 1!}1^1 + {1 \over 2!}1^2 + {1 \over 3!}1^3 + {1 \over 4!}1^4 + ... + {1 \over n!}1^n \\
 e^1 &= \sum_{n=0}^{\infty} \frac{1}{n!} \\
 {\int_{1}^{e}\frac{1}{x}dx} &= 1
@@ -186,8 +186,8 @@ $$
 
 $$
 \begin{align}
-e^{ix} &= \lim_{\Delta n \to \infin} (1 + \frac{ix}{n})^n = cosx + isinx \\
-e^{i} &= \lim_{\Delta n \to \infin} (1 + \frac{i}{n})^n \\
+e^{ix} &= \lim_{\Delta n \to \infty} (1 + \frac{ix}{n})^n = cosx + isinx \\
+e^{i} &= \lim_{\Delta n \to \infty} (1 + \frac{i}{n})^n \\
 \end{align}
 $$
 
