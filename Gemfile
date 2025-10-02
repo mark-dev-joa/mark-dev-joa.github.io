@@ -6,6 +6,11 @@ gem 'tzinfo'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 gem "jekyll-theme-chirpy", "~> 7.0", ">= 7.0.1"
 
+group :jekyll_plugins do
+  gem "jekyll-seo-tag"
+  gem "jekyll-sitemap"
+end
+
 group :test do
   gem "html-proofer", "~> 5.0"
 end
