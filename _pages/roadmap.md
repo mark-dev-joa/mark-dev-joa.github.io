@@ -29,10 +29,10 @@ nav_order: 2
 
 미분 = 0 직관부터 비선형 최소제곱까지.
 
+- [좌표평면 위의 세 직선 — 선형 시스템과 최소제곱 입문](/blog/2026/three-lines-visualization/) — 선형 LSE 의 기초 (Ax=b, 정규방정식)
 - [최적화 이론 기초](/blog/2026/basic-optimization/) — GD, Newton, GN, LM 카탈로그
 - [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/) — SLAM 시점 MLE + GN 실전
-- 1D 비선형 피팅 — Gauss-Newton 끝까지 *(예정)*
-- LM, Newton, Dogleg 한판 비교 *(예정)*
+- [1D 비선형 피팅 — Gauss-Newton, Newton, LM, Dogleg 한판 비교](/blog/2026/nonlinear-fitting-1d/)
 
 ### 🎯 Part 2: MLE 통일 시점
 
