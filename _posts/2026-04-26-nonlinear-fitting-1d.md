@@ -1,5 +1,5 @@
 ---
-title: 1D 비선형 피팅 — Gauss-Newton, Newton, LM, Dogleg 한판 비교
+title: Part 1·2 비선형 최소제곱 — 4가지 알고리즘 비교
 description: 파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.
 author: mark
 categories: [math, optimization]

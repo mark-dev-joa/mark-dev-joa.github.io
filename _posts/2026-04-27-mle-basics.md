@@ -1,5 +1,5 @@
 ---
-title: MLE 기초 — 동전 던지기부터 가우시안 노이즈까지
+title: Part 2·1 최대우도추정(MLE) — 동전과 가우시안
 description: Maximum Likelihood Estimation 의 직관 — 동전 한 번부터 시작해 회귀의 SSE 가 어떻게 자연스럽게 도출되는지 단계별로
 author: mark
 categories: [math, optimization]

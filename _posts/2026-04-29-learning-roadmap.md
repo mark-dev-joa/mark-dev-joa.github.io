@@ -1,5 +1,5 @@
 ---
-title: 학습 로드맵 — 기초부터 컴퓨터 비전, 로보틱스까지
+title: 가이드 학습 로드맵
 description: 미적분, 선형대수, 비선형 최적화, MLE, 로봇팔 IK 까지 한 시리즈로 정리
 author: mark
 categories: [math]
@@ -65,7 +65,7 @@ math: true
 
 | # | 글 | 상태 |
 |---|---|---|
-| 0 | [좌표평면 위의 세 직선 — 선형 시스템과 최소제곱 입문](/blog/2026/three-lines-visualization/) — 선형 LSE 입문 (Ax=b → 정규방정식) | ✓ 발행 |
+| 0 | [Part 1·1 선형 최소제곱과 정규방정식](/blog/2026/three-lines-visualization/) — 선형 LSE 입문 (Ax=b → 정규방정식) | ✓ 발행 |
 | 1 | [최적화 이론 기초](/blog/2026/basic-optimization/) — GD, Newton, GN, LM 카탈로그 | ✓ 발행 |
 | 2 | [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/) — SLAM 시점 MLE + GN 실전 | ✓ 발행 |
 | 3 | 1D 비선형 피팅 — Gauss-Newton 끝까지 | 🔜 예정 |
@@ -79,8 +79,8 @@ math: true
 
 | # | 글 | 상태 |
 |---|---|---|
-| 5+6 | [MLE 기초 — 동전 던지기부터 가우시안 노이즈까지](/blog/2026/mle-basics/) | ✓ 발행 |
-| 7 | [MLE = SSE 한 등식 — 1D 데이터로 끝까지](/blog/2026/mle-sse-1d-walkthrough/) | ✓ 발행 |
+| 5+6 | [Part 2·1 최대우도추정(MLE) — 동전과 가우시안](/blog/2026/mle-basics/) | ✓ 발행 |
+| 7 | [Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증](/blog/2026/mle-sse-1d-walkthrough/) | ✓ 발행 |
 | 8 | MSE / Cross-entropy 와 ML 위계 | 🔜 예정 |
 
 > **이 Part 의 한 등식**:

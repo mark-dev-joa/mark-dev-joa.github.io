@@ -1,5 +1,5 @@
 ---
-title: MLE = SSE — 우리 1D 예제로 끝까지 따라가기
+title: Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증
 description: 노이즈가 가우시안이면 MLE = SSE 최소화 — 추상 명제를 1D 데이터로 숫자까지 직접 계산해서 확인하는 worked example.
 author: mark
 categories: [math, optimization]
