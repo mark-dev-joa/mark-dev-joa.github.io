@@ -300,16 +300,26 @@ pre.highlight {
   }
 }
 
-/* ------------- Blockquotes (editorial accent) ------------- */
+/* ------------- Blockquotes (가볍게, 본문보다 조금 작게) ------------- */
 blockquote {
   border-left: 3px solid var(--claude-primary);
   background: var(--claude-surface-soft);
   margin: 1.25rem 0;
-  padding: 0.75rem 1.25rem;
-  color: var(--claude-body-strong);
+  padding: 0.65rem 1.1rem;
+  color: var(--claude-body);
   font-style: normal;
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.55;
 
+  p {
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
   p:last-child { margin-bottom: 0; }
+
+  /* 인용 안 strong/em 도 굵게 안 함 */
+  strong { font-weight: 500; }
 }
 
 /* ------------- Tables (Claude editorial style) ------------- */

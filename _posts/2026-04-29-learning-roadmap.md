@@ -78,8 +78,7 @@ math: true
 
 | # | 글 | 상태 |
 |---|---|---|
-| 5 | MLE 기초 — 동전 던지기부터 | 🔜 예정 |
-| 6 | 가우시안 노이즈 → SSE 등장 | 🔜 예정 |
+| 5+6 | [MLE 기초 — 동전 던지기부터 가우시안 노이즈까지](/blog/2026/mle-basics/) | ✓ 발행 |
 | 7 | [MLE = SSE 한 등식 — 1D 데이터로 끝까지](/blog/2026/mle-sse-1d-walkthrough/) | ✓ 발행 |
 | 8 | MSE / Cross-entropy 와 ML 위계 | 🔜 예정 |
 

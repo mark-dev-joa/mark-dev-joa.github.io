@@ -38,8 +38,7 @@ nav_order: 2
 
 확률적 시점에서 본 손실 함수의 정체.
 
-- MLE 기초 — 동전 던지기부터 *(예정)*
-- 가우시안 노이즈 → SSE 등장 *(예정)*
+- [MLE 기초 — 동전 던지기부터 가우시안 노이즈까지](/blog/2026/mle-basics/) ★ 편 5+6 통합
 - [MLE = SSE 한 등식 — 1D 데이터로 끝까지](/blog/2026/mle-sse-1d-walkthrough/)
 - MSE / Cross-entropy 와 ML 위계 *(예정)*
 
