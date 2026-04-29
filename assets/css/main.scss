@@ -37,3 +37,6 @@
 @use "font-awesome/brands";
 @use "font-awesome/solid";
 @use "font-awesome/regular";
+
+// Claude design system overrides (마지막에 로드되어 토큰 오버라이드)
+@use "claude-design";

@@ -49,13 +49,13 @@ math: true
 
 | 글 | 한 줄 |
 |---|---|
-| [자연상수 e](/posts/eulers-number-e/) | 왜 미분/적분에서 $e$ 가 자연스러운지 |
-| [테일러 급수](/posts/taylor-series/) | 함수를 다항식으로 근사하는 도구 |
-| [연쇄법칙](/posts/chain-rule/) | 합성함수 미분의 기본 규칙 |
-| [벡터의 외적](/posts/cross-product/) | 3D 벡터 연산 + 평면의 법선 |
-| [동차좌표에서의 외적](/posts/cross-product-in-homogeneous-coords/) | 컴퓨터 비전의 기본 |
-| [평면의 방정식](/posts/equations-of-planes/) | 외적의 첫 응용 |
-| [직선의 방정식](/posts/equations-of-lines/) | 직선/평면 기하 |
+| [자연상수 e](/blog/2025/eulers-number-e/) | 왜 미분/적분에서 $e$ 가 자연스러운지 |
+| [테일러 급수](/blog/2025/taylor-series/) | 함수를 다항식으로 근사하는 도구 |
+| [연쇄법칙](/blog/2025/chain-rule/) | 합성함수 미분의 기본 규칙 |
+| [벡터의 외적](/blog/2024/cross-product/) | 3D 벡터 연산 + 평면의 법선 |
+| [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/) | 컴퓨터 비전의 기본 |
+| [평면의 방정식](/blog/2024/equations-of-planes/) | 외적의 첫 응용 |
+| [직선의 방정식](/blog/2024/equations-of-lines/) | 직선/평면 기하 |
 
 ---
 
@@ -65,8 +65,8 @@ math: true
 
 | # | 글 | 상태 |
 |---|---|---|
-| 1 | [최적화 이론 기초](/posts/basic-optimization/) — GD, Newton, GN, LM 카탈로그 | ✓ 발행 |
-| 2 | [에러와 자코비안 정리](/posts/errors-and-jacobians/) — SLAM 시점 MLE + GN 실전 | ✓ 발행 |
+| 1 | [최적화 이론 기초](/blog/2026/basic-optimization/) — GD, Newton, GN, LM 카탈로그 | ✓ 발행 |
+| 2 | [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/) — SLAM 시점 MLE + GN 실전 | ✓ 발행 |
 | 3 | 1D 비선형 피팅 — Gauss-Newton 끝까지 | 🔜 예정 |
 | 4 | LM, Newton, Dogleg 한판 비교 | 🔜 예정 |
 
@@ -97,14 +97,14 @@ Part 1, 2 의 도구를 비전 문제에 적용.
 
 | 글 |
 |---|
-| [핀홀 카메라 캘리브레이션](/posts/pinhole-camera/) |
-| [Optical Flow](/posts/optical-flow/) |
-| [공간에서 직선과 직선의 교차점 (1)](/posts/intersection-point-by-cross-product/) |
-| [공간에서 직선과 직선의 교차점 (2) — Triangulation](/posts/intersection-point-by-non-linear-triangulation/) |
-| [구와 직선의 교차](/posts/intersection-ray-sphere/) |
-| [원과 직선의 교차](/posts/intersection-line-circle/) |
-| [3개의 점을 이용한 원 그리기](/posts/circle-by-3-points/) |
-| [n 개의 점을 이용한 원 그리기 (Least Squares)](/posts/circle-by-n-points/) |
+| [핀홀 카메라 캘리브레이션](/blog/2024/pinhole-camera/) |
+| [Optical Flow](/blog/2024/optical-flow/) |
+| [공간에서 직선과 직선의 교차점 (1)](/blog/2024/intersection-point-by-cross-product/) |
+| [공간에서 직선과 직선의 교차점 (2) — Triangulation](/blog/2024/intersection-point-by-non-linear-triangulation/) |
+| [구와 직선의 교차](/blog/2024/intersection-ray-sphere/) |
+| [원과 직선의 교차](/blog/2024/intersection-line-circle/) |
+| [3개의 점을 이용한 원 그리기](/blog/2024/circle-by-3-points/) |
+| [n 개의 점을 이용한 원 그리기 (Least Squares)](/blog/2024/circle-by-n-points/) |
 
 ---
 

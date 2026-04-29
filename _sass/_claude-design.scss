@@ -1,0 +1,507 @@
+/*******************************************************************************
+ * Claude Design System Overrides
+ * 크림 캔버스 + 코랄 CTA + 슬랩세리프 — Anthropic Claude.com 시스템 차용
+ ******************************************************************************/
+
+/* ------------- Color tokens (Claude palette) ------------- */
+:root {
+  /* Brand */
+  --claude-primary: #cc785c;
+  --claude-primary-active: #a9583e;
+  --claude-primary-disabled: #e6dfd8;
+
+  /* Text */
+  --claude-ink: #141413;
+  --claude-body: #3d3d3a;
+  --claude-body-strong: #252523;
+  --claude-muted: #6c6a64;
+  --claude-muted-soft: #8e8b82;
+
+  /* Surfaces */
+  --claude-canvas: #faf9f5;
+  --claude-surface-soft: #f5f0e8;
+  --claude-surface-card: #efe9de;
+  --claude-surface-cream-strong: #e8e0d2;
+  --claude-surface-dark: #181715;
+  --claude-surface-dark-elevated: #252320;
+  --claude-surface-dark-soft: #1f1e1b;
+
+  /* Borders */
+  --claude-hairline: #e6dfd8;
+  --claude-hairline-soft: #ebe6df;
+
+  /* Accents */
+  --claude-accent-teal: #5db8a6;
+  --claude-accent-amber: #e8a55a;
+
+  /* Semantic */
+  --claude-success: #5db872;
+  --claude-warning: #d4a017;
+  --claude-error: #c64545;
+
+  /* On-color text */
+  --claude-on-primary: #ffffff;
+  --claude-on-dark: #faf9f5;
+  --claude-on-dark-soft: #a09d96;
+
+  /* Map to al-folio's globals (light mode) */
+  --global-bg-color: var(--claude-canvas);
+  --global-code-bg-color: var(--claude-surface-soft);
+  --global-text-color: var(--claude-body);
+  --global-text-color-light: var(--claude-muted);
+  --global-theme-color: var(--claude-primary);
+  --global-hover-color: var(--claude-primary-active);
+  --global-hover-text-color: var(--claude-on-primary);
+  --global-footer-bg-color: var(--claude-surface-dark);
+  --global-footer-text-color: var(--claude-on-dark-soft);
+  --global-footer-link-color: var(--claude-on-dark);
+  --global-divider-color: var(--claude-hairline);
+  --global-card-bg-color: var(--claude-surface-card);
+  --global-highlight-color: var(--claude-primary);
+  --global-back-to-top-bg-color: rgba(20, 20, 19, 0.4);
+  --global-back-to-top-text-color: var(--claude-on-dark);
+  --global-newsletter-bg-color: var(--claude-canvas);
+  --global-newsletter-text-color: var(--claude-ink);
+}
+
+/* ------------- Dark mode (Anthropic-style dark navy) ------------- */
+html[data-theme="dark"] {
+  --global-bg-color: var(--claude-surface-dark);
+  --global-code-bg-color: var(--claude-surface-dark-soft);
+  --global-text-color: var(--claude-on-dark);
+  --global-text-color-light: var(--claude-on-dark-soft);
+  --global-theme-color: var(--claude-primary);
+  --global-hover-color: var(--claude-primary-active);
+  --global-hover-text-color: var(--claude-on-primary);
+  --global-footer-bg-color: #0e0d0c;
+  --global-footer-text-color: var(--claude-on-dark-soft);
+  --global-footer-link-color: var(--claude-on-dark);
+  --global-divider-color: var(--claude-surface-dark-elevated);
+  --global-card-bg-color: var(--claude-surface-dark-elevated);
+  --global-highlight-color: var(--claude-accent-amber);
+  --global-newsletter-bg-color: var(--claude-surface-dark-elevated);
+  --global-newsletter-text-color: var(--claude-on-dark);
+}
+
+/* ------------- Typography ------------- */
+/* 본문 폰트로 전부 통일 — 헤드라인은 굵기로만 강조 */
+$font-display: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont,
+  "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
+$font-body: "Pretendard", "Inter", -apple-system, BlinkMacSystemFont,
+  "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
+$font-mono: "JetBrains Mono", "D2Coding", ui-monospace, "SF Mono", Monaco,
+  Consolas, monospace;
+
+body {
+  font-family: $font-body;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--claude-body);
+  background-color: var(--claude-canvas);
+  letter-spacing: -0.005em;
+}
+
+/* 헤드라인 — 본문 폰트 + 굵은 weight 로 위계 표현 */
+h1, h2, h3, h4, h5, h6,
+.post-title, .page-title, .blog-title {
+  font-family: $font-display;
+  color: var(--claude-ink);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  font-feature-settings: "ss01", "cv11", "kern", "ss03";
+}
+
+h1, .post-title, .page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+/* 페이지/포스트 설명 (subtitle) — 본문보다 약간 큼, muted */
+.post-description, .page-description, .post-subtitle {
+  font-family: $font-body;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--claude-muted);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  margin-bottom: 1.5rem;
+}
+
+/* 블로그 리스트의 글 제목 — h1 보다 작게 */
+.post-list .post-title,
+ul.post-list a.post-title,
+a.post-title {
+  font-size: 1.4rem !important;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  color: var(--claude-ink);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--claude-primary);
+    text-decoration: none;
+  }
+}
+
+h2 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--claude-hairline);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+h5 {
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--claude-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ------------- Links ------------- */
+a {
+  color: var(--claude-primary);
+  text-decoration: none;
+  transition: color 120ms ease;
+
+  &:hover, &:focus {
+    color: var(--claude-primary-active);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+}
+
+/* ------------- Code ------------- */
+code, pre, kbd, samp {
+  font-family: $font-mono;
+  font-size: 0.92em;
+}
+
+code:not(pre code) {
+  background: var(--claude-surface-card);
+  color: var(--claude-ink);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+pre {
+  background: var(--claude-surface-dark) !important;
+  color: var(--claude-on-dark);
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.6;
+  border: none;
+
+  code {
+    background: transparent;
+    color: var(--claude-on-dark);
+    padding: 0;
+    font-size: 0.875em;
+  }
+}
+
+/* ------------- Syntax Highlighting (다크 배경용 — Rouge 클래스 오버라이드) ------------- */
+.highlight,
+.highlighter-rouge,
+figure.highlight,
+div.highlighter-rouge,
+pre.highlight {
+  background: var(--claude-surface-dark) !important;
+  color: var(--claude-on-dark) !important;
+
+  pre, code { color: var(--claude-on-dark) !important; }
+
+  /* 키워드 — 코랄 (Anthropic 톤) */
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .kv {
+    color: #e8a55a !important;  /* amber */
+    font-weight: 500;
+  }
+
+  /* 함수명, 클래스명 — 청록 */
+  .nf, .nc, .nb, .bp {
+    color: #5db8a6 !important;  /* teal */
+  }
+
+  /* 문자열 — 따뜻한 cream */
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx, .sr, .ss, .dl {
+    color: #f5d68a !important;
+  }
+
+  /* 숫자 / boolean */
+  .m, .mi, .mf, .mh, .mo, .mb, .il, .kp, .kc {
+    color: #cc785c !important;  /* coral */
+  }
+
+  /* 주석 — 흐림 */
+  .c, .c1, .cm, .cs, .cd, .cp, .cpf, .ch {
+    color: #8e8b82 !important;  /* muted */
+    font-style: italic;
+  }
+
+  /* 변수, 식별자 */
+  .n, .na, .nv, .vc, .vg, .vi, .vm, .py {
+    color: var(--claude-on-dark) !important;
+  }
+
+  /* 연산자, 구두점 */
+  .o, .ow, .p, .pi {
+    color: #a09d96 !important;
+  }
+
+  /* 토큰 (HTML, attributes) */
+  .nt { color: #5db8a6 !important; }     /* tag name */
+  .na { color: #e8a55a !important; }     /* attribute name */
+
+  /* 에러/특수 */
+  .err {
+    color: var(--claude-on-dark) !important;
+    background: transparent !important;
+  }
+
+  /* gutter (line numbers) */
+  .gutter, .gl {
+    color: #6c6a64 !important;
+    border-right: 1px solid #2a2825;
+    padding-right: 0.75em;
+    margin-right: 0.75em;
+    user-select: none;
+  }
+}
+
+/* ------------- Blockquotes (editorial accent) ------------- */
+blockquote {
+  border-left: 3px solid var(--claude-primary);
+  background: var(--claude-surface-soft);
+  margin: 1.25rem 0;
+  padding: 0.75rem 1.25rem;
+  color: var(--claude-body-strong);
+  font-style: normal;
+
+  p:last-child { margin-bottom: 0; }
+}
+
+/* ------------- Tables (Claude editorial style) ------------- */
+article table,
+.post table,
+.post-content table,
+table {
+  border-collapse: collapse;
+  width: auto;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  font-family: $font-body;
+  font-size: 0.93em;
+  line-height: 1.5;
+  background: var(--claude-canvas);
+
+  thead {
+    background: var(--claude-surface-card);
+    border-bottom: 2px solid var(--claude-ink);
+  }
+
+  th, td {
+    border: none;
+    border-bottom: 1px solid var(--claude-hairline);
+    padding: 0.55rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    color: var(--claude-body);
+    font-family: $font-body;  /* 표 안은 sans 강제 */
+  }
+
+  th {
+    color: var(--claude-ink);
+    font-weight: 600;
+    background: var(--claude-surface-card);
+  }
+
+  tr:hover td {
+    background: var(--claude-surface-soft);
+  }
+
+  /* 짝수 행 강조 제거 — Claude 스타일은 깔끔한 hairline */
+  tr:nth-child(even) td {
+    background: transparent;
+  }
+
+  /* 코드/숫자 정렬 */
+  code {
+    font-family: $font-mono;
+    font-size: 0.88em;
+  }
+}
+
+/* 표 안의 수식도 본문 폰트 크기로 통일 */
+table .MathJax {
+  font-size: 0.95em !important;
+}
+
+/* ------------- Horizontal rule ------------- */
+hr {
+  border: none;
+  border-top: 1px solid var(--claude-hairline);
+  margin: 2.5rem 0;
+}
+
+/* ------------- Navbar (cream canvas) ------------- */
+.navbar {
+  background-color: var(--claude-canvas) !important;
+  border-bottom: 1px solid var(--claude-hairline);
+  font-family: $font-body;
+
+  .navbar-brand {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    color: var(--claude-ink) !important;
+  }
+
+  .nav-link {
+    color: var(--claude-body) !important;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.005em;
+
+    &:hover, &:focus, &.active {
+      color: var(--claude-primary) !important;
+    }
+  }
+}
+
+/* Dark mode navbar */
+html[data-theme="dark"] .navbar {
+  background-color: var(--claude-surface-dark) !important;
+  border-bottom-color: var(--claude-surface-dark-elevated);
+
+  .navbar-brand { color: var(--claude-on-dark) !important; }
+  .nav-link { color: var(--claude-on-dark) !important; }
+}
+
+/* ------------- Footer ------------- */
+footer, .footer {
+  background-color: var(--claude-surface-dark) !important;
+  color: var(--claude-on-dark-soft) !important;
+  padding: 3rem 0 2rem;
+
+  a {
+    color: var(--claude-on-dark);
+    &:hover { color: var(--claude-primary); }
+  }
+}
+
+/* ------------- Cards (post cards, profile) ------------- */
+.card, .post-card {
+  background: var(--claude-surface-card);
+  border: 1px solid var(--claude-hairline);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* ------------- Profile image (about page) ------------- */
+.profile img {
+  border-radius: 12px;
+}
+
+/* ------------- Buttons (where al-folio uses .btn) ------------- */
+.btn-primary, .btn.btn-primary {
+  background-color: var(--claude-primary);
+  border-color: var(--claude-primary);
+  color: var(--claude-on-primary);
+  border-radius: 8px;
+  font-weight: 500;
+  letter-spacing: 0;
+  padding: 0.6rem 1.2rem;
+
+  &:hover, &:focus, &:active {
+    background-color: var(--claude-primary-active) !important;
+    border-color: var(--claude-primary-active) !important;
+    color: var(--claude-on-primary);
+  }
+}
+
+/* ------------- Tags / categories ------------- */
+.tag, .category {
+  background: var(--claude-surface-card);
+  color: var(--claude-ink);
+  border-radius: 9999px;
+  padding: 2px 12px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border: 1px solid var(--claude-hairline);
+}
+
+/* ------------- MathJax (서체 균형) ------------- */
+.MathJax {
+  font-size: 1.02em !important;
+}
+
+/* ------------- Selection highlight (코랄 톤) ------------- */
+::selection {
+  background: var(--claude-primary);
+  color: var(--claude-on-primary);
+}
+
+/* ------------- Section spacing ------------- */
+.container, main {
+  font-feature-settings: "kern", "liga";
+}
+
+article {
+  padding-top: 1rem;
+
+  /* 첫 단락 살짝 강조 */
+  > p:first-of-type {
+    font-size: 1.05em;
+    color: var(--claude-body-strong);
+  }
+}
+
+/* ------------- Pagination ------------- */
+.pagination {
+  .page-link {
+    color: var(--claude-body);
+    border-color: var(--claude-hairline);
+    background: var(--claude-canvas);
+
+    &:hover { background: var(--claude-surface-card); color: var(--claude-primary); }
+  }
+
+  .active .page-link {
+    background: var(--claude-primary);
+    border-color: var(--claude-primary);
+    color: var(--claude-on-primary);
+  }
+}
