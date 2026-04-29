@@ -23,15 +23,15 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-1d-비선형-피팅-gauss-newton-newton-lm-dogleg-한판-비교",
+        },{id: "post-학습-로드맵-기초부터-컴퓨터-비전-로보틱스까지",
         
-          title: "1D 비선형 피팅 — Gauss-Newton, Newton, LM, Dogleg 한판 비교",
+          title: "학습 로드맵 — 기초부터 컴퓨터 비전, 로보틱스까지",
         
-        description: "파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.",
+        description: "미적분, 선형대수, 비선형 최적화, MLE, 로봇팔 IK 까지 한 시리즈로 정리",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2026/nonlinear-fitting-1d/";
+            window.location.href = "/blog/2026/learning-roadmap/";
           
         },
       },{id: "post-mle-sse-우리-1d-예제로-끝까지-따라가기",
@@ -56,15 +56,26 @@ ninja.data = [{
             window.location.href = "/blog/2026/mle-basics/";
           
         },
-      },{id: "post-학습-로드맵-기초부터-컴퓨터-비전-로보틱스까지",
+      },{id: "post-1d-비선형-피팅-gauss-newton-newton-lm-dogleg-한판-비교",
         
-          title: "학습 로드맵 — 기초부터 컴퓨터 비전, 로보틱스까지",
+          title: "1D 비선형 피팅 — Gauss-Newton, Newton, LM, Dogleg 한판 비교",
         
-        description: "미적분, 선형대수, 비선형 최적화, MLE, 로봇팔 IK 까지 한 시리즈로 정리",
+        description: "파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2026/learning-roadmap/";
+            window.location.href = "/blog/2026/nonlinear-fitting-1d/";
+          
+        },
+      },{id: "post-좌표평면-위의-세-직선-선형-시스템과-최소제곱-입문",
+        
+          title: "좌표평면 위의 세 직선 — 선형 시스템과 최소제곱 입문",
+        
+        description: "세 직선의 교점이 없을 때, 가장 잘 맞는 점 찾기. Ax=b 부터 정규방정식 유도까지 단계별로",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/three-lines-visualization/";
           
         },
       },{id: "post-에러와-자코비안-정리-errors-and-jacobians-slam-최적화의-핵심",
