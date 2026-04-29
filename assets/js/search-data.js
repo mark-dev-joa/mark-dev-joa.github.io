@@ -23,9 +23,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-학습-로드맵-기초부터-컴퓨터-비전-로보틱스까지",
+        },{id: "post-가이드-학습-로드맵",
         
-          title: "학습 로드맵 — 기초부터 컴퓨터 비전, 로보틱스까지",
+          title: "가이드 학습 로드맵",
         
         description: "미적분, 선형대수, 비선형 최적화, MLE, 로봇팔 IK 까지 한 시리즈로 정리",
         section: "Posts",
@@ -34,9 +34,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/learning-roadmap/";
           
         },
-      },{id: "post-mle-sse-우리-1d-예제로-끝까지-따라가기",
+      },{id: "post-part-2-2-mle-sse-의-동치성-1d-회귀-검증",
         
-          title: "MLE = SSE — 우리 1D 예제로 끝까지 따라가기",
+          title: "Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증",
         
         description: "노이즈가 가우시안이면 MLE = SSE 최소화 — 추상 명제를 1D 데이터로 숫자까지 직접 계산해서 확인하는 worked example.",
         section: "Posts",
@@ -45,9 +45,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/mle-sse-1d-walkthrough/";
           
         },
-      },{id: "post-mle-기초-동전-던지기부터-가우시안-노이즈까지",
+      },{id: "post-part-2-1-최대우도추정-mle-동전과-가우시안",
         
-          title: "MLE 기초 — 동전 던지기부터 가우시안 노이즈까지",
+          title: "Part 2·1 최대우도추정(MLE) — 동전과 가우시안",
         
         description: "Maximum Likelihood Estimation 의 직관 — 동전 한 번부터 시작해 회귀의 SSE 가 어떻게 자연스럽게 도출되는지 단계별로",
         section: "Posts",
@@ -56,9 +56,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/mle-basics/";
           
         },
-      },{id: "post-1d-비선형-피팅-gauss-newton-newton-lm-dogleg-한판-비교",
+      },{id: "post-part-1-2-비선형-최소제곱-4가지-알고리즘-비교",
         
-          title: "1D 비선형 피팅 — Gauss-Newton, Newton, LM, Dogleg 한판 비교",
+          title: "Part 1·2 비선형 최소제곱 — 4가지 알고리즘 비교",
         
         description: "파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.",
         section: "Posts",
@@ -67,9 +67,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/nonlinear-fitting-1d/";
           
         },
-      },{id: "post-좌표평면-위의-세-직선-선형-시스템과-최소제곱-입문",
+      },{id: "post-part-1-1-선형-최소제곱과-정규방정식",
         
-          title: "좌표평면 위의 세 직선 — 선형 시스템과 최소제곱 입문",
+          title: "Part 1·1 선형 최소제곱과 정규방정식",
         
         description: "세 직선의 교점이 없을 때, 가장 잘 맞는 점 찾기. Ax=b 부터 정규방정식 유도까지 단계별로",
         section: "Posts",
