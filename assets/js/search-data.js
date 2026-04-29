@@ -34,6 +34,17 @@ ninja.data = [{
             window.location.href = "/blog/2026/nonlinear-fitting-1d/";
           
         },
+      },{id: "post-mle-sse-우리-1d-예제로-끝까지-따라가기",
+        
+          title: "MLE = SSE — 우리 1D 예제로 끝까지 따라가기",
+        
+        description: "노이즈가 가우시안이면 MLE = SSE 최소화 — 추상 명제를 1D 데이터로 숫자까지 직접 계산해서 확인하는 worked example.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/mle-sse-1d-walkthrough/";
+          
+        },
       },{id: "post-학습-로드맵-기초부터-컴퓨터-비전-로보틱스까지",
         
           title: "학습 로드맵 — 기초부터 컴퓨터 비전, 로보틱스까지",
