@@ -2,7 +2,7 @@
 title: 3개의 점을 이용한 원 그리기
 description: 3개의 방정식을 연립하여 원의 방정식 구하기
 author: mark
-categories: [mathmatic, geometry, linear algebra]
+categories: [math, geometry]
 tags: [three.js]
 math: true
 mermaid: true

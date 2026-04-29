@@ -2,7 +2,7 @@
 title: n 개의 점을 이용한 원 그리기
 description: 해가 존재하지 않는 선형연립방정식 Ax=b 에서 근사해 구하기
 author: mark
-categories: [mathmatic, optical-flow, least-square]
+categories: [math, geometry, optimization]
 tags: [three.js]
 math: true
 mermaid: true

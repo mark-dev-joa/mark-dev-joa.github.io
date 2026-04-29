@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>최적화 이론 기초 - 미리보기</title>
+<!-- MathJax for LaTeX rendering -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- Mermaid -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.6.1/mermaid.min.js"></script>
+<style>
+  :root { --bg: #0d1117; --fg: #e6edf3; --accent: #58a6ff; --card: #161b22; --border: #30363d; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.8; padding: 40px 20px; }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 { font-size: 2em; margin: 40px 0 20px; color: #fff; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  h2 { font-size: 1.6em; margin: 50px 0 16px; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+  h3 { font-size: 1.25em; margin: 30px 0 12px; color: #7ee787; }
+  h4 { font-size: 1.1em; margin: 20px 0 8px; color: #d2a8ff; }
+  p { margin: 12px 0; }
+  blockquote { border-left: 4px solid var(--accent); padding: 12px 20px; margin: 16px 0; background: var(--card); border-radius: 0 8px 8px 0; }
+  table { border-collapse: collapse; margin: 20px 0; width: 100%; }
+  th, td { border: 1px solid var(--border); padding: 10px 14px; text-align: left; }
+  th { background: var(--card); color: var(--accent); }
+  tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  ul, ol { margin: 12px 0 12px 24px; }
+  li { margin: 6px 0; }
+  code { background: var(--card); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  .formula-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; }
+  .threejs-container { position: relative; width: 100%; padding-top: 56.25%; margin: 24px 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: #0a0a0a; }
+  .threejs-container canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
+  .threejs-container .legend { position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.75); padding: 10px 14px; border-radius: 8px; font-size: 0.85em; z-index: 10; }
+  .threejs-container .legend div { margin: 4px 0; display: flex; align-items: center; gap: 8px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  .mermaid { background: var(--card); padding: 20px; border-radius: 12px; margin: 20px 0; }
+  .section-ref { font-size: 0.9em; color: #8b949e; margin: 8px 0; }
+  .section-ref a { color: var(--accent); text-decoration: none; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>최적화(Optimization) 이론 기초</h1>
+<p class="section-ref">
+  참조: <a href="https://gaussian37.github.io/math-calculus-basic_optimization/">gaussian37 - 최적화 이론 기초 정리</a><br>
+  참조: <a href="https://alida.tistory.com/65">ALIDA - 에러와 자코비안 정리</a>
+</p>
+
+<hr>
+
+<h2>최적화란 무엇인가?</h2>
+<p>한 문장으로: <strong>어떤 함수의 값을 최소(또는 최대)로 만드는 입력값을 찾는 것.</strong></p>
+<div class="formula-box">
+  \[\min_{\mathbf{x}} f(\mathbf{x})\]
+</div>
+
+<hr>
+
+<h2>Gradient Descent (경사 하강법)</h2>
+<h3>직관 — 눈 감고 산에서 내려오기</h3>
+<p>산꼭대기에 눈을 감고 서 있다고 상상해보세요. 가장 낮은 곳(골짜기)으로 내려가고 싶은데, 눈을 감았으니 발밑을 더듬어서 <strong>"지금 어느 방향이 가장 가파르게 내려가는지"</strong> 를 느끼고, 그 방향으로 한 발짝 내딛습니다.</p>
+
+<h3>수식</h3>
+<div class="formula-box">
+  \[\mathbf{x}_{k+1} = \mathbf{x}_k - \alpha \nabla f(\mathbf{x}_k)\]
+</div>
+<ul>
+  <li>\(\mathbf{x}_k\) : 현재 위치 (k번째 스텝)</li>
+  <li>\(\nabla f(\mathbf{x}_k)\) : Gradient — 함수값이 가장 빠르게 <strong>증가하는</strong> 방향</li>
+  <li>\(\alpha\) : 학습률(learning rate) — 한 발짝의 크기</li>
+</ul>
+
+<h3>시각화 — 학습률에 따른 수렴 비교</h3>
+<p>아래 3D 시각화에서 \(f(x,y) = x^2 + y^2\) 포물면 위에서 학습률 3가지를 비교합니다. 마우스로 드래그하여 회전할 수 있어요.</p>
+<div class="threejs-container" id="gd-wrapper">
+  <div id="gd-canvas"></div>
+  <div class="legend">
+    <div><span class="legend-dot" style="background:#4CAF50"></span> α=0.5 (적절)</div>
+    <div><span class="legend-dot" style="background:#FFC107"></span> α=0.1 (느림)</div>
+    <div><span class="legend-dot" style="background:#F44336"></span> α=3.0 (발산)</div>
+    <div><span class="legend-dot" style="background:#fff"></span> 최솟값 (0,0)</div>
+  </div>
+</div>
+
+<hr>
+
+<h2>Newton Method (뉴턴 방법)</h2>
+<h3>Gradient Descent와 뭐가 다른가?</h3>
+<p>Gradient Descent는 <strong>1차 미분</strong>만 봅니다. Newton은 <strong>2차 미분(Hessian)</strong>까지 봐서, 최저점이 대략 어디쯤인지 한 번에 추정합니다.</p>
+
+<h3>수식 유도 — 테일러 전개</h3>
+<p>함수 \(f(x)\)를 현재 위치 \(x_k\) 근처에서 2차 테일러 전개:</p>
+<div class="formula-box">
+  \[f(x) \approx f(x_k) + f'(x_k)(x - x_k) + \frac{1}{2}f''(x_k)(x - x_k)^2\]
+</div>
+<p>미분해서 0으로 놓으면:</p>
+<div class="formula-box">
+  \[\boxed{x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}}\]
+</div>
+<p>다변수에서는:</p>
+<div class="formula-box">
+  \[\mathbf{x}_{k+1} = \mathbf{x}_k - \mathbf{H}^{-1} \nabla f(\mathbf{x}_k)\]
+</div>
+
+<table>
+<tr><th></th><th>Gradient Descent</th><th>Newton Method</th></tr>
+<tr><td>사용 정보</td><td>1차 미분 (Gradient)</td><td>1차 + 2차 미분 (Gradient + Hessian)</td></tr>
+<tr><td>수렴 속도</td><td>선형 수렴 (느림)</td><td>이차 수렴 (매우 빠름)</td></tr>
+<tr><td>스텝당 계산량</td><td>적음</td><td>Hessian 역행렬 → 많음</td></tr>
+</table>
+
+<hr>
+
+<h2>SLAM에서의 최적화 — 에러와 자코비안</h2>
+<blockquote>이 섹션은 <a href="https://alida.tistory.com/65">ALIDA 블로그</a> 내용을 참고하여 SLAM 관점에서 최적화를 정리합니다.</blockquote>
+
+<h3>에러(Error)의 정의</h3>
+<div class="formula-box">
+  \[e(\mathbf{x}) = z - \hat{z}(\mathbf{x})\]
+</div>
+
+<h3>MLE 기반 에러 함수 유도</h3>
+<p>에러가 정규분포를 따른다고 가정하면:</p>
+<div class="formula-box">
+  \[E(\mathbf{x}) = \sum_i e_i(\mathbf{x})^T \Omega_i \, e_i(\mathbf{x})\]
+</div>
+
+<h3>Gauss-Newton — Normal Equation 유도</h3>
+<p>테일러 1차 근사 → 전개 → 미분=0:</p>
+<div class="formula-box">
+  \[\boxed{H\Delta\mathbf{x} = -b} \quad \text{where } H = J^T\Omega J, \; b = e^T\Omega J\]
+</div>
+
+<h3>LM 확장</h3>
+<div class="formula-box">
+  \[\text{(GN)} \; H\Delta\mathbf{x} = -b \quad \longrightarrow \quad \text{(LM)} \; (H + \lambda I)\Delta\mathbf{x} = -b\]
+</div>
+
+<hr>
+
+<h2>Gauss-Newton Method</h2>
+<h3>핵심: Hessian을 Jacobian으로 근사</h3>
+<div class="formula-box">
+  \[\mathbf{H} \approx J_r^T J_r\]
+  <br><br>
+  \[\boxed{w_{\text{new}} = w_{\text{old}} - (J_r^T J_r)^{-1} J_r^T \mathbf{r}}\]
+</div>
+
+<hr>
+
+<h2>Levenberg-Marquardt Method</h2>
+<div class="formula-box">
+  \[\boxed{w_{\text{new}} = w_{\text{old}} - (J_r^T J_r + \mu \mathbf{I})^{-1} J_r^T \mathbf{r}}\]
+</div>
+<h3>μ의 역할 — GD와 GN 사이의 스위치</h3>
+<ul>
+  <li><strong>μ가 큰 경우</strong>: Gradient Descent처럼 동작 (보수적, 안정적)</li>
+  <li><strong>μ가 작은 경우</strong>: Gauss-Newton처럼 동작 (공격적, 빠름)</li>
+</ul>
+
+<h3>시각화 — Gauss-Newton vs LM 수렴 비교</h3>
+<p>Rosenbrock 함수의 좁은 골짜기에서 두 알고리즘의 수렴 경로를 비교합니다.</p>
+<div class="threejs-container" id="lm-wrapper">
+  <div id="lm-canvas"></div>
+  <div class="legend">
+    <div><span class="legend-dot" style="background:#FF9800"></span> Gauss-Newton</div>
+    <div><span class="legend-dot" style="background:#00BCD4"></span> Levenberg-Marquardt</div>
+    <div><span class="legend-dot" style="background:#fff"></span> 최솟값 (1,1)</div>
+  </div>
+</div>
+
+<h3>LM 알고리즘 흐름도</h3>
+<div class="mermaid">
+flowchart TD
+    A[초기 파라미터 설정] --> B[Residual r, Jacobian J 계산]
+    B --> C[Cost Function 평가]
+    C --> D{"E(w_new) < E(w_old)?"}
+    D -- Yes --> E{"E(w_new) < threshold?"}
+    D -- No --> F[업데이트 거부, μ 증가]
+    F --> B
+    E -- Yes --> G[수렴 완료!]
+    E -- No --> H[업데이트 채택, μ 감소]
+    H --> I{"iteration < max?"}
+    I -- Yes --> B
+    I -- No --> J[새 초깃값으로 재시도]
+    J --> A
+</div>
+
+<hr>
+
+<h2>딥러닝 옵티마이저</h2>
+
+<h3>Momentum</h3>
+<div class="formula-box">
+  \[\mathbf{v}_{k+1} = \beta \mathbf{v}_k + \nabla f(\mathbf{w}_k)\]
+  \[\mathbf{w}_{k+1} = \mathbf{w}_k - \alpha \mathbf{v}_{k+1}\]
+</div>
+
+<h3>Adam</h3>
+<div class="formula-box">
+  \[m_k = \beta_1 m_{k-1} + (1-\beta_1)\nabla f\]
+  \[v_k = \beta_2 v_{k-1} + (1-\beta_2)(\nabla f)^2\]
+  \[\boxed{\mathbf{w}_{k+1} = \mathbf{w}_k - \frac{\alpha}{\sqrt{\hat{v}_k} + \epsilon}\hat{m}_k}\]
+</div>
+
+<hr>
+
+<h2>전체 알고리즘 비교</h2>
+<table>
+<tr><th>방법</th><th>사용 정보</th><th>수렴 속도</th><th>주 사용처</th></tr>
+<tr><td>Gradient Descent</td><td>1차 미분</td><td>선형 수렴</td><td>딥러닝 (대규모)</td></tr>
+<tr><td>Newton</td><td>1차+2차 미분</td><td>이차 수렴</td><td>소규모 최적화</td></tr>
+<tr><td>Gauss-Newton</td><td>Jacobian</td><td>Newton급</td><td>비선형 최소제곱</td></tr>
+<tr><td>Levenberg-Marquardt</td><td>Jacobian + 댐핑</td><td>안정적 Newton급</td><td>커브피팅, SLAM</td></tr>
+<tr><td>Adam</td><td>1차 미분 + 적응적</td><td>실용적 빠름</td><td>딥러닝 (기본값)</td></tr>
+</table>
+
+</div>
+
+<!-- ============= Three.js Visualizations ============= -->
+<script>
+// OrbitControls inline (simplified)
+THREE.OrbitControls = function(camera, domElement) {
+  this.camera = camera;
+  this.domElement = domElement;
+  this.enableDamping = true;
+  this.dampingFactor = 0.05;
+
+  let isDown = false, prevX = 0, prevY = 0;
+  let spherical = { theta: Math.atan2(camera.position.x, camera.position.z), phi: Math.acos(camera.position.y / camera.position.length()), radius: camera.position.length() };
+
+  const onDown = (e) => { isDown = true; prevX = e.clientX; prevY = e.clientY; };
+  const onUp = () => { isDown = false; };
+  const onMove = (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - prevX, dy = e.clientY - prevY;
+    spherical.theta -= dx * 0.005;
+    spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi + dy * 0.005));
+    prevX = e.clientX; prevY = e.clientY;
+  };
+  const onWheel = (e) => { spherical.radius = Math.max(3, Math.min(25, spherical.radius + e.deltaY * 0.01)); e.preventDefault(); };
+
+  domElement.addEventListener('mousedown', onDown);
+  domElement.addEventListener('mouseup', onUp);
+  domElement.addEventListener('mousemove', onMove);
+  domElement.addEventListener('wheel', onWheel, { passive: false });
+
+  this.update = function() {
+    camera.position.x = spherical.radius * Math.sin(spherical.phi) * Math.sin(spherical.theta);
+    camera.position.y = spherical.radius * Math.cos(spherical.phi);
+    camera.position.z = spherical.radius * Math.sin(spherical.phi) * Math.cos(spherical.theta);
+    camera.lookAt(0, 0, 0);
+  };
+};
+
+// =========== Gradient Descent Visualization ===========
+(function() {
+  const wrapper = document.getElementById('gd-wrapper');
+  const container = document.getElementById('gd-canvas');
+  const w = wrapper.clientWidth, h = wrapper.clientHeight || w * 0.5625;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a0a0a);
+  const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 1000);
+  camera.position.set(8, 10, 8);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(w, h);
+  container.appendChild(renderer.domElement);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const dLight = new THREE.DirectionalLight(0xffffff, 0.8);
+  dLight.position.set(5, 10, 5);
+  scene.add(dLight);
+
+  // Surface f(x,y) = 0.15*(x^2+y^2)
+  const geo = new THREE.PlaneGeometry(10, 10, 60, 60);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), z = pos.getY(i);
+    pos.setXYZ(i, x, (x*x + z*z) * 0.15, z);
+  }
+  geo.computeVertexNormals();
+  scene.add(new THREE.Mesh(geo, new THREE.MeshPhongMaterial({ color: 0x2196F3, transparent: true, opacity: 0.35, side: THREE.DoubleSide })));
+  scene.add(new THREE.Mesh(geo.clone(), new THREE.MeshBasicMaterial({ color: 0x2196F3, wireframe: true, transparent: true, opacity: 0.12 })));
+
+  const grid = new THREE.GridHelper(10, 20, 0x333333, 0x222222);
+  grid.position.y = -0.01;
+  scene.add(grid);
+
+  function gdPath(sx, sz, lr, steps) {
+    const p = []; let x = sx, z = sz;
+    for (let i = 0; i < steps; i++) {
+      p.push(new THREE.Vector3(x, (x*x+z*z)*0.15, z));
+      x -= lr * 0.3 * x; z -= lr * 0.3 * z;
+    }
+    p.push(new THREE.Vector3(x, (x*x+z*z)*0.15, z));
+    return p;
+  }
+
+  const paths = [
+    { pts: gdPath(4.5,4,0.5,40), color: 0x4CAF50 },
+    { pts: gdPath(4.5,4,0.1,40), color: 0xFFC107 },
+    { pts: gdPath(4.5,4,3.0,40), color: 0xF44336 },
+  ];
+
+  const balls = [];
+  paths.forEach(p => {
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(p.pts), new THREE.LineBasicMaterial({ color: p.color })));
+    const ball = new THREE.Mesh(new THREE.SphereGeometry(0.12,16,16), new THREE.MeshPhongMaterial({ color: p.color, emissive: p.color, emissiveIntensity: 0.3 }));
+    ball.position.copy(p.pts[0]);
+    scene.add(ball);
+    balls.push({ mesh: ball, pts: p.pts });
+  });
+
+  const minM = new THREE.Mesh(new THREE.SphereGeometry(0.15,16,16), new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.5 }));
+  scene.add(minM);
+
+  let frame = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    frame++;
+    const t = (Math.sin(frame * 0.03) + 1) / 2;
+    balls.forEach(b => {
+      const idx = Math.min(Math.floor(t * (b.pts.length-1)), b.pts.length-1);
+      b.mesh.position.copy(b.pts[idx]);
+    });
+    minM.scale.setScalar(1 + Math.sin(frame*0.05)*0.2);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+// =========== Levenberg-Marquardt Visualization ===========
+(function() {
+  const wrapper = document.getElementById('lm-wrapper');
+  const container = document.getElementById('lm-canvas');
+  const w = wrapper.clientWidth, h = wrapper.clientHeight || w * 0.5625;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0a0a0a);
+  const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 1000);
+  camera.position.set(6, 8, 6);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(w, h);
+  container.appendChild(renderer.domElement);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const dL = new THREE.DirectionalLight(0xffffff, 0.8);
+  dL.position.set(5, 10, 5);
+  scene.add(dL);
+
+  function rosen(x, z) { return ((1-x)*(1-x) + 5*(z-x*x)*(z-x*x)) * 0.06; }
+
+  const geo = new THREE.PlaneGeometry(6, 6, 80, 80);
+  const pos = geo.attributes.position;
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), z = pos.getY(i);
+    pos.setXYZ(i, x, Math.min(rosen(x, z), 4), z);
+  }
+  geo.computeVertexNormals();
+  scene.add(new THREE.Mesh(geo, new THREE.MeshPhongMaterial({ color: 0x9C27B0, transparent: true, opacity: 0.3, side: THREE.DoubleSide })));
+  scene.add(new THREE.Mesh(geo.clone(), new THREE.MeshBasicMaterial({ color: 0x9C27B0, wireframe: true, transparent: true, opacity: 0.1 })));
+
+  const grid = new THREE.GridHelper(6, 20, 0x333333, 0x222222);
+  grid.position.y = -0.01;
+  scene.add(grid);
+
+  function gradR(x, z) {
+    const h2 = 0.0001;
+    return [(rosen(x+h2,z)-rosen(x,z))/h2, (rosen(x,z+h2)-rosen(x,z))/h2];
+  }
+
+  function gnPath(sx, sz, steps) {
+    const p = []; let x = sx, z = sz;
+    for (let i = 0; i < steps; i++) {
+      p.push(new THREE.Vector3(x, Math.min(rosen(x,z),4), z));
+      const [gx,gz] = gradR(x,z);
+      const n = Math.sqrt(gx*gx+gz*gz)+1e-8;
+      x -= 0.8*gx/n; z -= 0.8*gz/n;
+      x = Math.max(-3,Math.min(3,x)); z = Math.max(-3,Math.min(3,z));
+    }
+    p.push(new THREE.Vector3(x, Math.min(rosen(x,z),4), z));
+    return p;
+  }
+
+  function lmPath(sx, sz, steps) {
+    const p = []; let x = sx, z = sz, mu = 1.0;
+    for (let i = 0; i < steps; i++) {
+      p.push(new THREE.Vector3(x, Math.min(rosen(x,z),4), z));
+      const [gx,gz] = gradR(x,z);
+      const lr = 1.0/(1.0+mu);
+      const nx = x-lr*gx, nz = z-lr*gz;
+      if (rosen(nx,nz) < rosen(x,z)) { x=nx; z=nz; mu*=0.7; }
+      else { mu*=2.0; x -= (0.1/mu)*gx; z -= (0.1/mu)*gz; }
+      x = Math.max(-3,Math.min(3,x)); z = Math.max(-3,Math.min(3,z));
+    }
+    p.push(new THREE.Vector3(x, Math.min(rosen(x,z),4), z));
+    return p;
+  }
+
+  const gn = gnPath(-1.5, 2, 60), lm = lmPath(-1.5, 2, 60);
+
+  function drawP(pts, color) {
+    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), new THREE.LineBasicMaterial({ color })));
+    const b = new THREE.Mesh(new THREE.SphereGeometry(0.1,16,16), new THREE.MeshPhongMaterial({ color, emissive: color, emissiveIntensity: 0.3 }));
+    b.position.copy(pts[0]); scene.add(b); return b;
+  }
+
+  const gnBall = drawP(gn, 0xFF9800);
+  const lmBall = drawP(lm, 0x00BCD4);
+  const minM = new THREE.Mesh(new THREE.SphereGeometry(0.12,16,16), new THREE.MeshPhongMaterial({ color: 0xffffff, emissive: 0xffffff, emissiveIntensity: 0.5 }));
+  minM.position.set(1, rosen(1,1), 1);
+  scene.add(minM);
+
+  let frame = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    frame++;
+    const t = (Math.sin(frame*0.025)+1)/2;
+    gnBall.position.copy(gn[Math.min(Math.floor(t*(gn.length-1)),gn.length-1)]);
+    lmBall.position.copy(lm[Math.min(Math.floor(t*(lm.length-1)),lm.length-1)]);
+    minM.scale.setScalar(1+Math.sin(frame*0.05)*0.2);
+    controls.update();
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+// Mermaid init
+mermaid.initialize({ theme: 'dark', themeVariables: { primaryColor: '#58a6ff', primaryTextColor: '#e6edf3', lineColor: '#30363d' }});
+</script>
+</body>
+</html>

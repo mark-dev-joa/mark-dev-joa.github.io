@@ -1,7 +1,7 @@
 ---
 title: 평면의 방정식(equations of planes)
 author: mark
-categories: [mathmatic, linear algebra, cross product]
+categories: [math, geometry]
 tags: [three.js]
 math: true
 ---

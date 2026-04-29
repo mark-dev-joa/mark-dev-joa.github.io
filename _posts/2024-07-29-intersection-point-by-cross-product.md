@@ -2,7 +2,7 @@
 title: 공간에서 직선과 직선의 교차점(1)
 description: 벡터 외적의 성질을 이용해 교차점을 구해보자
 author: mark
-categories: [mathmatic, geometry]
+categories: [math, geometry]
 tags: [three.js]
 math: true
 mermaid: true

@@ -2,7 +2,7 @@
 title: 영상 픽셀을 이용해 물체 모션 추정하기
 description: optical flow
 author: mark
-categories: [mathmatic, optical-flow, least-square]
+categories: [math, computer-vision, optimization]
 tags: [three.js]
 math: true
 mermaid: true

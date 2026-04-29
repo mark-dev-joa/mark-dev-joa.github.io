@@ -2,7 +2,7 @@
 title: 핀홀 카메라 캘리브레이션
 description: 카메라 모델 변환 정리
 author: mark
-categories: [mathmatic, computer-vision]
+categories: [math, computer-vision]
 tags: [three.js]
 math: true
 mermaid: true

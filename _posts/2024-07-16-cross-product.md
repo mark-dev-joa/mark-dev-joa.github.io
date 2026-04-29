@@ -1,7 +1,7 @@
 ---
 title: 벡터의 외적(cross product)
 author: mark
-categories: [mathmatic, linear algebra, cross product]
+categories: [math, linear-algebra]
 tags: [three.js]
 math: true
 ---

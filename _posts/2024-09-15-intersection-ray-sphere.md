@@ -2,7 +2,7 @@
 title: 공간에서 구와 직선의 교차 및 교점
 description: 연립방정식, 이차방정식의 근의 공식, 판별식
 author: mark
-categories: [mathmatic]
+categories: [math, geometry]
 tags: [three.js]
 math: true
 mermaid: true

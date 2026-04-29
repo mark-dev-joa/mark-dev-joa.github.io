@@ -1,7 +1,7 @@
 ---
 title: cross product in homogeneous coordinates
 author: mark
-categories: [mathmatic, linear algebra]
+categories: [math, linear-algebra]
 tags: [three.js]
 math: true
 ---

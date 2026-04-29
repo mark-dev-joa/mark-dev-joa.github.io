@@ -3,7 +3,7 @@ title: 직선의 방정식(Equations of Lines)
 description: 일반 방정식, 벡터 방정식, 대칭 방정식
 author: mark
 date: 2019-08-08 11:33:00 +0800
-categories: [mathmatic, geometry]
+categories: [math, geometry]
 tags: [three.js]
 math: true
 mermaid: true

@@ -3,7 +3,7 @@ title: 테일러 급수(Taylor Series)
 description: 아는데로 정리하는 테일러 급수
 permalink: /math/taylor/
 author: saint-crab
-categories: [math]
+categories: [math, calculus]
 tags: [three.js]
 math: true
 mermaid: true
