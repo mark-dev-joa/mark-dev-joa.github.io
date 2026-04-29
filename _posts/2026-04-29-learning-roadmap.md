@@ -5,7 +5,6 @@ author: mark
 categories: [math]
 tags: [roadmap, series, mle, optimization, robotics]
 math: true
-pin: true
 ---
 
 # 학습 로드맵 — 기초부터 컴퓨터 비전, 로보틱스까지
