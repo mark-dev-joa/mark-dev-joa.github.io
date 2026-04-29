@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"> <html><body> <h2 id="내적의-성질">내적의 성질</h2> <ul> <li>교환 법칙(Commutative Law)</li> </ul> \[\vec a \cdot \vec b = \vec b \cdot \vec a\] <ul> <li>동일한 두 벡터의 내적</li> </ul> \[\vec a \cdot \vec a = a_1a_1 + a_2a_2 = a_1^2 + a_2^2 = (\sqrt{a_1^2 + a_2^2})^2 = \|\mathbf{a}\|^2\] <p><br></p> <h2 id="외적의-성질">외적의 성질</h2> <ul> <li>반교환 법칙(Anti-commutative Law)</li> </ul> \[a \times b = -(b \times a)\] <ul> <li>분배 법칙(Distributive Law)</li> </ul> \[a \times (b + c) = (a \times b) + (a \times c)\] \[(a + b) \times c = (a \times c) + (b \times c)\] <ul> <li>상수항과 결합 법칙</li> </ul> \[k(a \times b) = (ka) \times b = a \times (kb)\] <ul> <li>동일한 두 벡터의 외적</li> </ul> \[\vec a \times \vec a = 0\] <p><br></p> <h2 id="스칼라-삼중곱">스칼라 삼중곱</h2> \[\vec a \cdot (\vec b \times \vec c) = (\vec a \times \vec b) \cdot \vec c = det( \vec a, \vec b, \vec c)\] <p><br></p> <h2 id="직선의-교점-방정식-유도">직선의 교점 방정식 유도</h2> <p><img src="/assets/posts/20240730/image.png" alt="eq2"></p> <p>3차원 공간에서 두 직선은 정확한 교차점을 지나지 않는다. 대신 두 직선의 최단경로($H$)의 중점을 구하여 교차점을 근사한다.</p> <p><br></p> <h3 id="두-직선의-벡터-방정식">두 직선의 벡터 방정식</h3> \[\begin{align} \mathbf{F} &amp;= \mathbf{P} + \lambda \vec r \\ \mathbf{G} &amp;= \mathbf{Q} + \mu \vec s \end{align}\] \[\begin{align} \mathbf{F} &amp;= \mathbf{G} \\ \mathbf{P} + \lambda \vec r &amp;= \mathbf{Q} + \mu \vec s \\ \end{align}\] <p>$\lambda \vec r$과 $ \mu \vec s $ 으로 정리</p> \[\begin{align} \lambda \vec r &amp;= \mathbf{Q} - \mathbf{F} + \mu \vec s \\ \mu \vec s &amp;= \mathbf{F} - \mathbf{Q} + \lambda \vec r \end{align}\] <p><br></p> <p>먼저 $ \lambda $를 구하기 위해 $ \lambda \vec r = \mathbf{Q} - \mathbf{F} + \mu \vec s $ 식을 전개한다.<br> 오른쪽에 $\mu \vec s$ 항을 제거하기 위해 양변에 $\vec s$ 으로 외적을 취한다.</p> \[\begin{align} \lambda \vec r \times \vec s &amp;= (\mathbf{Q} - \mathbf{F} + \mu \vec s) \times \vec s \\ \lambda \vec r \times \vec s &amp;= \mathbf{Q} \times \vec s - \mathbf{F} \times \vec s + \mu \vec s \times \vec s \end{align}\] <p><br></p> <p>분배 법칙에 의해 $ \mathbf{Q} \times \vec s - \mathbf{F} \times \vec s = (\mathbf{Q} - \mathbf{F}) \times \vec s $ <br> 결합 법칙에 의해 $ \vec s + \mu \vec s \times \vec s = \mu (\vec s \times \vec s) $</p> \[\begin{align} \lambda \vec r \times \vec s &amp;= (\mathbf{Q} - \mathbf{F}) \times \vec s + \mu (\vec s \times \vec s) \\ \end{align}\] <p><br></p> <p>동일한 두 벡터의 외적은 $ \vec a \times \vec a = 0 $ $ \mu (\vec s \times \vec s) = 0 $<br> $\lambda \vec r \times \vec s $ 는 $\lambda$ 로 결합하고 $\lambda (\vec r \times \vec s) $ 양변에 $ (\vec r \times \vec s) $ 를 내적한다.</p> \[\begin{align} \lambda(\vec r \times \vec s) &amp;= (\mathbf{Q} - \mathbf{F}) \times \vec s + 0\\ \lambda(\vec r \times \vec s) &amp;= (\mathbf{Q} - \mathbf{F}) \times \vec s \\ \lambda(\vec r \times \vec s) \cdot (\vec r \times \vec s) &amp;= ((\mathbf{Q} - \mathbf{F}) \times \vec s) \cdot (\vec r \times \vec s) \\ \end{align}\] <p><br></p> <p>$ \lambda $ 를 구하기 위해 스칼라 삼중곱을 이용한다.<br> $ \vec a = (\mathbf{Q} - \mathbf{F}) $, $ \vec b = \vec s $, $ \vec c = (\vec r \times \vec s) $<br> $ (\vec a \times \vec b) \cdot \vec c = ((\mathbf{Q} - \mathbf{F}) \times \vec s) \cdot (\vec r \times \vec s) = det(\mathbf{Q} - \mathbf{F}, \vec s, \vec r \times \vec s) $</p> \[\begin{align} \lambda &amp;= {((\mathbf{Q} - \mathbf{F}) \times \vec s) \cdot (\vec r \times \vec s) \over (\vec r \times \vec s) \cdot (\vec r \times \vec s)} \\ \lambda &amp;= {((\mathbf{Q} - \mathbf{F}) \times \vec s) \cdot (\vec r \times \vec s) \over \| \vec r \times \vec s \|^2 } \\ \lambda &amp;= {det(\mathbf{Q} - \mathbf{F}, \vec s, \vec r \times \vec s) \over \| \vec r \times \vec s \|^2 } \\ \end{align}\] <p><br></p> <p>같은 방법으로 $ \mu $를 구하기 위해 $ \mu \vec s = \mathbf{F} - \mathbf{Q} + \lambda \vec r $ 식을 전개한다.</p> \[\begin{align} \mu \vec s &amp;= \mathbf{F} - \mathbf{Q} + \lambda \vec r \\ \mu \vec s \times \vec r &amp;= (\mathbf{F} - \mathbf{Q} + \lambda \vec r) \times \vec r \\ \mu \vec s \times \vec r &amp;= \mathbf{F} \times \vec r - \mathbf{Q} \times \vec r + \lambda \vec r \times \vec r \\ \mu \vec s \times \vec r &amp;= (\mathbf{F} - \mathbf{Q}) \times \vec r + \mu (\vec r \times \vec r) \\ \mu(\vec s \times \vec r) &amp;= (\mathbf{F} - \mathbf{Q}) \times \vec r \\ \mu(\vec s \times \vec r) \cdot (\vec s \times \vec r) &amp;= ((\mathbf{F} - \mathbf{Q}) \times \vec r) \cdot (\vec s \times \vec r) \\ \mu &amp;= {((\mathbf{F} - \mathbf{Q}) \times \vec r) \cdot (\vec s \times \vec r) \over (\vec s \times \vec r) \cdot (\vec s \times \vec r)} \\ \mu &amp;= {((\mathbf{F} - \mathbf{Q}) \times \vec r) \cdot (\vec s \times \vec r) \over \| \vec s \times \vec r \|^2 } \\ \mu &amp;= {det(\mathbf{F} - \mathbf{Q}, \vec r, \vec s \times \vec r) \over \| \vec s \times \vec r \|^2 } \\ \end{align}\] <p>$ \lambda, \mu $ =</p> \[\begin{align} \lambda &amp;= {det(\mathbf{Q} - \mathbf{F}, \vec s, \vec r \times \vec s) \over \| \vec r \times \vec s \|^2 } \\ \end{align}\] \[\begin{align} \mu &amp;= {det(\mathbf{F} - \mathbf{Q}, \vec r, \vec s \times \vec r) \over \| \vec s \times \vec r \|^2 } \\ \end{align}\] <p>분모 $ | \vec r \times \vec s |^2 $와 $ | \vec s \times \vec r |^2 $ 이 0과 같으면 두 직선은 평행하다.</p> <p><br></p> <h2 id="예제">예제</h2> <p><a href="https://threejs.org/" rel="external nofollow noopener" target="_blank">Three.js</a> 를 이용해 두 직선의 교차점을 근사하는 코드</p> <h3 id="실행-결과">실행 결과</h3> <div class="threejs"> <div id="canvas"></div> </div> <link rel="stylesheet" href="/assets/three/style.css"> <script type="module" src="/assets/posts/2024-07-29-interseciton-point.js"></script> <p><br></p> <h3 id="구현-코드">구현 코드</h3> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">THREE</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">/assets/three/three.module.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">OrbitControls</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">/assets/three/OrbitControls.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">canvas</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span><span class="p">,</span> <span class="nx">controls</span><span class="p">,</span> <span class="nx">renderer</span><span class="p">;</span>
+
+<span class="nf">init</span><span class="p">();</span>
+<span class="nf">animate</span><span class="p">();</span>
+
+<span class="kd">function</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">;</span>
+
+  <span class="c1">// scene</span>
+  <span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Scene</span><span class="p">();</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Color</span><span class="p">(</span><span class="mh">0x000000</span><span class="p">);</span>
+
+  <span class="c1">// grid helper</span>
+  <span class="kd">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">divisions</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">gridHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">GridHelper</span><span class="p">(</span><span class="nx">size</span><span class="p">,</span> <span class="nx">divisions</span><span class="p">);</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">gridHelper</span><span class="p">);</span>
+
+  <span class="c1">// axes</span>
+  <span class="kd">const</span> <span class="nx">axes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">AxesHelper</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">axes</span><span class="p">);</span>
+
+  <span class="c1">// camera</span>
+  <span class="nx">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">PerspectiveCamera</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="nx">width</span> <span class="o">/</span> <span class="nx">height</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nf">lookAt</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+
+  <span class="c1">// renderer</span>
+  <span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">WebGLRenderer</span><span class="p">({</span> <span class="na">antialias</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="nx">renderer</span><span class="p">.</span><span class="nf">setPixelRatio</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">devicePixelRatio</span><span class="p">);</span>
+  <span class="nx">renderer</span><span class="p">.</span><span class="nf">setSize</span><span class="p">(</span><span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span>
+  <span class="nx">container</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+
+  <span class="c1">// camera controls</span>
+  <span class="nx">controls</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OrbitControls</span><span class="p">(</span><span class="nx">camera</span><span class="p">,</span> <span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+
+  <span class="c1">// 직선 1</span>
+  <span class="kd">const</span> <span class="nx">origin1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">direction1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4</span><span class="p">);</span>
+  <span class="nx">direction1</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="nx">origin1</span><span class="p">);</span>
+  <span class="nx">direction1</span><span class="p">.</span><span class="nf">normalize</span><span class="p">();</span>
+  <span class="nf">drawLine</span><span class="p">(</span><span class="nx">origin1</span><span class="p">,</span> <span class="nx">direction1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">scene</span><span class="p">,</span> <span class="mh">0xaaaa00</span><span class="p">);</span>
+
+  <span class="c1">// 직선 2</span>
+  <span class="kd">const</span> <span class="nx">origin2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">direction2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+  <span class="nx">direction2</span><span class="p">.</span><span class="nf">sub</span><span class="p">(</span><span class="nx">origin2</span><span class="p">);</span>
+  <span class="nx">direction2</span><span class="p">.</span><span class="nf">normalize</span><span class="p">();</span>
+  <span class="nf">drawLine</span><span class="p">(</span><span class="nx">origin2</span><span class="p">,</span> <span class="nx">direction2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">scene</span><span class="p">,</span> <span class="mh">0x00ffbb</span><span class="p">);</span>
+
+  <span class="c1">// 교차점 근사</span>
+  <span class="kd">const</span> <span class="nx">intersectionPt</span> <span class="o">=</span> <span class="nf">approximationIntersectionPoint</span><span class="p">(</span><span class="nx">origin1</span><span class="p">,</span> <span class="nx">direction1</span><span class="p">,</span> <span class="nx">origin2</span><span class="p">,</span> <span class="nx">direction2</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">intersectionPt</span><span class="p">);</span>
+
+  <span class="k">if </span><span class="p">(</span><span class="nx">intersectionPt</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">;</span>
+
+  <span class="c1">// 교차점에 네모 출력</span>
+  <span class="kd">let</span> <span class="nx">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">BoxGeometry</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">material</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">MeshNormalMaterial</span><span class="p">({</span> <span class="na">wireframe</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="kd">let</span> <span class="nx">mesh</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Mesh</span><span class="p">(</span><span class="nx">geometry</span><span class="p">,</span> <span class="nx">material</span><span class="p">);</span>
+  <span class="nx">mesh</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">h</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+  <span class="nx">mesh</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">h</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+  <span class="nx">mesh</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">h</span><span class="p">.</span><span class="nx">z</span><span class="p">;</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">mesh</span><span class="p">);</span>
+
+  <span class="c1">// f, g 포인트 선으로 연결</span>
+  <span class="kd">const</span> <span class="nx">points</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">points</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">f</span><span class="p">);</span>
+  <span class="nx">points</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">g</span><span class="p">);</span>
+
+  <span class="kd">const</span> <span class="nx">matLine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">LineBasicMaterial</span><span class="p">({</span> <span class="na">color</span><span class="p">:</span> <span class="mh">0xffffff</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">geomLine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">BufferGeometry</span><span class="p">().</span><span class="nf">setFromPoints</span><span class="p">(</span><span class="nx">points</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">line</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Line</span><span class="p">(</span><span class="nx">geomLine</span><span class="p">,</span> <span class="nx">matLine</span><span class="p">);</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">line</span><span class="p">);</span>
+
+  <span class="c1">// f와 g를 연결하는 h 벡터</span>
+  <span class="kd">const</span> <span class="nx">vh</span> <span class="o">=</span> <span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">f</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">sub</span><span class="p">(</span><span class="nx">intersectionPt</span><span class="p">.</span><span class="nx">g</span><span class="p">);</span>
+  <span class="c1">// r과 수직인지 확인</span>
+  <span class="kd">let</span> <span class="nx">theta</span> <span class="o">=</span> <span class="nx">direction1</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">normalize</span><span class="p">().</span><span class="nf">dot</span><span class="p">(</span><span class="nx">vh</span><span class="p">.</span><span class="nf">normalize</span><span class="p">());</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">acos</span><span class="p">(</span><span class="nx">theta</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">);</span>
+
+  <span class="c1">// s와 수직인지 확인</span>
+  <span class="nx">theta</span> <span class="o">=</span> <span class="nx">direction2</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">normalize</span><span class="p">().</span><span class="nf">dot</span><span class="p">(</span><span class="nx">vh</span><span class="p">.</span><span class="nf">normalize</span><span class="p">());</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nf">acos</span><span class="p">(</span><span class="nx">theta</span><span class="p">)</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 스케일러 값 구하기</span>
+<span class="c1">// ((Q-P) x s)*(r x s) = det(Q-F, s, (r x s))</span>
+<span class="kd">function</span> <span class="nf">_calcScalar</span><span class="p">(</span><span class="nx">P</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">Q</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">sub</span><span class="p">(</span><span class="nx">P</span><span class="p">);</span>
+  <span class="c1">// s</span>
+  <span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">s</span><span class="p">.</span><span class="nf">clone</span><span class="p">();</span>
+  <span class="c1">// r x s</span>
+  <span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">r</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">cross</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+  <span class="c1">// determinant of the matrix</span>
+  <span class="kd">const</span> <span class="nx">mat</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Matrix3</span><span class="p">(</span>
+    <span class="nx">a</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">a</span><span class="p">.</span><span class="nx">z</span><span class="p">,</span>
+    <span class="nx">b</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">b</span><span class="p">.</span><span class="nx">z</span><span class="p">,</span>
+    <span class="nx">c</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">c</span><span class="p">.</span><span class="nx">z</span>
+  <span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">detmnt</span> <span class="o">=</span> <span class="nx">mat</span><span class="p">.</span><span class="nf">determinant</span><span class="p">();</span>
+
+  <span class="c1">// denomitor</span>
+  <span class="kd">const</span> <span class="nx">lengthSquared</span> <span class="o">=</span> <span class="nx">c</span><span class="p">.</span><span class="nf">lengthSq</span><span class="p">();</span>
+
+  <span class="c1">// the two lines are parallel</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">lengthSquared</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="k">return</span> <span class="nx">detmnt</span> <span class="o">/</span> <span class="nx">lengthSquared</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 교차점 근사하기</span>
+<span class="kd">function</span> <span class="nf">approximationIntersectionPoint</span><span class="p">(</span><span class="nx">P</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">Q</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 람다 구하기</span>
+  <span class="kd">const</span> <span class="nx">lambda</span> <span class="o">=</span> <span class="nf">_calcScalar</span><span class="p">(</span><span class="nx">P</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">Q</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">lambda</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="c1">// 뮤 구하기</span>
+  <span class="kd">const</span> <span class="nx">mu</span> <span class="o">=</span> <span class="nf">_calcScalar</span><span class="p">(</span><span class="nx">Q</span><span class="p">,</span> <span class="nx">s</span><span class="p">,</span> <span class="nx">P</span><span class="p">,</span> <span class="nx">r</span><span class="p">);</span>
+
+  <span class="c1">// null 이면 두 직선은 평행</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">mu</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+
+  <span class="c1">// f와 g 구하기</span>
+  <span class="kd">const</span> <span class="nx">f</span> <span class="o">=</span> <span class="nx">P</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="nx">lambda</span><span class="p">));</span>
+  <span class="kd">const</span> <span class="nx">g</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="nx">mu</span><span class="p">));</span>
+
+  <span class="c1">// h 직선의 중점</span>
+  <span class="c1">// h = (g + f) / 2 = (g+f) * 0.5</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">h</span><span class="p">:</span> <span class="nx">g</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">add</span><span class="p">(</span><span class="nx">f</span><span class="p">).</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="nx">f</span><span class="p">,</span> <span class="nx">g</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">//</span>
+<span class="kd">function</span> <span class="nf">drawLine</span><span class="p">(</span><span class="nx">origin</span><span class="p">,</span> <span class="nx">direction</span><span class="p">,</span> <span class="nx">length</span><span class="p">,</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">color</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Normalize the direction vector</span>
+  <span class="nx">direction</span><span class="p">.</span><span class="nf">normalize</span><span class="p">();</span>
+
+  <span class="c1">// Create line material</span>
+  <span class="kd">const</span> <span class="nx">matLine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">LineBasicMaterial</span><span class="p">({</span> <span class="na">color</span><span class="p">:</span> <span class="nx">color</span> <span class="p">});</span>
+
+  <span class="c1">// Create points for the line</span>
+  <span class="kd">const</span> <span class="nx">points</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="nx">points</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span>
+    <span class="nx">origin</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">x</span> <span class="o">*</span> <span class="o">-</span><span class="nx">length</span><span class="p">,</span>
+    <span class="nx">origin</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">y</span> <span class="o">*</span> <span class="o">-</span><span class="nx">length</span><span class="p">,</span>
+    <span class="nx">origin</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">z</span> <span class="o">*</span> <span class="o">-</span><span class="nx">length</span>
+  <span class="p">));</span>
+  <span class="nx">points</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span>
+    <span class="nx">origin</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">x</span> <span class="o">*</span> <span class="nx">length</span><span class="p">,</span>
+    <span class="nx">origin</span><span class="p">.</span><span class="nx">y</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">y</span> <span class="o">*</span> <span class="nx">length</span><span class="p">,</span>
+    <span class="nx">origin</span><span class="p">.</span><span class="nx">z</span> <span class="o">+</span> <span class="nx">direction</span><span class="p">.</span><span class="nx">z</span> <span class="o">*</span> <span class="nx">length</span>
+  <span class="p">));</span>
+
+  <span class="c1">// Create the geometry and line</span>
+  <span class="kd">const</span> <span class="nx">geomLine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">BufferGeometry</span><span class="p">().</span><span class="nf">setFromPoints</span><span class="p">(</span><span class="nx">points</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">line</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Line</span><span class="p">(</span><span class="nx">geomLine</span><span class="p">,</span> <span class="nx">matLine</span><span class="p">);</span>
+
+  <span class="c1">// Add the line to the scene</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">line</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">animate</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">requestAnimationFrame</span><span class="p">(</span><span class="nx">animate</span><span class="p">);</span>
+
+  <span class="nx">controls</span><span class="p">.</span><span class="nf">update</span><span class="p">();</span>
+  <span class="nx">renderer</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h2 id="reference">Reference</h2> <p><a href="https://wjdgh283.tistory.com/entry/%EC%A7%81%EC%84%A0%EA%B3%BC-%EC%A7%81%EC%84%A0%EC%9D%98-%EA%B5%90%EC%B0%A8%EC%A0%90-%EA%B5%AC%ED%95%98%EA%B8%B0" rel="external nofollow noopener" target="_blank">[오다기리 박의 알고리즘 노트] 직선과 직선의 교차점 구하기</a><br> <a href="https://jebae.github.io/vector-cross-product" rel="external nofollow noopener" target="_blank">[jebae’s dev blog] 벡터의 외적과 삼중곱</a></p> </body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"> <html><body> <h2 id="구의-정의">구의 정의</h2> <h3 id="공간에서-구의-중심을-기준으로-반지름-r만큼-떨어진-모든점의-집합">공간에서 구의 중심을 기준으로 반지름 r만큼 떨어진 모든점의 집합</h3> \[r = \sqrt{x^2+y^2+z^2}\] <h2 id="구의-벡터-방정식">구의 벡터 방정식</h2> <p>구의 중점 $\vec{Q}$, 구의 반지름 $r$, 원점을 중심으로 $r$ 만큼 떨어진 임의의 점 $\vec{P}$</p> \[\begin{align} (\vec{P} - \vec{Q}) \cdot (\vec{P} - \vec{Q}) &amp;= r^2 \\ |\vec{P} - \vec{Q}| &amp;= r \\ |\vec{P} - \vec{Q}| - r &amp;= 0 \end{align}\] <h2 id="직선의-벡터-방정식">직선의 벡터 방정식</h2> <p>3차원 상의 임의의 두 점을 잇는 직선의 방정식</p> <p>직선의 시작점 $\vec{F}$, 직선의 방향 벡터 $\vec{s}$, 매개변수 $\lambda$, 직선위의 임의의 점 $\vec{P}$</p> \[\vec{P} = \vec{F} + \lambda\vec{s}\] <p>직선에 시작점 $\vec{F}$ 에서 $\lambda$ 만큼 상수배한 방향 벡터 $\vec{s}$ 는 임의의 점 $\vec{P}$ 와같다.</p> <h2 id="두-식을-연립하여-하나의-방정식을-세운다">두 식을 연립하여 하나의 방정식을 세운다.</h2> <p>직선의 시작점 $\vec{F}$ 에서 방향 벡터 $\vec{s}$ 로 발사된 직선위의 한점 $\vec{P}$ 가 구에 중점 $\vec{Q}$ 에서 $r$만큼 떨어진 $\vec{P}$ 와 같다.</p> \[\begin{align} |\vec{P} - \vec{Q}| &amp;= r \\ \vec{P} &amp;= \vec{F} + \lambda\vec{s} \end{align}\] <p>두 식을 연립한다.</p> \[\begin{align} |\vec{F} + \lambda\vec{s} - \vec{Q}| &amp;= r \\ (\vec{F} + \lambda\vec{s} - \vec{Q})^2 &amp;= r^2 \\ (\lambda\vec{s} + \vec{F} - \vec{Q}) &amp;= r^2 \\ (\lambda\vec{s} + \vec{F} - \vec{Q})(\lambda\vec{s} + \vec{F} - \vec{Q}) &amp;= r^2 \\ \lambda\vec{s}(\lambda\vec{s} + \vec{F} - \vec{Q}) + \vec{F}(\lambda\vec{s} + \vec{F} - \vec{Q}) - \vec{Q}(\lambda\vec{s} + \vec{F} - \vec{Q}) &amp;= r^2 \\ \lambda^2(\vec{s} \cdot \vec{s}) + 2\lambda(\vec{s} \cdot (\vec{F} - \vec{Q})) + (\vec{F} - \vec{Q}) \cdot (\vec{F} - \vec{Q}) &amp;= r^2 \\ \lambda^2(\vec{s} \cdot \vec{s}) + 2\lambda(\vec{s} \cdot (\vec{F} - \vec{Q})) + (\vec{F} - \vec{Q}) \cdot (\vec{F} - \vec{Q}) - r^2 &amp;= 0 \end{align}\] <p>정규화된 방향 벡터 $\vec{s}$ 의 길이는 1, $(\vec{s} \cdot \vec{s})$ 내적은 1</p> \[\begin{align} \lambda^2 + 2\lambda(\vec{s} \cdot (\vec{F} - \vec{Q})) + (\vec{F} - \vec{Q}) \cdot (\vec{F} - \vec{Q}) - r^2 &amp;= 0 \end{align}\] <p>이차방정식의 근의 공식과 판별식을 이용해 구와 직선의 교차 여부 및 교점을 구할 수 있다.</p> <h2 id="이차방정식의-해">이차방정식의 해</h2> <h3 id="근의-공식">근의 공식</h3> <p>이차방정식의 근은 인수분해를 하거나 근의 공식을 통해 구할 수 있다.</p> <p>근의 공식으로 구해진 근은 실수 인지 허수 인지에 따라 실근 또는 허근이라고 표현한다.</p> <p>이차방정식 $ax^2 + bx + c = 0$ 의 근의 공식 ($a \neq 0$)</p> \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\] <p>이차방정식 $ax^2 + 2b’x + c = 0$ 의 근의 공식 ($a \neq 0$)</p> <p>$x$ 의 일차항의 계수가 $2b’$ 일때 짝수 공식을 사용 가능</p> \[x = {-b' \pm \sqrt{b'^2-ac} \over a}\] <h3 id="실근">실근</h3> <p>이차방정식 $x^2 + 3x + 2 = 0$ 의 해 구하기</p> \[\begin{align} x^2 + 3x + 2 &amp;= 0 \\ (x+1)(x+2) &amp;= 0 \\ x &amp;= -1, -2 \end{align}\] <p>두 개의 실근(실수의 근)</p> <h3 id="중근">중근</h3> <p>$x^2 + 4x + 4 = 0$ 의 해 구하기</p> \[\begin{align} x^2 + 4x + 4 &amp;= 0 \\ (x+2)^2 &amp;= 0 \\ x &amp;= -2 \end{align}\] <p>같은 근이 중복되어 중근</p> <h3 id="허근">허근</h3> <p>$x^2 + x + 1 = 0$ 의 해 구하기</p> <p>인수분해를 할 수 없어 근의 공식으로 해 구하기</p> \[\begin{align} x^2 + x + 1 &amp;= 0 \\ x &amp;= {-b \pm \sqrt{b^2-ac} \over 2a} \\ x &amp;= {-1 \pm \sqrt{1^2-4 \times 1 \times 1} \over 2 \times 1} \\ x &amp;= {-1 \pm \sqrt{-3} \over 2} \\ x &amp;= {-1 \pm \sqrt{3}\sqrt{-1} \over 2} \\ x &amp;= {-1 \pm \sqrt{3}i \over 2} \\ \end{align}\] <p>근이 허수라 허근</p> <h3 id="판별식discriminant">판별식(Discriminant)</h3> <p>이차방정식의 판별식 D는 이차방정식의 근의 개수를 구하는데 사용한다.</p> \[D = b^2 - 4ac\] <p>짝수 일때 판별식</p> \[D = b^2 - ac\] <p>근의 공식에서 제곱근 내부에 포함된 판별식 D</p> \[x = {-b \pm \sqrt{b^2-4ac} \over 2a} = {-b \pm \sqrt{D} \over 2a}\] <p>D &gt; 0, 실근 $\sqrt{D}$</p> <p>D = 0, 중근 $\sqrt{0}$</p> <p>D &lt; 0, 허근 $\sqrt{-D} = \sqrt{D}i$</p> <h2 id="구와-직선의-교차-여부-판별">구와 직선의 교차 여부 판별</h2> <p>$\vec{Q}$ = 구의 중점</p> <p>$ r $ = 구의 반지름</p> <p>$\vec{F}$ = 직선의 시작점</p> <p>$\vec{s}$ = 직선의 방향 벡터</p> \[\begin{align} ax^2 + bx + c &amp;= 0 \\ \lambda^2 + 2\lambda(\vec{s} \cdot (\vec{F} - \vec{Q})) + (\vec{F} - \vec{Q}) \cdot (\vec{F} - \vec{Q}) - r^2 &amp;= 0 \\ \textcolor{red}{1}\lambda^2 + \textcolor{blue}{2(\vec{s} \cdot (\vec{F} - \vec{Q}))}\lambda + \textcolor{green}{(\vec{F} - \vec{Q}) \cdot (\vec{F} - \vec{Q}) - r^2} &amp;= 0 \end{align}\] <p>이차방정식의 계수 $a, b, c$</p> \[\begin{align} a &amp;= \textcolor{red}{1} \\ b &amp;= \textcolor{blue}{2(\vec{s} \cdot (\vec{F} - \vec{Q}))} \\ c &amp;= \textcolor{green}{(\vec{F} - \vec{Q}) \cdot (\vec{F} - \vec{Q}) - r^2} \\ \end{align}\] <p>판별식 계산</p> \[D = b^2 - 4ac\] <p>$D \geq 0$ 일때 구와 직선의 한점 또는 두점에서 교차</p> <h2 id="구와-직선의-교점-구하기">구와 직선의 교점 구하기</h2> <p>판별식 $D$ 로 교차 여부를 판단하고 $D \geq 0$ 일때 근의 공식을 이용해 두 개의 $\lambda_1, \lambda_2$ 계산한다.</p> \[\begin{align} {\lambda}_1 &amp;= {-b + \sqrt{D} \over 2a }\\ {\lambda}_2 &amp;= {-b - \sqrt{D} \over 2a } \end{align}\] <p>계산된 $\lambda_1, \lambda_2$ 를 이용해 교차점 $ p_1, p_2 $를 구한다.</p> \[p_1 = \vec{F} + {\lambda}_1\vec{s}\] \[p_2 = \vec{F} + {\lambda}_2\vec{s}\] <h2 id="실행-코드">실행 코드</h2> <div class="threejs"> <div id="canvas"></div> </div> <link rel="stylesheet" href="/assets/three/style.css"> <script type="module" src="/assets/posts/2024-10-01-intersection-between-sphere-ray.js"></script> <p><br></p> <h2 id="구현-코드">구현 코드</h2> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">THREE</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">/assets/three/three.module.js</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">OrbitControls</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">/assets/three/OrbitControls.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">container</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">canvas</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span><span class="p">,</span> <span class="nx">controls</span><span class="p">,</span> <span class="nx">renderer</span><span class="p">;</span>
+
+<span class="nf">init</span><span class="p">();</span>
+<span class="nf">animate</span><span class="p">();</span>
+
+<span class="c1">// 교차 여부와 교점 구하기</span>
+<span class="kd">function</span> <span class="nf">findIntersectionBetweenRayAndSphere</span><span class="p">(</span><span class="nx">Q</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">F</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">F</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">Q</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="c1">// F = center of the sphere</span>
+  <span class="c1">// r = radius of the sphere</span>
+  <span class="c1">// Q = origin of the line</span>
+  <span class="c1">// s = direction of the line</span>
+
+  <span class="c1">// t*t + 2*(s(F-Q))t+(F-Q)(F-Q) - r*r = 0</span>
+  <span class="c1">// s is normal vector</span>
+  <span class="nx">s</span><span class="p">.</span><span class="nf">normalize</span><span class="p">();</span>
+
+  <span class="c1">// oc = F-Q</span>
+  <span class="kd">const</span> <span class="nx">oc</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">().</span><span class="nf">subVectors</span><span class="p">(</span><span class="nx">F</span><span class="p">,</span> <span class="nx">Q</span><span class="p">)</span>
+
+  <span class="c1">// a, b, c for Discriminant</span>
+  <span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">s</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="nx">oc</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">oc</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="nx">oc</span><span class="p">)</span> <span class="o">-</span> <span class="nx">r</span> <span class="o">*</span> <span class="nx">r</span><span class="p">;</span>
+
+  <span class="c1">// discrimnanat</span>
+  <span class="c1">// D = b^2 + 4ac</span>
+  <span class="kd">const</span> <span class="nx">D</span> <span class="o">=</span> <span class="nx">b</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">c</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">D</span><span class="p">)</span>
+
+  <span class="c1">// 한점 교차</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">D</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">t1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="nx">b</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="nx">D</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">().</span><span class="nf">addVectors</span><span class="p">(</span>
+      <span class="nx">F</span><span class="p">,</span>
+      <span class="nx">s</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="nx">p1</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="c1">// 두점 교차</span>
+  <span class="k">else</span> <span class="k">if </span><span class="p">(</span><span class="nx">D</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// calc t1, t2</span>
+    <span class="kd">const</span> <span class="nx">t1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="nx">b</span> <span class="o">-</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="nx">D</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">a</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">t2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="nx">b</span> <span class="o">+</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="nx">D</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="nx">a</span><span class="p">)</span>
+
+    <span class="kd">const</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">().</span><span class="nf">addVectors</span><span class="p">(</span>
+      <span class="nx">F</span><span class="p">,</span>
+      <span class="nx">s</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="nx">t1</span><span class="p">)</span>
+    <span class="p">);</span>
+
+    <span class="kd">const</span> <span class="nx">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">().</span><span class="nf">addVectors</span><span class="p">(</span>
+      <span class="nx">F</span><span class="p">,</span>
+      <span class="nx">s</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="nx">t2</span><span class="p">)</span>
+    <span class="p">);</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">p1</span><span class="p">,</span> <span class="nx">p2</span><span class="p">]</span>
+  <span class="p">}</span>
+  <span class="c1">// 교차점 없음</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">getRandomFloat</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">random</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="nx">max</span> <span class="o">-</span> <span class="nx">min</span><span class="p">)</span> <span class="o">+</span> <span class="nx">min</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">clientWidth</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">container</span><span class="p">.</span><span class="nx">clientHeight</span><span class="p">;</span>
+
+  <span class="c1">// scene</span>
+  <span class="nx">scene</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Scene</span><span class="p">();</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Color</span><span class="p">(</span><span class="mh">0x000000</span><span class="p">);</span>
+
+  <span class="c1">// grid helper</span>
+  <span class="kd">const</span> <span class="nx">size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">divisions</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">gridHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">GridHelper</span><span class="p">(</span><span class="nx">size</span><span class="p">,</span> <span class="nx">divisions</span><span class="p">);</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">gridHelper</span><span class="p">);</span>
+
+  <span class="c1">// axes</span>
+  <span class="kd">const</span> <span class="nx">axes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">AxesHelper</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">axes</span><span class="p">);</span>
+
+  <span class="c1">// camera</span>
+  <span class="nx">camera</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">PerspectiveCamera</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="nx">width</span> <span class="o">/</span> <span class="nx">height</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="nx">camera</span><span class="p">.</span><span class="nf">lookAt</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+
+  <span class="c1">// renderer</span>
+  <span class="nx">renderer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">WebGLRenderer</span><span class="p">({</span> <span class="na">antialias</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="nx">renderer</span><span class="p">.</span><span class="nf">setPixelRatio</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">devicePixelRatio</span><span class="p">);</span>
+  <span class="nx">renderer</span><span class="p">.</span><span class="nf">setSize</span><span class="p">(</span><span class="nx">width</span><span class="p">,</span> <span class="nx">height</span><span class="p">);</span>
+  <span class="nx">container</span><span class="p">.</span><span class="nf">appendChild</span><span class="p">(</span><span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+
+  <span class="c1">// camera controls</span>
+  <span class="nx">controls</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OrbitControls</span><span class="p">(</span><span class="nx">camera</span><span class="p">,</span> <span class="nx">renderer</span><span class="p">.</span><span class="nx">domElement</span><span class="p">);</span>
+
+  <span class="c1">///////////////////////////////////////////////////////</span>
+  <span class="c1">// a sphere</span>
+  <span class="c1">//</span>
+  <span class="c1">// equation</span>
+  <span class="c1">// |P - Q| - r = 0</span>
+  <span class="c1">//</span>
+  <span class="c1">// radius 5,</span>
+  <span class="kd">const</span> <span class="nx">r</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+  <span class="c1">// center of sphere</span>
+  <span class="kd">const</span> <span class="nx">Q</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="c1">// Create a sphere geometry (radius, width segments, height segments)</span>
+  <span class="kd">const</span> <span class="nx">geometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">SphereGeometry</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+  <span class="c1">// Create a basic material and set its color</span>
+  <span class="kd">const</span> <span class="nx">material</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">MeshBasicMaterial</span><span class="p">({</span>
+    <span class="na">color</span><span class="p">:</span> <span class="mh">0x0077ff</span><span class="p">,</span>
+    <span class="na">wireframe</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">});</span>
+
+  <span class="c1">// Combine geometry and material into a mesh</span>
+  <span class="kd">const</span> <span class="nx">sphere</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Mesh</span><span class="p">(</span><span class="nx">geometry</span><span class="p">,</span> <span class="nx">material</span><span class="p">);</span>
+  <span class="nx">sphere</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">x</span><span class="p">;</span>
+  <span class="nx">sphere</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+  <span class="nx">sphere</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="nx">Q</span><span class="p">.</span><span class="nx">z</span><span class="p">;</span>
+
+  <span class="c1">// Add the sphere to the scene</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">sphere</span><span class="p">);</span>
+  <span class="c1">///////////////////////////////////////////////////////</span>
+
+
+  <span class="c1">///////////////////////////////////////////////////////</span>
+  <span class="c1">// a line</span>
+  <span class="c1">//</span>
+  <span class="c1">// equation</span>
+  <span class="c1">// P = F + (t * s)</span>
+  <span class="c1">//</span>
+  <span class="c1">// start point of a line</span>
+  <span class="kd">const</span> <span class="nx">F</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+  <span class="c1">// ray direction</span>
+  <span class="kd">const</span> <span class="nx">s</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Vector3</span><span class="p">(</span><span class="nf">getRandomFloat</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="nf">getRandomFloat</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="nx">s</span><span class="p">.</span><span class="nf">normalize</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">E</span> <span class="o">=</span> <span class="nx">F</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">add</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nf">clone</span><span class="p">().</span><span class="nf">multiplyScalar</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
+
+  <span class="kd">const</span> <span class="nx">lineMaterial</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">LineBasicMaterial</span><span class="p">({</span> <span class="na">color</span><span class="p">:</span> <span class="mh">0xff00ff</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">lineGeometry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">BufferGeometry</span><span class="p">().</span><span class="nf">setFromPoints</span><span class="p">([</span><span class="nx">F</span><span class="p">,</span> <span class="nx">E</span><span class="p">]);</span>
+  <span class="kd">const</span> <span class="nx">line</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Line</span><span class="p">(</span><span class="nx">lineGeometry</span><span class="p">,</span> <span class="nx">lineMaterial</span><span class="p">);</span>
+  <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">line</span><span class="p">);</span>
+  <span class="c1">///////////////////////////////////////////////////////</span>
+
+  <span class="c1">///////////////////////////////////////////////////////</span>
+  <span class="c1">// intersection points</span>
+  <span class="kd">const</span> <span class="nx">intersections</span> <span class="o">=</span> <span class="nf">findIntersectionBetweenRayAndSphere</span><span class="p">(</span><span class="nx">Q</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">F</span><span class="p">,</span> <span class="nx">s</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">intersections</span><span class="p">)</span>
+
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">intersections</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Create a geometry for the point</span>
+    <span class="kd">const</span> <span class="nx">ptGeom</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">BufferGeometry</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="nx">vertices</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Float32Array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]);</span> <span class="c1">// Point position at origin</span>
+    <span class="nx">ptGeom</span><span class="p">.</span><span class="nf">setAttribute</span><span class="p">(</span><span class="dl">'</span><span class="s1">position</span><span class="dl">'</span><span class="p">,</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">BufferAttribute</span><span class="p">(</span><span class="nx">vertices</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+
+    <span class="c1">// Create a material for the point</span>
+    <span class="kd">const</span> <span class="nx">ptMtrl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">PointsMaterial</span><span class="p">({</span> <span class="na">color</span><span class="p">:</span> <span class="mh">0xff0000</span><span class="p">,</span> <span class="na">size</span><span class="p">:</span> <span class="mi">1</span> <span class="p">});</span>
+
+    <span class="c1">// Create the point mesh</span>
+    <span class="kd">const</span> <span class="nx">point</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">THREE</span><span class="p">.</span><span class="nc">Points</span><span class="p">(</span><span class="nx">ptGeom</span><span class="p">,</span> <span class="nx">ptMtrl</span><span class="p">);</span>
+
+    <span class="nx">point</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">x</span> <span class="o">=</span> <span class="nx">intersections</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">x</span>
+    <span class="nx">point</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">y</span> <span class="o">=</span> <span class="nx">intersections</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">y</span>
+    <span class="nx">point</span><span class="p">.</span><span class="nx">position</span><span class="p">.</span><span class="nx">z</span> <span class="o">=</span> <span class="nx">intersections</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">z</span>
+
+    <span class="nx">scene</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nx">point</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="c1">///////////////////////////////////////////////////////</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">animate</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nf">requestAnimationFrame</span><span class="p">(</span><span class="nx">animate</span><span class="p">);</span>
+
+  <span class="nx">controls</span><span class="p">.</span><span class="nf">update</span><span class="p">();</span>
+  <span class="nx">renderer</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">scene</span><span class="p">,</span> <span class="nx">camera</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div> <h2 id="reference">Reference</h2> <p><a href="https://www.overleaf.com/" rel="external nofollow noopener" target="_blank">Overleaf</a></p> </body></html>

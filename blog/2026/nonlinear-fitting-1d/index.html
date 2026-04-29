@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"> <html><body> <h1 id="비선형-피팅-1d--한-변수로-직관-잡기">비선형 피팅 1D — 한 변수로 직관 잡기</h1> <blockquote> <p><strong>파라미터 1개</strong> 인 가장 단순한 비선형 피팅으로 <strong>모든 핵심 개념</strong> 을 한 그래프에 시각화.</p> <p>다변수로 가기 전 <strong>반드시 먼저</strong> 이 그림을 머리에 박아두기.</p> </blockquote> <hr> <h2 id="1-모델-설정--1-변수만">1. 모델 설정 — 1 변수만</h2> \[\hat{y}(t; w) = e^{-w t}\] <ul> <li> <strong>파라미터</strong>: $w$ <strong>하나</strong> </li> <li> <strong>진짜 값</strong>: $w^* = 0.5$</li> <li> <strong>데이터 5개점</strong> (노이즈 포함):</li> </ul> <table> <thead> <tr> <th>$t_i$</th> <th>0</th> <th>1</th> <th>2</th> <th>3</th> <th>4</th> </tr> </thead> <tbody> <tr> <td>$y_i$</td> <td>1.05</td> <td>0.55</td> <td>0.41</td> <td>0.22</td> <td>0.19</td> </tr> </tbody> </table> <hr> <h2 id="2-잔차-오차-함수-정의">2. 잔차 (오차 함수) 정의</h2> <p>각 데이터 점에서의 <strong>관측 − 예측</strong>:</p> \[e_i(w) = y_i - \hat{y}(t_i; w) = y_i - e^{-w t_i}\] <ul> <li> <strong>$y_i$</strong>: $i$ 번째 관측값</li> <li> <strong>$\hat{y}(t_i; w) = e^{-w t_i}$</strong>: $i$ 번째 시점의 모델 예측</li> <li> <strong>$e_i(w)$</strong>: 잔차 — <strong>$w$ 의 함수</strong> (각 데이터마다 하나, 총 5개)</li> </ul> <p>벡터로 모음:</p> \[\mathbf{e}(w) = \begin{bmatrix} e_1 \\ e_2 \\ e_3 \\ e_4 \\ e_5 \end{bmatrix}\] <hr> <h2 id="3-sse-정의">3. SSE 정의</h2> <p>잔차의 제곱합:</p> \[E(w) = \|\mathbf{e}(w)\|^2 = \sum_i e_i(w)^2 = \sum_i \left(y_i - e^{-w t_i}\right)^2\] <p>→ <strong>$w$ 하나의 함수</strong> = <strong>1D 곡선</strong>!</p> <ul> <li>$w$ 작으면 (감쇠 약함) → 모델이 데이터보다 큼 → SSE 큼</li> <li>$w$ 너무 크면 (감쇠 강함) → 모델 너무 빨리 0 → SSE 큼</li> <li>$w \approx w^*$ → SSE 최소</li> </ul> <hr> <h2 id="4-자코비안-j--잔차의-미분">4. 자코비안 $J$ — 잔차의 미분</h2> <h3 id="정의">정의</h3> \[J_i(w) = \frac{d e_i}{dw}\] <p>→ <strong>각 잔차를 $w$ 로 미분</strong> — 데이터 하나당 하나씩 (총 5개).</p> <h3 id="유도">유도</h3> <p>$e_i = y_i - e^{-w t_i}$ 에서 $w$ 로 미분:</p> <h4 id="step-1-y_i-는-상수-w-와-무관">Step 1. $y_i$ 는 상수 ($w$ 와 무관)</h4> \[\frac{d y_i}{dw} = 0\] <h4 id="step-2-지수-항-미분-연쇄법칙">Step 2. 지수 항 미분 (연쇄법칙)</h4> \[\frac{d}{dw}\left[e^{-w t_i}\right] = e^{-w t_i} \cdot \underbrace{(-t_i)}_{\text{지수 안 미분}} = -t_i \cdot e^{-w t_i}\] <h4 id="step-3-합치기">Step 3. 합치기</h4> \[\frac{d e_i}{dw} = 0 - (-t_i \cdot e^{-w t_i}) = t_i \cdot e^{-w t_i}\] \[\boxed{J_i(w) = t_i \cdot e^{-w t_i}}\] <h3 id="벡터로">벡터로</h3> \[\mathbf{J}(w) = \begin{bmatrix} J_1 \\ J_2 \\ J_3 \\ J_4 \\ J_5 \end{bmatrix} = \begin{bmatrix} 0 \\ e^{-w} \\ 2 e^{-2w} \\ 3 e^{-3w} \\ 4 e^{-4w} \end{bmatrix}\] <p>→ <strong>각 시점에서 잔차의 변화율</strong> (모델 곡선의 $w$ 민감도).</p> <h3 id="의미">의미</h3> <blockquote> <p>“$w$ 를 살짝 바꾸면 잔차 $e_i$ 가 얼마나 변하나?” 의 <strong>민감도</strong>.</p> </blockquote> <table> <thead> <tr> <th>$J_i$ 큼</th> <th>$w$ 변화 → 잔차 크게 변함 (정보 풍부)</th> </tr> </thead> <tbody> <tr> <td>$J_i \approx 0$</td> <td>$w$ 변화 → 잔차 거의 안 변함 (정보 빈약)</td> </tr> </tbody> </table> <p>→ <strong>$J_i$ 가 GN 알고리즘의 핵심 재료</strong>.</p> <hr> <h2 id="5-잔차의-1차-테일러-근사">5. 잔차의 1차 테일러 근사</h2> <blockquote> <p>비선형 잔차 $e_i(w)$ 를 <strong>현재 $w_n$ 근처에서 직선 (1차)으로 근사</strong> — Gauss-Newton 의 핵심 발상.</p> </blockquote> <h3 id="식">식</h3> \[e_i(w_n + \Delta w) \approx e_i(w_n) + J_i(w_n) \cdot \Delta w\] <ul> <li> <strong>$e_i(w_n)$</strong>: 현재 잔차값 (상수)</li> <li> <strong>$J_i(w_n)$</strong>: 현재 자코비안 (상수)</li> <li> <strong>$\Delta w$</strong>: 변수 (얼마나 움직일까)</li> </ul> <p>→ <strong>$\Delta w$ 의 1차 함수</strong> = <strong>직선 (선형)</strong>.</p> <h3 id="1d-비유">1D 비유</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>잔차 e_i(w):   ╲                                
+                ╲                                
+                 ╲___                            
+                     ╲                          
+                                                
+1차 테일러:    ━━━━━━━━━ ← w_n 에서의 접선     
+                                                
+   w_n 근처에서만 곡선 ≈ 직선                  
+   멀어지면 차이 벌어짐                        
+</code></pre></div></div> <h3 id="왜-이렇게-하나">왜 이렇게 하나</h3> <table> <thead> <tr> <th>원본 잔차 $e_i(w)$</th> <th>1차 테일러 $e_i(w_n) + J_i \cdot \Delta w$</th> </tr> </thead> <tbody> <tr> <td>비선형 (지수)</td> <td> <strong>선형</strong> ($\Delta w$ 의 1차)</td> </tr> <tr> <td>직접 풀이 불가</td> <td> <strong>풀이 가능</strong> (선형 최소제곱)</td> </tr> </tbody> </table> <p>→ 비선형 → <strong>국소 선형화</strong> → 풀이 가능 → 한 걸음 → 반복.</p> <h3 id="벡터로-1">벡터로</h3> \[\mathbf{e}(w_n + \Delta w) \approx \mathbf{e}(w_n) + \mathbf{J}(w_n) \cdot \Delta w\] \[= \begin{bmatrix} e_1 \\ e_2 \\ \vdots \\ e_5 \end{bmatrix} + \begin{bmatrix} J_1 \\ J_2 \\ \vdots \\ J_5 \end{bmatrix} \cdot \Delta w\] <p>→ <strong>5개 잔차 모두 동시에 선형화</strong>.</p> <h3 id="다음-단계-예고">다음 단계 (예고)</h3> <p>이 선형 형태를 <strong>제곱하면 SSE 의 이차근사 (포물선)</strong> → 미분 = 0 → 정규방정식 → $\Delta w$ 풀이.</p> <hr> <h2 id="6-sse-에-대입--미분--정규방정식--delta-w">6. SSE 에 대입 → 미분 → 정규방정식 → $\Delta w$</h2> <h3 id="step-1-선형화된-잔차를-sse-에-대입">Step 1. 선형화된 잔차를 SSE 에 대입</h3> <p>선형화된 SSE 를 $\tilde{E}(\Delta w)$ 로 표기:</p> \[\tilde{E}(\Delta w) = \sum_i \big[e_i(w_n) + J_i \cdot \Delta w\big]^2\] <p>→ <strong>$\Delta w$ 의 이차함수</strong> (1차 + 제곱 = 2차).</p> <h3 id="step-2-전개">Step 2. 전개</h3> \[\tilde{E}(\Delta w) = \sum_i \left[ e_i^2 + 2 e_i J_i \Delta w + J_i^2 \Delta w^2 \right]\] <p>3 항으로 정리:</p> \[\tilde{E}(\Delta w) = a + 2 b \cdot \Delta w + c \cdot \Delta w^2\] <p>여기서:</p> \[a = \sum_i e_i^2, \qquad b = \sum_i e_i J_i, \qquad c = \sum_i J_i^2\] <table> <thead> <tr> <th>계수</th> <th>식</th> <th>의미</th> </tr> </thead> <tbody> <tr> <td>$a$</td> <td>$\sum e_i^2$</td> <td>현재 SSE = $E(w_n)$ (상수)</td> </tr> <tr> <td>$b$</td> <td>$\sum e_i J_i$</td> <td>그래디언트 절반 ($G = 2b$)</td> </tr> <tr> <td>$c$</td> <td>$\sum J_i^2$</td> <td>헤시안 절반 ($H = 2c$, GN 근사)</td> </tr> </tbody> </table> <h3 id="step-3-delta-w-로-미분">Step 3. $\Delta w$ 로 미분</h3> \[\frac{d \tilde{E}}{d (\Delta w)} = 2 b + 2 c \cdot \Delta w\] <h3 id="step-4--0-극값-조건-포물선-바닥">Step 4. = 0 (극값 조건, 포물선 바닥)</h3> \[2 b + 2 c \cdot \Delta w = 0\] <p>→ <strong>정규방정식</strong>:</p> \[\boxed{c \cdot \Delta w = -b}\] <p>또는 $G, H$ 표기로:</p> \[H \cdot \Delta w = -G\] <h3 id="step-5-delta-w-풀기">Step 5. $\Delta w$ 풀기</h3> \[\boxed{\Delta w = -\frac{b}{c} = -\frac{G}{H}}\] <p>→ <strong>포물선 바닥의 위치</strong> = 한 걸음의 크기/방향.</p> <h3 id="step-6-업데이트">Step 6. 업데이트</h3> \[w_{n+1} = w_n + \Delta w = w_n - \frac{G}{H}\] <p>→ <strong>다음 위치</strong>.</p> <h3 id="우리-데이터로-w_n--15">우리 데이터로 ($w_n = 1.5$)</h3> <table> <thead> <tr> <th>양</th> <th>값</th> </tr> </thead> <tbody> <tr> <td>$a = \sum e_i^2$</td> <td>0.302</td> </tr> <tr> <td>$b = \sum e_i J_i$</td> <td>0.116</td> </tr> <tr> <td>$c = \sum J_i^2$</td> <td>0.0608</td> </tr> <tr> <td>$\Delta w = -b/c$</td> <td>$-1.91$</td> </tr> <tr> <td>$w_{n+1} = 1.5 + (-1.91)$</td> <td>$-0.41$</td> </tr> </tbody> </table> <p>→ <strong>이게 보라 점의 위치</strong>.</p> <h3 id="흐름도">흐름도</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>잔차 1차 테일러 (Section 5)
+        e(w_n + Δw) ≈ e(w_n) + J·Δw
+                ↓
+        SSE 에 대입 ([·]² 합)
+                ↓
+        a + 2b·Δw + c·Δw²  (Δw 의 이차함수)
+                ↓
+        미분: 2b + 2c·Δw
+                ↓
+        = 0 (포물선 바닥 조건)
+                ↓
+        Δw = -b/c = -G/H  ★ 한 걸음
+                ↓
+        w_{n+1} = w_n + Δw
+                ↓
+        반복 (새 w_n 에서 처음부터)
+</code></pre></div></div> <h3 id="보충-두-가지-표기--원소별-합-vs-벡터-내적">보충: 두 가지 표기 — 원소별 합 vs 벡터 내적</h3> <p>위의 $a, b, c$ 는 <strong>원소별 합</strong> 으로 썼지만, 같은 식을 <strong>벡터 내적</strong> 으로도 쓸 수 있음. 다변수로 갈 때 자연스러운 일반화 형태.</p> <h4 id="잔차--자코비안-벡터">잔차 / 자코비안 벡터</h4> \[\mathbf{e} = \begin{bmatrix} e_1 \\ e_2 \\ \vdots \\ e_N \end{bmatrix}, \qquad \mathbf{J} = \begin{bmatrix} J_1 \\ J_2 \\ \vdots \\ J_N \end{bmatrix}\] <h4 id="같은-식-두-표기">같은 식, 두 표기</h4> <table> <thead> <tr> <th>양</th> <th>원소별 합</th> <th>벡터 내적</th> </tr> </thead> <tbody> <tr> <td>$a$</td> <td>$\sum_i e_i^2$</td> <td>$\mathbf{e}^T \mathbf{e} = |\mathbf{e}|^2$</td> </tr> <tr> <td>$b$</td> <td>$\sum_i e_i J_i$</td> <td>$\mathbf{e}^T \mathbf{J}$</td> </tr> <tr> <td>$c$</td> <td>$\sum_i J_i^2$</td> <td>$\mathbf{J}^T \mathbf{J} = |\mathbf{J}|^2$</td> </tr> </tbody> </table> <p>→ <strong>수학적으로 완전히 동일</strong>, 단지 표기 방식 차이.</p> <h4 id="왜-같은가--내적-정의-펼쳐보기">왜 같은가 — 내적 정의 펼쳐보기</h4> \[\mathbf{e}^T \mathbf{e} = \begin{bmatrix} e_1 &amp; e_2 &amp; \cdots &amp; e_N \end{bmatrix} \begin{bmatrix} e_1 \\ e_2 \\ \vdots \\ e_N \end{bmatrix} = e_1^2 + e_2^2 + \cdots + e_N^2 = \sum_i e_i^2\] <p>→ 행렬곱 $(1 \times N) \times (N \times 1) = (1 \times 1)$ 정의 그대로.</p> <h4 id="어느-걸-쓸까">어느 걸 쓸까</h4> <table> <thead> <tr> <th> </th> <th>원소별 (loop)</th> <th>벡터 내적</th> </tr> </thead> <tbody> <tr> <td>코드 (JS for 루프)</td> <td>자연스러움</td> <td>라이브러리 필요</td> </tr> <tr> <td>코드 (numpy)</td> <td>느림</td> <td> <strong><code class="language-plaintext highlighter-rouge">e @ e</code> 한 줄</strong> (빠름, 벡터화)</td> </tr> <tr> <td>다변수 확장</td> <td>합 기호 늘어남</td> <td> <strong>그대로 행렬로 일반화</strong> ★</td> </tr> </tbody> </table> <h4 id="우리-데모-코드--원소별-방식-a">우리 데모 코드 — 원소별 (방식 A)</h4> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sse</span><span class="p">(</span><span class="nx">ww</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nf">residual</span><span class="p">(</span><span class="nx">ww</span><span class="p">).</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">s</span><span class="p">,</span> <span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">s</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">*</span> <span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div> <h4 id="numpy-라면--벡터-내적-방식-b">numpy 라면 — 벡터 내적 (방식 B)</h4> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">sse</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">e</span> <span class="o">=</span> <span class="nf">residual</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>         <span class="c1"># numpy 배열
+</span>    <span class="k">return</span> <span class="n">e</span> <span class="o">@</span> <span class="n">e</span>            <span class="c1"># = np.dot(e, e) = np.sum(e**2)
+</span></code></pre></div></div> <h4 id="정규방정식의-벡터-표현">정규방정식의 벡터 표현</h4> <p>1D 의 정규방정식 $c \cdot \Delta w = -b$ 를 벡터로:</p> \[\boxed{(\mathbf{J}^T \mathbf{J}) \cdot \Delta w = -\mathbf{J}^T \mathbf{e}}\] <p>$w$ 가 벡터 $\mathbf{w}$ 가 되어도 <strong>이 형태 그대로 작동</strong>:</p> \[(\mathbf{J}^T \mathbf{J}) \cdot \Delta \mathbf{w} = -\mathbf{J}^T \mathbf{e}\] <p>→ <strong>벡터 표기는 차원 확장에 자동 일반화</strong>.</p> <hr> <h2 id="7-newton-메서드--e-를-직접-두-번-미분">7. Newton 메서드 — E 를 직접 두 번 미분</h2> <blockquote> <p>Gauss-Newton 의 $H = 2 \sum J_i^2$ 는 사실 <strong>진짜 헤시안의 근사</strong>.</p> <p>진짜 2차 미분으로 갈 수도 있는데, 그게 <strong>Newton 메서드</strong>. 결과는 종종 비슷하지만 <strong>위험성이 다름</strong>.</p> </blockquote> <h3 id="진짜-헤시안-유도--단계별">진짜 헤시안 유도 — 단계별</h3> <h4 id="출발">출발</h4> \[E(w) = \sum_i e_i(w)^2\] <p>목표: $E’(w)$ (그래디언트), $E’‘(w)$ (헤시안) 를 직접 구하기.</p> <hr> <h4 id="1차-미분-ew">1차 미분 $E’(w)$</h4> <h5 id="step-1-1-합-미분-선형성">Step 1-1. 합 미분 (선형성)</h5> \[E'(w) = \frac{d}{dw}\sum_i e_i^2 = \sum_i \frac{d}{dw}\left[e_i^2\right]\] <p><strong>보충: 왜 $\sum$ 을 미분 안으로 (또는 밖으로) 옮길 수 있나?</strong></p> <p>미분의 <strong>선형성</strong> (linearity) 때문. 두 가지 기본 성질:</p> <ul> <li> <strong>합 분리</strong>: $(f + g)’ = f’ + g’$</li> <li> <strong>상수 빼기</strong>: $(c \cdot f)’ = c \cdot f’$</li> </ul> <p>합은 결국 여러 항의 더하기 → 위 규칙을 반복 적용:</p> \[\frac{d}{dw}\sum_i f_i(w) = \sum_i \frac{d}{dw} f_i(w) = \sum_i f_i'(w)\] <p>→ “<strong>유한합과 미분은 서로 통과 가능</strong>”. 표기 편한 쪽으로 쓰면 됨.</p> <h5 id="step-1-2-square2-미분-연쇄법칙">Step 1-2. $\square^2$ 미분 (연쇄법칙)</h5> \[\frac{d}{dw}\left[e_i^2\right] = 2 e_i \cdot \frac{d e_i}{dw} = 2 e_i \cdot J_i\] <p>여기서 $J_i = \dfrac{d e_i}{dw}$ — 우리가 Section 4 에서 구한 자코비안.</p> <h5 id="step-1-3-합치기">Step 1-3. 합치기</h5> \[\boxed{E'(w) = 2 \sum_i e_i \cdot J_i = G}\] <p>→ Section 10 의 그래디언트와 동일. <strong>이미 구한 결과</strong>.</p> <hr> <h4 id="2차-미분-ew">2차 미분 $E’‘(w)$</h4> <p>$E’(w) = 2 \sum_i e_i \cdot J_i$ 를 한 번 더 $w$ 로 미분.</p> <h5 id="step-2-1-합--상수-분리">Step 2-1. 합 + 상수 분리</h5> \[E''(w) = \frac{d}{dw}\left[2 \sum_i e_i \cdot J_i\right] = 2 \sum_i \frac{d}{dw}\left[e_i \cdot J_i\right]\] <h5 id="step-2-2-곱-미분-규칙-product-rule">Step 2-2. 곱 미분 규칙 (product rule)</h5> <p>각 항이 <strong>두 함수의 곱</strong> ($e_i$ 와 $J_i$) → 곱 미분 적용:</p> \[\frac{d}{dw}\left[e_i \cdot J_i\right] = \underbrace{\frac{d e_i}{dw}}_{= J_i} \cdot J_i + e_i \cdot \underbrace{\frac{d J_i}{dw}}_{= J_i'}\] \[= J_i \cdot J_i + e_i \cdot J_i' = J_i^2 + e_i \cdot J_i'\] <p>여기서:</p> <ul> <li>$\dfrac{d e_i}{dw} = J_i$ (자코비안 정의)</li> <li>$J_i’ = \dfrac{d J_i}{dw} = \dfrac{d^2 e_i}{dw^2}$ — <strong>잔차의 2차 미분</strong> (새 양!)</li> </ul> <h5 id="step-2-3-합치기">Step 2-3. 합치기</h5> \[E''(w) = 2 \sum_i \left[ J_i^2 + e_i \cdot J_i' \right]\] <h5 id="step-2-4-두-항으로-분리">Step 2-4. 두 항으로 분리</h5> \[\boxed{E''(w) = 2 \sum_i J_i^2 \;+\; 2 \sum_i e_i \cdot J_i'}\] <p>또는 라벨 붙여서:</p> \[E''(w) = \underbrace{2 \sum_i J_i^2}_{H_{\text{GN}} \text{ (GN 이 쓰는 부분)}} \;+\; \underbrace{2 \sum_i e_i \cdot J_i'}_{\text{GN 이 버리는 부분}}\] <hr> <h4 id="흐름-요약">흐름 요약</h4> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E(w) = Σ eᵢ²
+        ↓ d/dw (Step 1)
+E'(w) = 2·Σ eᵢ·Jᵢ                    ← 그래디언트 G
+        ↓ d/dw (Step 2)
+        곱 미분: (eᵢ)'·Jᵢ + eᵢ·(Jᵢ)'
+        = Jᵢ·Jᵢ + eᵢ·Jᵢ'
+        ↓
+E''(w) = 2·Σ Jᵢ² + 2·Σ eᵢ·Jᵢ'        ← 진짜 헤시안 H_true
+        │           │
+        └─ GN 사용  └─ GN 버림
+</code></pre></div></div> <h3 id="newton-vs-gauss-newton">Newton vs Gauss-Newton</h3> <table> <thead> <tr> <th> </th> <th>Newton</th> <th>Gauss-Newton</th> </tr> </thead> <tbody> <tr> <td>$H$</td> <td>$E’‘(w)$ — <strong>진짜 2차 미분</strong> </td> <td>$2 \sum J_i^2$ — <strong>근사</strong> </td> </tr> <tr> <td>추가 계산</td> <td>$J_i’ = \frac{d^2 e_i}{dw^2}$ 필요</td> <td>$J_i$ 만 필요</td> </tr> <tr> <td>$H$ 부호</td> <td> <strong>음수 가능</strong> → 발산 위험</td> <td> <strong>항상 양수</strong> ($\sum J_i^2 \geq 0$) ✓</td> </tr> <tr> <td>수렴 속도</td> <td>빠름 (정확)</td> <td>거의 같음 (잔차 작을 때)</td> </tr> </tbody> </table> <h3 id="우리-모델로-e_i--y_i---e-w-t_i">우리 모델로 ($e_i = y_i - e^{-w t_i}$)</h3> <ul> <li>$J_i = t_i e^{-w t_i}$</li> <li>$J_i’ = -t_i^2 e^{-w t_i}$</li> </ul> <p>진짜 헤시안:</p> \[E''(w) = 2 \sum_i t_i^2 e^{-2 w t_i} - 2 \sum_i e_i \cdot t_i^2 e^{-w t_i}\] <h3 id="두-방법이-결과가-비슷한-이유-">두 방법이 결과가 비슷한 이유 ★</h3> <blockquote> <p><strong>잔차 $e_i$ 가 작으면</strong> ($w$ 가 정답 근처) → 버린 항 ($\sum e_i \cdot J_i’$) 이 거의 0 → <strong>Newton ≈ GN</strong>.</p> </blockquote> <table> <thead> <tr> <th>상황</th> <th>$e_i$</th> <th>버린 항</th> <th>Newton vs GN</th> </tr> </thead> <tbody> <tr> <td><strong>수렴 근처</strong></td> <td>작음</td> <td>≈ 0</td> <td><strong>거의 동일</strong></td> </tr> <tr> <td><strong>멀리 있음</strong></td> <td>큼</td> <td>무시 못 함</td> <td>차이 남</td> </tr> <tr> <td> <strong>큰 잔차 문제</strong> (모델이 데이터 못 맞춤)</td> <td>큼 (수렴해도)</td> <td>항상 큼</td> <td>GN 부정확</td> </tr> </tbody> </table> <h3 id="그럼-왜-gn-을-쓰나">그럼 왜 GN 을 쓰나?</h3> <ol> <li> <strong>$J_i’$ 계산 비쌈</strong> — 모델이 복잡할수록 2차 미분은 폭발적</li> <li> <strong>$H$ 양수 보장</strong> — $\sum J_i^2 \geq 0$ 이라 항상 내리막 (안전)</li> <li> <strong>Newton 의 음수 $H$</strong> → 잘못된 방향으로 점프 (max 찾는 셈) → <strong>발산</strong> </li> </ol> <blockquote> <p>“<strong>Gauss-Newton 은 Newton 보다 종종 더 잘 작동한다</strong>” — 정확함을 약간 포기하고 안전성을 얻는 영리한 트릭.</p> </blockquote> <h3 id="의사-코드-newton">의사 코드 (Newton)</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INPUT:  데이터, 초기 w₀
+PARAMS: max_iter
+
+w ← w₀
+
+for iter = 1 to max_iter:
+    e_i  ← y_i − f(t_i; w)
+    J_i  ← ∂f/∂w │_w
+    J'_i ← ∂²f/∂w² │_w        // 추가 — 2차 미분
+
+    G ← 2 · Σ e_i · J_i                       // 그래디언트
+    H ← 2 · Σ J_i² + 2 · Σ e_i · J'_i         // 진짜 헤시안
+
+    if H &lt; 0:
+        ⚠ 음수! 발산 위험 — 그래도 강행 (또는 break)
+
+    Δw ← −G / H
+    w  ← w + Δw
+
+return w
+</code></pre></div></div> <h3 id="데모로-확인">데모로 확인</h3> <p>데모에서 알고리즘을 <strong>Newton</strong> 으로 선택하면:</p> <ul> <li>$w_n$ 가 정답 0.5 근처 → GN 과 거의 같은 점프</li> <li>$w_n = 5$ 같은 멀리 → <strong>$H$ 가 음수가 될 수 있음</strong> → 잘못된 방향 점프 → <strong>발산</strong> </li> <li>GN 은 분모 양수라 항상 옳은 방향 → 더 안전</li> </ul> <p>→ “<strong>왜 GN 을 쓰는가</strong>” 가 시각적으로 한 번에 이해됨.</p> <hr> <h2 id="8-levenberg-marquardt-lm--gn-의-안정-버전">8. Levenberg-Marquardt (LM) — GN 의 안정 버전</h2> <h3 id="왜-lm-이-필요한가">왜 LM 이 필요한가</h3> <p>Section 6 의 Gauss-Newton 은 <strong>초기값에 매우 민감</strong>:</p> <ul> <li>$w_n$ 이 정답에서 멀면 → $J^TJ$ 작음 → $\Delta w$ 폭발 → 발산</li> <li>우리 모델 ($e^{-wt}$) 의 경우 $w \geq 1.5$ 부터 위험</li> </ul> <p><strong>해결</strong>: $J^TJ$ 분모에 $\lambda$ 추가.</p> <h3 id="lm-식">LM 식</h3> \[\boxed{\Delta w = -\frac{G}{H + \lambda} = -\frac{2 \sum e_i J_i}{2 \sum J_i^2 + \lambda}}\] <p>또는 더 간단히 (스케일 무시):</p> \[\Delta w = -\frac{\sum e_i J_i}{\sum J_i^2 + \lambda}\] <h3 id="lambda-의-효과">$\lambda$ 의 효과</h3> <table> <thead> <tr> <th>$\lambda$ 값</th> <th>동작</th> </tr> </thead> <tbody> <tr> <td><strong>$\lambda = 0$</strong></td> <td>순수 GN (큰 점프, 위험)</td> </tr> <tr> <td><strong>작음 ($\sim 10^{-4}$)</strong></td> <td>거의 GN (빠름)</td> </tr> <tr> <td><strong>보통 ($\sim 1$)</strong></td> <td>GN + GD 혼합 (안정)</td> </tr> <tr> <td><strong>큼 ($\sim 100$)</strong></td> <td>거의 GD (작은 점프, 매우 안전)</td> </tr> <tr> <td><strong>$\lambda \to \infty$</strong></td> <td>점프 = 0 (정지)</td> </tr> </tbody> </table> <p>→ <strong>$\lambda$ 클수록 분모 큼 → 작은 점프 → 안전</strong>.</p> <h3 id="적응형-lambda--핵심-규칙">적응형 $\lambda$ — 핵심 규칙</h3> <p>매 step 후 SSE 변화 평가:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>시도: w_try = w_n + Δw  (현재 λ 로 계산)
+                                         
+       ↓                                  
+                                          
+SSE_after vs SSE_before 비교             
+                                          
+   ↓                    ↓                
+ 감소 (좋음)         증가 (나쁨)          
+   ↓                    ↓                
+ 점프 수락 +         점프 거부 +          
+ λ ÷ 10              λ × 10              
+ ("GN 처럼 빨리")    ("GD 처럼 안전히")  
+   ↓                    ↓                
+ 다음 iter           같은 w 유지          
+</code></pre></div></div> <h3 id="의사-코드">의사 코드</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INPUT:  데이터 (t_i, y_i), 모델 f(t; w), 초기 w₀
+PARAMS: λ_init = 0.01, factor = 10, max_iter = 50, tol = 1e-8
+
+w ← w₀
+λ ← λ_init
+
+for iter = 1 to max_iter:
+    e_i ← y_i − f(t_i; w)              // 잔차
+    J_i ← ∂f/∂w │_w                    // 자코비안
+    
+    G ← 2 · Σ e_i · J_i                 // 그래디언트
+    H ← 2 · Σ J_i²                      // 헤시안 (GN 근사)
+    
+    Δw ← −G / (H + λ)                   // LM step
+    w_try ← w + Δw                      // 시도값
+    
+    sse_before ← Σ e_i²
+    sse_after  ← Σ (y_i − f(t_i; w_try))²
+    
+    if sse_after &lt; sse_before:           // 좋아짐
+        w ← w_try                       // 수락
+        λ ← max(λ / factor, λ_min)      // 더 빨리
+    else:                                // 나빠짐
+        // w 유지 (거부)
+        λ ← min(λ × factor, λ_max)      // 더 안전히
+    
+    if |Δw| &lt; tol:
+        break                            // 수렴
+
+return w
+</code></pre></div></div> <h3 id="우리-데모-코드-실제">우리 데모 코드 (실제)</h3> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">gaussNewtonStep</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nf">computeNext</span><span class="p">(</span><span class="nx">w</span><span class="p">);</span>  <span class="c1">// Δw = -G/(H+λ)</span>
+  <span class="kd">const</span> <span class="nx">wTry</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">wNext</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">sseBefore</span> <span class="o">=</span> <span class="nf">sse</span><span class="p">(</span><span class="nx">w</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">sseAfter</span> <span class="o">=</span> <span class="nf">sse</span><span class="p">(</span><span class="nx">wTry</span><span class="p">);</span>
+  
+  <span class="k">if </span><span class="p">(</span><span class="nx">useLM</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">sseAfter</span> <span class="o">&lt;</span> <span class="nx">sseBefore</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">w</span> <span class="o">=</span> <span class="nx">wTry</span><span class="p">;</span>                          <span class="c1">// 수락</span>
+      <span class="nx">lambda</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">lambda</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="nx">e</span><span class="o">-</span><span class="mi">7</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// 거부 (w 유지)</span>
+      <span class="nx">lambda</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">min</span><span class="p">(</span><span class="nx">lambda</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="nx">e10</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// GN: 무조건 점프</span>
+    <span class="nx">w</span> <span class="o">=</span> <span class="nx">wTry</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="왜-이-규칙이-좋나">왜 이 규칙이 좋나</h3> <blockquote> <p>“<strong>잘 되면 더 빨리, 안 되면 더 조심</strong>” 의 자동 메타-학습.</p> </blockquote> <ul> <li> <strong>GN 빠름</strong> + <strong>GD 안전성</strong> <strong>자동 균형</strong> </li> <li>사용자가 $\lambda$ 손볼 필요 없음</li> <li>거의 모든 비선형 최소제곱에 작동</li> </ul> <h3 id="lm--비선형-최소제곱의-표준">LM = 비선형 최소제곱의 표준</h3> <table> <thead> <tr> <th>알고리즘</th> <th>사용 빈도 (실무)</th> </tr> </thead> <tbody> <tr> <td><strong>LM</strong></td> <td> <strong>80%</strong> ★</td> </tr> <tr> <td>Trust Region</td> <td>10%</td> </tr> <tr> <td>GN</td> <td>5% (잔차 작을 때)</td> </tr> <tr> <td>Newton (직접)</td> <td>1% (헤시안 비쌈)</td> </tr> <tr> <td>기타</td> <td>4%</td> </tr> </tbody> </table> <p>→ <strong>scipy.optimize.curve_fit, MATLAB lsqnonlin, OpenCV solvePnP</strong> 등 모두 LM.</p> <h3 id="데모-활용법">데모 활용법</h3> <p>브라우저에서:</p> <ol> <li><strong>알고리즘 → “LM” 선택</strong></li> <li>슬라이더 → $w = 2.0$ (GN 으로는 발산하던 값)</li> <li>▶ 1 Step → 안전한 점프 + $\lambda$ 자동 조절 확인</li> <li>⏵ Auto → 수렴 보장</li> </ol> <p>→ “<strong>$w = 2$ 부터도 수렴</strong>” 직접 체험.</p> <h3 id="50년-표준-marquardt-1963">50년 표준 (Marquardt 1963)</h3> <blockquote> <p>Donald Marquardt, “An algorithm for least-squares estimation of nonlinear parameters” (1963)</p> <p>60년 넘게 사실상 표준 알고리즘 — 거의 모든 비선형 fitting 라이브러리의 기본.</p> </blockquote> <hr> <h2 id="9-dogleg--trust-region-방식">9. Dogleg — Trust Region 방식</h2> <h3 id="발상">발상</h3> <p>LM 과 같은 동기 (GN 의 큰 점프 길들이기) 지만 다른 접근:</p> <blockquote> <p><strong>“한 step 에 못 가는 최대 거리 $\Delta$ 를 정해놓고, 그 안에서만 움직여라”</strong></p> </blockquote> <p>이 영역을 <strong>신뢰 영역 (Trust Region)</strong> 이라 부름 — 2차 근사 (포물선) 를 <strong>얼마나 신뢰할 수 있는지</strong> 의 범위.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        포물선 근사 (wₙ 근처에서만 정확)
+         ___
+        /   \
+   ____/     \____   ← 실제 SSE
+        ↑
+     wₙ ± Δ
+   ←─────────→
+   신뢰할 수 있는 영역
+</code></pre></div></div> <h3 id="1d-에서의-단순화">1D 에서의 단순화</h3> <p>원래 Dogleg 는 GN 방향 ($-H^{-1}G$) 과 Cauchy 방향 ($-G$) 을 <strong>꺾어서</strong> 잇는 곡선 (개 다리 모양) 이지만, <strong>1D 에서는 두 방향이 같은 직선</strong>. 따라서:</p> \[\Delta w = \begin{cases} -G/H &amp; \text{if } |{-G/H}| \leq \Delta \quad\text{(GN 그대로)} \\ \pm \Delta &amp; \text{otherwise} \quad\text{(반경 끝까지만)} \end{cases}\] <p>→ “<strong>GN 스텝을 신뢰 반경으로 자르기</strong>”.</p> <h3 id="delta-적응--핵심-규칙">$\Delta$ 적응 — 핵심 규칙</h3> <p>매 step 후 <strong>신뢰도 비율</strong> $\rho$ 측정:</p> \[\rho = \frac{\text{실제 SSE 감소}}{\text{2차 근사가 예측한 감소}} = \frac{E(w_n) - E(w_n + \Delta w)}{Q(0) - Q(\Delta w)}\] <table> <thead> <tr> <th>$\rho$ 값</th> <th>의미</th> <th>$\Delta$ 갱신</th> </tr> </thead> <tbody> <tr> <td>$\rho &gt; 0.75$</td> <td>예측 잘 맞음</td> <td>$\Delta \times 2$ (더 과감하게)</td> </tr> <tr> <td>$0.25 \leq \rho \leq 0.75$</td> <td>그럭저럭</td> <td>$\Delta$ 유지</td> </tr> <tr> <td>$\rho &lt; 0.25$</td> <td>예측 빗나감</td> <td>$\Delta \div 4$ (보수적으로)</td> </tr> <tr> <td>$\rho \leq 0$</td> <td>SSE 증가</td> <td> <strong>스텝 거부</strong> + $\Delta \div 4$</td> </tr> </tbody> </table> <p>→ “<strong>잘 맞으면 더 믿어도 됨, 빗나가면 영역 좁히기</strong>”.</p> <h3 id="의사-코드-1">의사 코드</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INPUT:  데이터 (t_i, y_i), 모델 f, 초기 w₀
+PARAMS: Δ_init = 1.0, max_iter = 50
+
+w ← w₀
+Δ ← Δ_init
+
+for iter = 1 to max_iter:
+    e_i ← y_i − f(t_i; w)
+    J_i ← ∂f/∂w │_w
+    G ← 2 · Σ e_i · J_i
+    H ← 2 · Σ J_i²
+
+    Δw_GN ← −G / H                         // 순수 GN 후보
+
+    if |Δw_GN| ≤ Δ:
+        Δw ← Δw_GN                          // 안전 영역 안 → 그대로
+    else:
+        Δw ← sign(Δw_GN) · Δ                // 반경 끝까지만
+
+    w_try ← w + Δw
+
+    // 신뢰도 측정
+    actual    ← SSE(w) − SSE(w_try)
+    predicted ← Q(0)  − Q(Δw)               // 2차 근사 예측
+    ρ ← actual / predicted
+
+    // Δ 갱신
+    if ρ &gt; 0.75:  Δ ← min(Δ × 2, Δ_max)
+    elif ρ &lt; 0.25: Δ ← max(Δ / 4, Δ_min)
+
+    // 스텝 채택 여부
+    if ρ &gt; 0:
+        w ← w_try                           // 수락
+    // else: 거부 (w 유지)
+</code></pre></div></div> <h3 id="lm-vs-dogleg--같은-목표-다른-방법">LM vs Dogleg — 같은 목표, 다른 방법</h3> <table> <thead> <tr> <th> </th> <th><strong>LM</strong></th> <th><strong>Dogleg</strong></th> </tr> </thead> <tbody> <tr> <td>어떻게 막나</td> <td>Hessian 에 $\lambda$ 더해 분모 키움</td> <td>$\Delta w$ 거리 자르기</td> </tr> <tr> <td>파라미터</td> <td>$\lambda$ (damping)</td> <td>$\Delta$ (trust radius)</td> </tr> <tr> <td>적응 신호</td> <td>SSE ↑/↓ → $\lambda \times 10 / \div 10$</td> <td>$\rho$ → $\Delta \times 2 / \div 4$</td> </tr> <tr> <td>수식</td> <td>$\Delta w = -G/(H + \lambda)$</td> <td>$\Delta w = \text{clip}(-G/H, \pm \Delta)$</td> </tr> <tr> <td>직관</td> <td>“Hessian 보강”</td> <td>“신뢰 영역 안에서만”</td> </tr> <tr> <td>개발</td> <td>Marquardt 1963</td> <td>Powell 1970</td> </tr> </tbody> </table> <p>결과는 거의 같음. <strong>trust region 의 “영역” 개념이 더 직관적</strong> 이라 교과서에서 자주 사용.</p> <h3 id="데모-활용법-1">데모 활용법</h3> <p>브라우저에서:</p> <ol> <li><strong>알고리즘 → “Dogleg” 선택</strong></li> <li>슬라이더 → $w = 5.0$ (GN 발산하던 값)</li> <li>하단 캔버스에 <strong>청록색 띠</strong> = $[w_n - \Delta, w_n + \Delta]$ 신뢰 영역</li> <li>▶ 1 Step → <strong>빨간 점은 띠 안에서만 보라 점으로 이동</strong> </li> <li>$\rho$ 값과 $\Delta$ 변화 (“ρ=0.92 &gt; 0.75 → Δ ×2”) 확인</li> <li>띠가 점점 커지며 가속 수렴 관찰</li> </ol> <h3 id="어디서-쓰이나">어디서 쓰이나</h3> <ul> <li><code class="language-plaintext highlighter-rouge">scipy.optimize.minimize(method='dogleg')</code></li> <li> <code class="language-plaintext highlighter-rouge">scipy.optimize.least_squares(method='dogbox')</code> — bounds 있는 버전</li> <li>일부 SLAM/번들조정 솔버</li> </ul> <p>LM 과 동급의 robustness, 구현은 살짝 더 복잡 (예측 감소량 계산 필요).</p> <hr> <h2 id="10-그래디언트-g--보충-설명">10. 그래디언트 G — 보충 설명</h2> <h3 id="정의-1">정의</h3> \[G = \frac{dE}{dw} = E'(w)\] <p>→ <strong>SSE 함수를 $w$ 로 한 번 미분</strong> = 그 점의 <strong>기울기</strong>.</p> <h3 id="유도-연쇄법칙--위에서-구한-j">유도 (연쇄법칙 + 위에서 구한 $J$)</h3> <h4 id="step-1-합-미분">Step 1. 합 미분</h4> \[\frac{dE}{dw} = \sum_i \frac{d}{dw}\left[e_i^2\right]\] <h4 id="step-2-square2-미분-연쇄법칙--2-가-등장하는-이유">Step 2. $\square^2$ 미분 (연쇄법칙) — “2” 가 등장하는 이유</h4> \[\frac{d}{dw}\left[e_i^2\right] = 2 e_i \cdot \frac{d e_i}{dw} = 2 e_i \cdot J_i\] <p>→ <strong>앞서 구한 $J_i$ 사용</strong>.</p> <h4 id="step-3-합치기-1">Step 3. 합치기</h4> \[\boxed{G = 2 \sum_i e_i \cdot J_i = 2 \sum_i e_i \cdot t_i \cdot e^{-w t_i}}\] <h3 id="의미-1">의미</h3> <table> <thead> <tr> <th>$G$ 부호</th> <th>의미</th> <th>다음 행동</th> </tr> </thead> <tbody> <tr> <td><strong>$G &gt; 0$</strong></td> <td>우측으로 갈수록 SSE 증가</td> <td>$w$ <strong>줄이기</strong> </td> </tr> <tr> <td><strong>$G &lt; 0$</strong></td> <td>좌측으로 갈수록 SSE 증가</td> <td>$w$ <strong>늘리기</strong> </td> </tr> <tr> <td><strong>$G \approx 0$</strong></td> <td>거의 평평</td> <td> <strong>이미 최저점</strong> ✓</td> </tr> </tbody> </table> <h3 id="어디-쓰이나">어디 쓰이나</h3> <table> <thead> <tr> <th>용도</th> <th>식</th> </tr> </thead> <tbody> <tr> <td> <strong>접선</strong> (시각화)</td> <td>$y = E(w_n) + G \cdot (w - w_n)$</td> </tr> <tr> <td><strong>포물선 1차 항</strong></td> <td>$Q(w) = E(w_n) + G \cdot \Delta w + \tfrac{1}{2} H \cdot \Delta w^2$</td> </tr> <tr> <td><strong>Gauss-Newton 한 걸음</strong></td> <td>$\Delta w = -G/H$</td> </tr> <tr> <td><strong>수렴 판정</strong></td> <td>$G \approx 0$ 이면 멈춤</td> </tr> </tbody> </table> <h3 id="코드-간단">코드 (간단)</h3> <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sseGradient</span><span class="p">(</span><span class="nx">w</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">e</span> <span class="o">=</span> <span class="nf">residual</span><span class="p">(</span><span class="nx">w</span><span class="p">);</span>   <span class="c1">// 잔차 5개</span>
+  <span class="kd">const</span> <span class="nx">J</span> <span class="o">=</span> <span class="nf">jacobian</span><span class="p">(</span><span class="nx">w</span><span class="p">);</span>   <span class="c1">// 자코비안 5개 (= tᵢ·e^(-w·tᵢ))</span>
+  <span class="kd">let</span> <span class="nx">g</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for </span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">J</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="nx">g</span> <span class="o">+=</span> <span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">*</span> <span class="nx">J</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+  <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">g</span><span class="p">;</span>            <span class="c1">// G = 2·Σ eᵢ·Jᵢ</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>→ 위 데모의 🟧 <strong>접선 기울기</strong> = 이 $G$ 값.</p> <hr> <h2 id="11-인터랙티브-데모">11. 인터랙티브 데모</h2> <div id="nonlinear-fitting-1d-demo"></div> <script src="/assets/posts/2026-04-29-nonlinear-fitting-1d.js"></script> <h3 id="보이는-것-위-그래프--t-y">보이는 것 (위 그래프 — t, y)</h3> <p><strong>모델 식</strong>:</p> \[\hat{y}(t) = e^{-w \cdot t}\] <table> <thead> <tr> <th>색상</th> <th>의미</th> <th>식</th> </tr> </thead> <tbody> <tr> <td>🔵 데이터 점</td> <td>노이즈 포함 관측값</td> <td>yᵢ</td> </tr> <tr> <td>🔴 <strong>현재 곡선</strong> </td> <td>현재 wₙ 으로 그린 모델</td> <td>y = e^(−wₙ·t)</td> </tr> <tr> <td>🟢 <strong>다음 곡선</strong> </td> <td>한 걸음 후 wₙ₊₁ 의 모델</td> <td>y = e^(−wₙ₊₁·t)</td> </tr> <tr> <td>🟧/🟦 잔차 점선</td> <td>데이터 − 예측</td> <td>eᵢ = yᵢ − e^(−w·tᵢ)</td> </tr> </tbody> </table> <h3 id="보이는-것-아래-그래프--w-sse--핵심">보이는 것 (아래 그래프 — w, SSE) ★ 핵심</h3> <table> <thead> <tr> <th>색상</th> <th>의미</th> </tr> </thead> <tbody> <tr> <td>🔵 <strong>실제 SSE(w) 곡선</strong> </td> <td>비선형 (전체 풍경)</td> </tr> <tr> <td>🟧 <strong>접선</strong> </td> <td>현재 wₙ 에서의 그래디언트 (기울기)</td> </tr> <tr> <td>🟣 <strong>이차근사 포물선</strong> </td> <td>wₙ 기준 Taylor 1차의 SSE 형태</td> </tr> <tr> <td>🟣 <strong>보라 점</strong> </td> <td>포물선 바닥 = wₙ₊₁ (∂Q/∂w = 0 인 점)</td> </tr> <tr> <td>🟢 작은 점</td> <td>그 위치의 실제 SSE (비교)</td> </tr> <tr> <td>🔵 <strong>화살표</strong> </td> <td>Δw — 한 걸음의 방향 + 크기</td> </tr> </tbody> </table> <h3 id="조작">조작</h3> <ul> <li> <strong>w 슬라이더</strong>: 초기값 설정</li> <li> <strong>▶ 1 Step</strong>: Gauss-Newton 한 번</li> <li> <strong>⏵ Auto</strong>: 수렴까지 자동 반복</li> <li> <strong>↻ Reset</strong>: 슬라이더 값으로 복귀</li> <li> <strong>아래 그래프 클릭</strong>: 그 위치로 reset</li> </ul> <hr> <h2 id="12-한-그래프에서-보이는-것--모든-핵심-개념">12. 한 그래프에서 보이는 것 — 모든 핵심 개념</h2> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SSE(w) 곡선 (🔵 실제, 비선형)              
+     │                                      
+     │ ╲                                    
+     │  ╲                                   
+     │   ╲      ╱                           
+     │    ╲    ╱                            
+     │     ╲══╱  ← 🟣 이차근사 포물선        
+     │      ╳                                
+     │     ╱│╲                              
+     │    ╱ │ ╲                             
+     │   ╱  │  ●  ← 🟣 보라 점 (= 포물선 바닥)
+     │  ╱   │ ╱                             
+     │ ╱    │╱                              
+     │╱     ●  ← 🔴 현재 wₙ                  
+     │      │   ↘ 🟧 접선 (기울기 = G)      
+     │      │                                
+     └──────────→ w                         
+            ↑                               
+        wₙ → wₙ₊₁                           
+        (Δw 만큼 점프)                       
+</code></pre></div></div> <h3 id="모든-개념이-한-그래프에">모든 개념이 한 그래프에:</h3> <ol> <li> <strong>🔵 실제 SSE(w)</strong> — 비선형 풍경</li> <li> <strong>🔴 현재 wₙ</strong> — 시작점</li> <li> <strong>🟧 접선</strong> — 그래디언트 시각화</li> <li> <strong>🟣 이차근사 포물선</strong> — Gauss-Newton 의 시야</li> <li> <strong>🟣 보라 점</strong> — <strong>미분 = 0 인 점</strong> = 포물선 바닥 = $w_{n+1}$</li> <li> <strong>🔵 화살표</strong> — 한 걸음 (Δw)</li> </ol> <hr> <h2 id="13-핵심-직관--미분--0">13. 핵심 직관 — 미분 = 0</h2> <h3 id="파라볼라-식-이차근사">파라볼라 식 (이차근사)</h3> <p>$w_n$ 에서:</p> \[Q(w) = E(w_n) + G \cdot (w - w_n) + \frac{1}{2} H \cdot (w - w_n)^2\] <ul> <li>$G = E’(w_n)$ — 접선 기울기</li> <li>$H \approx \sum J_i^2$ — 곡률 (Gauss-Newton 근사)</li> </ul> <h3 id="미분--0">미분 = 0</h3> \[\frac{dQ}{dw} = G + H \cdot (w - w_n) = 0\] \[\Rightarrow \;\; w_{n+1} = w_n - \frac{G}{H}\] <p>→ <strong>$\Delta w = -G/H$</strong> = “기울기 / 곡률” 만큼 이동.</p> <h3 id="시각적">시각적</h3> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>포물선 ∪                                    
+   ╲      ╱                                  
+    ╲    ╱  ← 어디든 미분 ≠ 0                
+     ╲  ╱                                    
+      ╲╱                                     
+       ●  ← 미분 = 0 (수평 접선)             
+       ↑                                     
+       바닥 = wₙ₊₁                            
+</code></pre></div></div> <hr> <h2 id="14-1d-vs-다변수--같은-원리">14. 1D vs 다변수 — 같은 원리</h2> <table> <thead> <tr> <th> </th> <th>1D (지금)</th> <th>다변수</th> </tr> </thead> <tbody> <tr> <td>변수</td> <td>$w$ 1개</td> <td>$\mathbf{w}$ 벡터</td> </tr> <tr> <td>SSE</td> <td>1D 곡선</td> <td>그릇 (다차원)</td> </tr> <tr> <td>이차근사</td> <td>포물선</td> <td>포물면</td> </tr> <tr> <td>미분=0 점</td> <td>한 점 ($w_{n+1}$)</td> <td>한 점 ($\mathbf{w}_{n+1}$)</td> </tr> <tr> <td>Δw</td> <td>숫자</td> <td>벡터</td> </tr> <tr> <td>정규방정식</td> <td>$H \Delta w = -G$ (스칼라)</td> <td>$J^T J \Delta\mathbf{w} = -J^T \mathbf{e}$ (행렬)</td> </tr> </tbody> </table> <p>→ <strong>본질 동일</strong>, 차원만 확장.</p> <hr> <h2 id="15-실험-추천">15. 실험 추천</h2> <p>브라우저에서:</p> <h3 id="실험-1-가까운-곳에서-시작">실험 1: 가까운 곳에서 시작</h3> <ul> <li>슬라이더 0.7 → “1 Step”</li> <li>🟣 (이차근사) 와 🔵 (실제) 거의 일치</li> <li>한 걸음에 거의 정답 도달</li> </ul> <h3 id="실험-2-멀리서-시작">실험 2: 멀리서 시작</h3> <ul> <li>슬라이더 2.0 → “1 Step”</li> <li>🟣 와 🔵 차이 보임 (비선형)</li> <li>여러 iter 필요</li> </ul> <h3 id="실험-3-매우-작은-값">실험 3: 매우 작은 값</h3> <ul> <li>슬라이더 0.1 → “Auto”</li> <li>$w$ 가 0 근처 → 수렴 어려움 (자코비안 약함)</li> </ul> <h3 id="실험-4-클릭으로-시작점-바꾸기">실험 4: 클릭으로 시작점 바꾸기</h3> <ul> <li>아래 그래프 어디든 클릭 → 그 $w$ 로 reset</li> <li>다양한 시작점에서 수렴 비교</li> </ul> <hr> <h2 id="16-다음-단계">16. 다음 단계</h2> <p>이 1D 직관이 잡히면 → <a href="nonlinear_fitting_visualization.md">2D (다변수) 데모</a> 로 확장.</p> <p>핵심 차이:</p> <ul> <li>1D: 곡선 + 포물선 (한 평면)</li> <li>2D: 그릇 + 포물면 (3D 공간 또는 2D 등고선)</li> </ul> <p><strong>원리는 같음</strong>: 현재 위치에서 이차근사 → 그 바닥으로 점프 → 반복.</p> </body></html>

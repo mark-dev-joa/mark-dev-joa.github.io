@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://mark-dev-joa.github.io/sitemap.xml
