@@ -236,6 +236,11 @@ defaults:
       path: "assets"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
 sass:
   style: compressed
