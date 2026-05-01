@@ -64,24 +64,8 @@
   --global-newsletter-text-color: var(--claude-ink);
 }
 
-/* ------------- Dark mode (Anthropic-style dark navy) ------------- */
-html[data-theme="dark"] {
-  --global-bg-color: var(--claude-surface-dark);
-  --global-code-bg-color: var(--claude-surface-dark-soft);
-  --global-text-color: var(--claude-on-dark);
-  --global-text-color-light: var(--claude-on-dark-soft);
-  --global-theme-color: var(--claude-primary);
-  --global-hover-color: var(--claude-primary-active);
-  --global-hover-text-color: var(--claude-on-primary);
-  --global-footer-bg-color: #0e0d0c;
-  --global-footer-text-color: var(--claude-on-dark-soft);
-  --global-footer-link-color: var(--claude-on-dark);
-  --global-divider-color: var(--claude-surface-dark-elevated);
-  --global-card-bg-color: var(--claude-surface-dark-elevated);
-  --global-highlight-color: var(--claude-accent-amber);
-  --global-newsletter-bg-color: var(--claude-surface-dark-elevated);
-  --global-newsletter-text-color: var(--claude-on-dark);
-}
+/* 다크모드 비활성 — Claude 의 따뜻한 크림 캔버스를 브랜드로 유지
+   (이전 dark theme 블록 제거됨) */
 
 /* ------------- Typography ------------- */
 /* 본문 폰트로 전부 통일 — 헤드라인은 굵기로만 강조 */
@@ -411,14 +395,7 @@ hr {
   }
 }
 
-/* Dark mode navbar */
-html[data-theme="dark"] .navbar {
-  background-color: var(--claude-surface-dark) !important;
-  border-bottom-color: var(--claude-surface-dark-elevated);
-
-  .navbar-brand { color: var(--claude-on-dark) !important; }
-  .nav-link { color: var(--claude-on-dark) !important; }
-}
+/* (다크모드 navbar 블록 제거됨) */
 
 /* ------------- Footer ------------- */
 footer, .footer {
