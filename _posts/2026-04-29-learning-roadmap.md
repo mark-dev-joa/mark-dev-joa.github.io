@@ -55,7 +55,7 @@ math: true
 | [벡터의 외적](/blog/2024/cross-product/) | 3D 벡터 연산 + 평면의 법선 |
 | [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/) | 컴퓨터 비전의 기본 |
 | [평면의 방정식](/blog/2024/equations-of-planes/) | 외적의 첫 응용 |
-| [직선의 방정식](/blog/2024/equations-of-lines/) | 직선/평면 기하 |
+| [직선의 방정식](/blog/2019/equations-of-lines/) | 직선/평면 기하 |
 
 ---
 

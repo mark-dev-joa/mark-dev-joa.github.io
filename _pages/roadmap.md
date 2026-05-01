@@ -23,7 +23,7 @@ nav_order: 2
 - [벡터의 외적 (Cross Product)](/blog/2024/cross-product/)
 - [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/)
 - [평면의 방정식](/blog/2024/equations-of-planes/)
-- [직선의 방정식](/blog/2024/equations-of-lines/)
+- [직선의 방정식](/blog/2019/equations-of-lines/)
 
 ### 🔧 Part 1: 1D 최적화 기초
 
