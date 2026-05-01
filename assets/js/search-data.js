@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-가이드-학습-로드맵",
+        },{id: "post-part-2-3-가중-최소제곱-wls-점마다-다른-노이즈-신뢰도",
+        
+          title: "Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도",
+        
+        description: "Stage 2 의 가정 (모든 점이 같은 노이즈) 을 풀어준 자연스러운 다음 단계. 점마다 다른 σᵢ 인정하면 가중 SSE 가 자연 등장.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/wls-basics/";
+          
+        },
+      },{id: "post-가이드-학습-로드맵",
         
           title: "가이드 학습 로드맵",
         
