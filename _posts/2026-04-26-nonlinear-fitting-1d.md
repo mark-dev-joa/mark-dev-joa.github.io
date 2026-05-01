@@ -2,6 +2,7 @@
 title: Part 1·2 비선형 최소제곱 — 4가지 알고리즘 비교
 description: 파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.
 author: mark
+date: 2026-04-26
 categories: [math, optimization]
 tags: [mle, gauss-newton, levenberg-marquardt, newton, dogleg, jacobian]
 math: true
@@ -12,6 +13,29 @@ math: true
 > **파라미터 1개** 인 가장 단순한 비선형 피팅으로 **모든 핵심 개념** 을 한 그래프에 시각화.
 >
 > 다변수로 가기 전 **반드시 먼저** 이 그림을 머리에 박아두기.
+
+---
+
+## 📋 Gauss-Newton 풀이 — 10단계 표준 흐름
+
+| # | 단계 | 식 |
+|---|---|---|
+| 1 | 모델 정의 | $\hat{y}_i = f(t_i; w)$ |
+| 2 | 잔차 (오차 함수) 정의 | $e_i = y_i - \hat{y}_i$ |
+| 3 | SSE 정의 (최소화 목표) | $E(w) = \sum_i e_i^2$ |
+| 4 | 잔차 1차 테일러 근사 | $e_i(w_n + \Delta w) \approx e_i(w_n) + J_i \Delta w$ |
+| 5 | SSE 에 대입 → 이차식 | $\tilde{E}(\Delta w) = \sum (e_i + J_i \Delta w)^2$ |
+| 6 | $\Delta w$ 로 미분 = 0 | 포물선 바닥 조건 |
+| 7 | 정규방정식 | $(J^T J)\Delta w = -J^T \mathbf{e}$ |
+| 8 | $\Delta w$ 풀기 | $\Delta w = -G/H$ |
+| 9 | 업데이트 | $w_{n+1} = w_n + \Delta w$ |
+| 10 | 반복 (수렴까지) | 새 $w_n$ 에서 4번부터 다시 |
+
+> **이 10단계가 GN 의 본질**.
+>
+> LM, Newton, Dogleg 는 **8번 (Δw 풀기)** 의 변형 — 분모에 $\lambda$ 더하거나 (LM), 진짜 헤시안 쓰거나 (Newton), 거리 자르거나 (Dogleg).
+>
+> 아래 본문은 이 10단계를 우리 데이터로 단계별 검증 + 4가지 알고리즘 비교.
 
 ---
 

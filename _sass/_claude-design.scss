@@ -312,8 +312,9 @@ article table,
 .post-content table,
 table {
   border-collapse: collapse;
-  width: 100%;
-  max-width: 100%;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: table !important;  /* block 으로 덮였을 가능성 차단 */
   margin: 1.5rem 0;
   font-family: $font-body;
   font-size: 0.93em;
