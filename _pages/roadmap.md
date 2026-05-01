@@ -18,7 +18,7 @@ nav_order: 2
 미적분, 선형대수, 기하의 기본 도구. 이후 모든 글의 토대.
 
 - [자연상수 e](/blog/2025/eulers-number-e/)
-- [테일러 급수 (Taylor Series)](/blog/2025/taylor-series/)
+- [테일러 급수 (Taylor Series)](/math/taylor/)
 - [연쇄법칙 (Chain Rule)](/blog/2025/chain-rule/)
 - [벡터의 외적 (Cross Product)](/blog/2024/cross-product/)
 - [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/)

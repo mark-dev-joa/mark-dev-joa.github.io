@@ -50,7 +50,7 @@ math: true
 | 글 | 한 줄 |
 |---|---|
 | [자연상수 e](/blog/2025/eulers-number-e/) | 왜 미분/적분에서 $e$ 가 자연스러운지 |
-| [테일러 급수](/blog/2025/taylor-series/) | 함수를 다항식으로 근사하는 도구 |
+| [테일러 급수](/math/taylor/) | 함수를 다항식으로 근사하는 도구 |
 | [연쇄법칙](/blog/2025/chain-rule/) | 합성함수 미분의 기본 규칙 |
 | [벡터의 외적](/blog/2024/cross-product/) | 3D 벡터 연산 + 평면의 법선 |
 | [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/) | 컴퓨터 비전의 기본 |
