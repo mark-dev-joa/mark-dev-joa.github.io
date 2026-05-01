@@ -2,7 +2,7 @@
 title: Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도
 description: Stage 2 의 가정 (모든 점이 같은 노이즈) 을 풀어준 자연스러운 다음 단계. 점마다 다른 σᵢ 인정하면 가중 SSE 가 자연 등장.
 author: mark
-date: 2026-05-02
+date: 2026-05-01 23:00:00 +0900
 categories: [math, optimization]
 tags: [wls, weighted-least-squares, mle, gaussian, sigma, outlier, sensor-fusion]
 math: true
