@@ -40,6 +40,7 @@ nav_order: 2
 
 - [Part 2·1 최대우도추정(MLE) — 동전과 가우시안](/blog/2026/mle-basics/) ★ 편 5+6 통합
 - [Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증](/blog/2026/mle-sse-1d-walkthrough/)
+- [Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도](/blog/2026/wls-basics/) ★ Stage 3
 - MSE / Cross-entropy 와 ML 위계 *(예정)*
 
 ### 🎬 Part 3: 컴퓨터 비전 응용

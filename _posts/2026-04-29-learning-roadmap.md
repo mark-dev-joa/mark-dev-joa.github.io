@@ -82,6 +82,7 @@ math: true
 | 5+6 | [Part 2·1 최대우도추정(MLE) — 동전과 가우시안](/blog/2026/mle-basics/) | ✓ 발행 |
 | 7 | [Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증](/blog/2026/mle-sse-1d-walkthrough/) | ✓ 발행 |
 | 8 | MSE / Cross-entropy 와 ML 위계 | 🔜 예정 |
+| 9 | [Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈](/blog/2026/wls-basics/) | ✓ 발행 |
 
 > **이 Part 의 한 등식**:
 >
@@ -124,7 +125,7 @@ Part 1, 2 의 도구를 비전 문제에 적용.
 
 | # | 글 | 메모 |
 |---|---|---|
-| 12 | WLS — 가중 SSE | 점마다 다른 노이즈 |
+| ~~12~~ | ~~WLS — 가중 SSE~~ (Part 2·3 으로 발행됨) | — |
 | 13 | MAP / Regularization | **LM 의 $\lambda$ 정체 밝히기** ★ |
 | 14 | Kalman Filter 입문 | 시간 변하는 추정 |
 | 15 | SLAM / 번들조정 | 대규모 비선형 최적화 |
