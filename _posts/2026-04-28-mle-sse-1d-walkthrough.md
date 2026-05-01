@@ -2,6 +2,7 @@
 title: Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증
 description: 노이즈가 가우시안이면 MLE = SSE 최소화 — 추상 명제를 1D 데이터로 숫자까지 직접 계산해서 확인하는 worked example.
 author: mark
+date: 2026-04-28
 categories: [math, optimization]
 tags: [mle, sse, gaussian, likelihood, regression, walkthrough]
 math: true
@@ -13,6 +14,48 @@ math: true
 > 우리가 쓰던 1D 모델로 **숫자까지 직접 계산** 해서 확인.
 >
 > 책처럼 한 줄씩 따라오기.
+
+---
+
+## 📋 MLE 풀이 — 7단계 표준 흐름
+
+**1. 모델 정의** — 예: $\hat{y}(t; w) = e^{-wt}$
+
+**2. PDF (확률 가정)** — 가우시안 노이즈:
+
+$$y_i \sim \mathcal{N}(\hat{y}_i, \sigma^2)$$
+
+**3. Likelihood (모든 점 곱)**:
+
+$$L(w) = \prod_i P(y_i \mid w)$$
+
+**4. log 적용 — 곱이 합으로**:
+
+$$\ell(w) = \log L(w) = \sum_i \log P(y_i \mid w)$$
+
+**5. SSE 등장 (가우시안 케이스)**:
+
+$$\ell(w) = C - \frac{\text{SSE}(w)}{2\sigma^2}$$
+
+**6. 최적화** — GN / LM / Newton / Dogleg 으로 SSE 최소화
+
+**7. 다리 등식 — MLE 최대 = SSE 최소** ★
+
+$$\arg\max_w \ell(w) = \arg\min_w \text{SSE}(w)$$
+
+| 단계 | 영역 | 도구 |
+|---|---|---|
+| 1 | 모델 함수 | $\hat{y} = f(t; w)$ |
+| 2 | **확률 가정** | 가우시안 / 베르누이 / ... |
+| 3 | likelihood 정의 | $\prod$ |
+| 4 | 다루기 쉬운 형태 | $\log$ |
+| 5 | **손실 함수 도출** | $\sum r^2$ (가우시안) |
+| 6 | 알고리즘 | GN / LM / Newton / Dogleg |
+| 7 | **다리 등식** | $\arg\max \ell = \arg\min \text{SSE}$ |
+
+> **이 7단계는 어떤 문제든 적용 가능** — 회귀, 분류, IK, SLAM 등.
+>
+> 아래 본문은 가우시안 회귀 케이스로 단계별 숫자 검증.
 
 ---
 
@@ -113,6 +156,26 @@ $$L(w) = \prod_{i=1}^{5} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\!\left(-\frac{r_i^2}
 $$\boxed{L(w) = \left(\frac{1}{\sqrt{2\pi\sigma^2}}\right)^{\!5} \cdot \exp\!\left(-\frac{1}{2\sigma^2}\sum_{i=1}^{5} r_i^2\right)}$$
 
 → 지수 안 합이 곧 **SSE($w$)**.
+
+#### 📘 참고 — 왜 곱이 합으로 바뀌나
+
+지수함수의 성질:
+
+$$e^a \cdot e^b = e^{a+b}$$
+
+여러 항으로 일반화:
+
+$$\prod_i e^{a_i} = e^{\sum_i a_i}$$
+
+→ **지수의 곱은 지수 안 합으로 변환**.
+
+우리 식에 적용 ($a_i = -r_i^2/2\sigma^2$):
+
+$$\prod_i \exp\!\left(-\frac{r_i^2}{2\sigma^2}\right) = \exp\!\left(-\sum_i \frac{r_i^2}{2\sigma^2}\right) = \exp\!\left(-\frac{1}{2\sigma^2}\sum_i r_i^2\right)$$
+
+(공통 분모 $1/(2\sigma^2)$ 만 밖으로 묶음.)
+
+→ **곱 5개 → 지수 1개 + 안에 합** = SSE 가 자연스럽게 등장하는 비밀.
 
 ---
 
