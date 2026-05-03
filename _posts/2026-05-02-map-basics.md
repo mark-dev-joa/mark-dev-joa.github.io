@@ -560,7 +560,11 @@ $$\boxed{(J^T J + \lambda I) \Delta w = -J^T \mathbf{e}}$$
 
 **둘 다** 적용하면:
 
-$$\text{Loss} = \underbrace{\sum_i w_i r_i^2}_{\text{WLS — 점별}} + \underbrace{\lambda \|w\|^2}_{\text{MAP — 파라미터 prior}}$$
+$$\text{Loss} = \sum_i w_i r_i^2 + \lambda \|w\|^2$$
+
+> 두 항:
+> - $\sum_i w_i r_i^2$ — **WLS** (점별 가중 데이터)
+> - $\lambda \|w\|^2$ — **MAP** (파라미터 prior)
 
 ### 정규방정식
 
