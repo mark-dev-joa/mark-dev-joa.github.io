@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-part-2-3-가중-최소제곱-wls-점마다-다른-노이즈-신뢰도",
+        },{id: "post-part-2-4-map-사전-지식-추가-lm-의-λ-정체",
+        
+          title: "Part 2·4 MAP — 사전 지식 추가, LM 의 λ 정체",
+        
+        description: "MLE 위에 prior 를 추가한 MAP. 가우시안 prior 가 어떻게 L2 정칙화로 자연 도출되는지, LM 의 λ 가 사실 prior 강도임을 밝히는 글.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/map-basics/";
+          
+        },
+      },{id: "post-part-2-3-가중-최소제곱-wls-점마다-다른-노이즈-신뢰도",
         
           title: "Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도",
         
