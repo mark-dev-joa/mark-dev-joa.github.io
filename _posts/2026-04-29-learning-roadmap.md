@@ -102,6 +102,7 @@ MLE/MAP 본격 들어가기 전 **확률 격차 메우기**. 다음 5가지만:
 | 7 | [Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증](/blog/2026/mle-sse-1d-walkthrough/) | ✓ 발행 |
 | 8 | MSE / Cross-entropy 와 ML 위계 | 🔜 예정 |
 | 9 | [Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈](/blog/2026/wls-basics/) | ✓ 발행 |
+| 10 | [Part 2·4 MAP — 사전 지식 추가, LM 의 λ 정체](/blog/2026/map-basics/) | ✓ 발행 |
 
 > **이 Part 의 한 등식**:
 >
@@ -145,7 +146,7 @@ Part 1, 2 의 도구를 비전 문제에 적용.
 | # | 글 | 메모 |
 |---|---|---|
 | ~~12~~ | ~~WLS — 가중 SSE~~ (Part 2·3 으로 발행됨) | — |
-| 13 | MAP / Regularization | **LM 의 $\lambda$ 정체 밝히기** ★ |
+| ~~13~~ | ~~MAP / Regularization~~ (Part 2·4 으로 발행됨) | — |
 | 14 | Kalman Filter 입문 | 시간 변하는 추정 |
 | 15 | SLAM / 번들조정 | 대규모 비선형 최적화 |
 
