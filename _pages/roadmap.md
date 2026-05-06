@@ -38,7 +38,8 @@ nav_order: 2
 
 확률 vs 확률 밀도, 가우시안, 곱셈 규칙, 조건부, 베이즈 — 5단계로 단숨에.
 
-- 확률 입문 — MLE 전에 알아야 할 5가지 *(예정)*
+- [Part 1·5 확률 입문 — MLE 전에 알아야 할 5가지](/blog/2026/probability-basics/)
+- [부록 확률 분포 개관 — 자주 쓰는 10 개 분포 카탈로그](/blog/2026/distributions-overview/)
 
 ---
 
