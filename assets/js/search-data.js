@@ -23,7 +23,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-part-2-4-map-사전-지식-추가-lm-의-λ-정체",
+        },{id: "post-부록-확률-분포-개관-pdf-pmf-와-자주-쓰는-10-개-분포",
+        
+          title: "부록 확률 분포 개관 — PDF/PMF 와 자주 쓰는 10 개 분포",
+        
+        description: "확률 분포의 큰 지도. 연속/이산 분류, 자주 쓰는 10 개 분포의 식·적분·평균·분산 카탈로그, Lambert W 등 비초등 함수 정리.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/distributions-overview/";
+          
+        },
+      },{id: "post-part-1-5-확률-입문-mle-전에-알아야-할-5가지",
+        
+          title: "Part 1·5 확률 입문 — MLE 전에 알아야 할 5가지",
+        
+        description: "PDF/PMF, 가우시안, 곱셈/독립, 조건부, 베이즈. 적분 직관과 가우시안 적분 전개까지 — MLE 들어가기 전 확률 격차 메우기.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/probability-basics/";
+          
+        },
+      },{id: "post-part-2-4-map-사전-지식-추가-lm-의-λ-정체",
         
           title: "Part 2·4 MAP — 사전 지식 추가, LM 의 λ 정체",
         
