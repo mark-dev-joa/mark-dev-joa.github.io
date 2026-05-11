@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-부록-확률-분포-개관-pdf-pmf-와-자주-쓰는-10-개-분포",
+        },{id: "post-lie-이론-기초-회전이-더할-수-없는-이유부터-bch-까지",
+        
+          title: "Lie 이론 기초 — 회전이 더할 수 없는 이유부터 BCH 까지",
+        
+        description: "SO(3) 와 SE(3) 위의 회전과 강체 변환을 다루는 Lie 이론 입문. Group, smooth manifold, tangent space, Lie algebra, Rodrigues 공식, exp/log map, IK/SLAM 응용, BCH 공식까지 한 cycle 정리.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/lie-theory-basics/";
+          
+        },
+      },{id: "post-부록-확률-분포-개관-pdf-pmf-와-자주-쓰는-10-개-분포",
         
           title: "부록 확률 분포 개관 — PDF/PMF 와 자주 쓰는 10 개 분포",
         
