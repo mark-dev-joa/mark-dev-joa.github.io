@@ -23,7 +23,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/roadmap/";
           },
-        },{id: "post-lie-이론-기초-회전이-더할-수-없는-이유부터-bch-까지",
+        },{id: "post-도함수-그라디언트-자코비안",
+        
+          title: "도함수, 그라디언트, 자코비안",
+        
+        description: "1 차 미분이 입력과 출력의 차원에 따라 형태를 바꾸는 흐름. 도함수에서 출발해 편미분, 그라디언트, 자코비안까지 단계별로 정리하고 1 차 테일러 근사가 어떻게 일관되게 일반화되는지 본다.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/derivative-gradient-jacobian/";
+          
+        },
+      },{id: "post-lie-이론-기초-회전이-더할-수-없는-이유부터-bch-까지",
         
           title: "Lie 이론 기초 — 회전이 더할 수 없는 이유부터 BCH 까지",
         
