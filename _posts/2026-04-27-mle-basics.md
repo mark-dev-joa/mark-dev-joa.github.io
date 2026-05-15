@@ -43,11 +43,19 @@ $$L(\theta) = \theta^3 (1-\theta)^2$$
 
 이것은 $\theta$ 의 1 차원 함수이며, 이 함수의 최댓값을 주는 $\theta$ 가 MLE 추정값이다.
 
+### Log 변환 — 곱을 합으로
+
+직접 $L(\theta)$ 를 미분하는 대신 먼저 로그를 취한다. 로그는 단조 증가 함수이므로 $L(\theta)$ 를 최대화하는 $\theta$ 와 $\log L(\theta)$ 를 최대화하는 $\theta$ 가 같다. 로그를 취하면 곱이 합으로 바뀌어 미분이 훨씬 단순해진다.
+
+$$\ell(\theta) = \log L(\theta) = \log \left[\theta^3 (1-\theta)^2\right]$$
+
+로그의 곱셈 규칙 $\log(ab) = \log a + \log b$ 와 거듭제곱 규칙 $\log(a^n) = n \log a$ 를 적용한다.
+
+$$\ell(\theta) = \log \theta^3 + \log (1-\theta)^2 = 3 \log \theta + 2 \log(1-\theta)$$
+
+$\theta^3 \cdot (1-\theta)^2$ 의 곱이 $3 \log \theta + 2 \log(1-\theta)$ 의 합으로 바뀌었다. 일반화하면 $N$ 개의 항이 곱해진 likelihood $\prod_{i=1}^{N} P(x_i \mid \theta)$ 가 합 $\sum_{i=1}^{N} \log P(x_i \mid \theta)$ 로 바뀌어, 데이터 수와 무관하게 미분이 단순한 합의 미분으로 환원된다. 로그를 쓰는 더 자세한 이유는 §3 에서 다룬다.
+
 ### 미분으로 풀기
-
-먼저 log 를 취해 곱을 합으로 바꾼다 (로그를 취하는 이유는 다음 절에서 다룬다).
-
-$$\ell(\theta) = \log L(\theta) = 3 \log \theta + 2 \log(1-\theta)$$
 
 $\theta$ 에 대해 미분한다.
 
@@ -115,6 +123,19 @@ MLE 는 다음 여섯 단계의 패턴을 따른다. 동전 예에 대응시켜 
 $$\ell(w) = C - \frac{\text{SSE}(w)}{2\sigma^2}$$
 
 이 등식은 likelihood 라는 확률론적 양과 SSE 라는 최적화 목적 함수를 직접 연결한다. 좌변을 최대화하는 $w$ 와 우변의 SSE 를 최소화하는 $w$ 가 정확히 같다. 통계 시점의 MLE 와 최적화 시점의 GN/LM 이 같은 답에 도달하는 이유가 여기에 있다. 아래 절들은 이 등식을 유도하고, 그 직관을 조명하며, 응용 사례를 짚는다.
+
+Stage 1 의 동전과 같은 여섯 단계 패턴을 회귀 문제에 그대로 적용한다. PDF 를 다루기 때문에 likelihood 가 곱이 아니라 가우시안 밀도의 곱이 되고, log 를 취하면 합 안에 제곱항이 등장하는 점만 다르다.
+
+| 단계 | 회귀 (가우시안 노이즈) |
+|---|---|
+| 1. 데이터 | $(t_i, y_i)$, $i = 1, \dots, N$ |
+| 2. 모델 | $y_i = \hat{y}(t_i; w) + \epsilon_i$, $\epsilon_i \sim \mathcal{N}(0, \sigma^2)$ |
+| 3. Likelihood | $L(w) = \prod_i \mathcal{N}(y_i; \hat{y}_i, \sigma^2)$ |
+| 4. log | $\ell(w) = C - \dfrac{1}{2\sigma^2} \sum_i (y_i - \hat{y}_i)^2$ |
+| 5. 미분 = 0 | $\sum_i (y_i - \hat{y}_i) \cdot \partial \hat{y}_i / \partial w = 0$ |
+| 6. 풀기 | $w^* = \arg\min_w \text{SSE}(w)$ (Gauss-Newton 등) |
+
+이산 데이터의 동전 예에서는 4 단계의 합이 $k\log\theta + (N-k)\log(1-\theta)$ 형태였지만, 연속 데이터의 회귀에서는 합이 $-\sum (y_i - \hat{y}_i)^2 / (2\sigma^2)$ 의 제곱항으로 바뀐다. 이 제곱항이 곧 SSE 이며, MLE 의 최대화 문제가 SSE 의 최소화 문제와 동치가 되는 핵심이다.
 
 ## 6. 회귀 문제의 확률 모델
 

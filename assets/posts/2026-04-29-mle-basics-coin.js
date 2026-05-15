@@ -95,10 +95,9 @@
     for (let i = 0; i < yTickStrs.length; i++) {
       ctx.fillText(yTickStrs[i], m.left - 4, yTickPos[i] + 3);
     }
-    // labels
+    // labels (y축 라벨은 제목 식에 이미 포함되어 있어 생략)
     ctx.fillStyle = "#374151"; ctx.font = "11px sans-serif"; ctx.textAlign = "center";
     ctx.fillText("θ", m.left + pw(c) - 5, m.top + ph(c) + 28);
-    ctx.fillText(yLabel, m.left + 18, m.top - 8);
   }
 
   function drawTop() {
@@ -107,10 +106,10 @@
 
     // Title
     ctx.fillStyle = "#374151"; ctx.font = "12px monospace"; ctx.textAlign = "left";
-    ctx.fillText("L(θ) = θ^k · (1−θ)^(N−k)   k=" + k + ", N−k=" + nT + ", N=" + N(), m.left, 18);
+    ctx.fillText("L(θ) = θ^k · (1−θ)^(N−k)", m.left, 18);
     const ts = thetaStar();
-    ctx.fillStyle = "#1d4ed8";
-    ctx.fillText("★ MLE θ* = " + k + "/" + N() + " = " + ts.toFixed(3), m.left + 380, 18);
+    ctx.fillStyle = "#1d4ed8"; ctx.textAlign = "right";
+    ctx.fillText("★ MLE θ* = " + k + "/" + N() + " = " + ts.toFixed(3), m.left + pw(c), 18);
 
     // y ticks for L
     const lMax = L(ts) > 0 ? L(ts) * 1.1 : 1;
@@ -148,9 +147,13 @@
     ctx.beginPath();
     ctx.arc(thetaToPx(c, theta), valToPxL(c, lAtCur, lMax), 6, 0, 2*Math.PI);
     ctx.fill();
-    ctx.font = "11px sans-serif"; ctx.textAlign = "left";
-    ctx.fillText("θ = " + theta.toFixed(3), thetaToPx(c, theta) + 8, m.top + 14);
-    ctx.fillText("L = " + lAtCur.toExponential(2), thetaToPx(c, theta) + 8, m.top + 28);
+    ctx.font = "11px sans-serif";
+    const cursorPxL = thetaToPx(c, theta);
+    const onRightL = cursorPxL > m.left + pw(c) * 0.6;
+    ctx.textAlign = onRightL ? "right" : "left";
+    const dxL = onRightL ? -8 : 8;
+    ctx.fillText("θ = " + theta.toFixed(3), cursorPxL + dxL, m.top + 14);
+    ctx.fillText("L = " + lAtCur.toExponential(2), cursorPxL + dxL, m.top + 28);
 
     // MLE marker
     ctx.fillStyle = "#1d4ed8";
@@ -167,10 +170,10 @@
 
     // Title
     ctx.fillStyle = "#374151"; ctx.font = "12px monospace"; ctx.textAlign = "left";
-    ctx.fillText("ℓ(θ) = log L = k·log θ + (N−k)·log(1−θ)", m.left, 18);
+    ctx.fillText("ℓ(θ) = k·log θ + (N−k)·log(1−θ)", m.left, 18);
     const ts = thetaStar();
-    ctx.fillStyle = "#7e22ce";
-    ctx.fillText("ℓ_max = " + logL(ts).toFixed(3), m.left + 360, 18);
+    ctx.fillStyle = "#7e22ce"; ctx.textAlign = "right";
+    ctx.fillText("ℓ_max = " + logL(ts).toFixed(3), m.left + pw(c), 18);
 
     // 범위: ℓ_max 에서 -10 정도까지
     const llMax = logL(ts);
@@ -212,8 +215,12 @@
       ctx.arc(thetaToPx(c, theta), valToPxLL(c, llAtCur, llMin, llMax), 6, 0, 2*Math.PI);
       ctx.fill();
     }
-    ctx.fillStyle = "#dc2626"; ctx.font = "11px sans-serif"; ctx.textAlign = "left";
-    ctx.fillText("ℓ(θ) = " + (llAtCur === -Infinity ? "−∞" : llAtCur.toFixed(3)), thetaToPx(c, theta) + 8, m.top + 14);
+    ctx.fillStyle = "#dc2626"; ctx.font = "11px sans-serif";
+    const cursorPxLL = thetaToPx(c, theta);
+    const onRightLL = cursorPxLL > m.left + pw(c) * 0.6;
+    ctx.textAlign = onRightLL ? "right" : "left";
+    const dxLL = onRightLL ? -8 : 8;
+    ctx.fillText("ℓ(θ) = " + (llAtCur === -Infinity ? "−∞" : llAtCur.toFixed(3)), cursorPxLL + dxLL, m.top + 14);
 
     // MLE
     ctx.fillStyle = "#1d4ed8";

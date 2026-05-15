@@ -119,18 +119,33 @@
     }
     ctx.stroke();
 
-    // Data points + 잔차 표시
+    // Data points + 잔차 + 점별 확률 밀도값 (likelihood 기여도)
     for (let i = 0; i < T_DATA.length; i++) {
       const yi_hat = model(T_DATA[i], w);
+      const px = tToPx(T_DATA[i]);
+      const py = yToPx(Y_DATA[i]);
+      const pyHat = yToPx(yi_hat);
       // 잔차 선
       ctx.strokeStyle = "#9ca3af"; ctx.lineWidth = 0.8;
       ctx.beginPath();
-      ctx.moveTo(tToPx(T_DATA[i]), yToPx(Y_DATA[i]));
-      ctx.lineTo(tToPx(T_DATA[i]), yToPx(yi_hat));
+      ctx.moveTo(px, py);
+      ctx.lineTo(px, pyHat);
       ctx.stroke();
-      // 데이터 점
+      // 모델 예측 점 (중앙치 ŷᵢ) — 작은 빨간 점 + 정점 밀도값
+      ctx.fillStyle = "#dc2626"; ctx.strokeStyle = "#fff"; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(px, pyHat, 3.5, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+      const pdfPeak = gaussPDF(yi_hat, yi_hat, sigma);
+      ctx.fillStyle = "#b91c1c";
+      ctx.font = "10px monospace";
+      ctx.textAlign = "left";
+      ctx.fillText(pdfPeak.toFixed(2), px + 6, pyHat + 3);
+      // 관측 데이터 점 + 그 위치의 밀도값 (점 위에 표시)
       ctx.fillStyle = "#1d4ed8"; ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.2;
-      ctx.beginPath(); ctx.arc(tToPx(T_DATA[i]), yToPx(Y_DATA[i]), 5, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.arc(px, py, 5, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+      const pdfVal = gaussPDF(Y_DATA[i], yi_hat, sigma);
+      ctx.fillStyle = "#1e40af";
+      ctx.textAlign = "center";
+      ctx.fillText(pdfVal.toFixed(2), px, py - 9);
     }
 
     // Legend
