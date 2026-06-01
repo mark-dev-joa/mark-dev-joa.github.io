@@ -1,5 +1,5 @@
 ---
-title: 에러와 자코비안 정리 (Errors and Jacobians) — SLAM 최적화의 핵심
+title: 에러와 자코비안 정리
 description: MLE 기반 에러 함수 유도부터 Gauss-Newton 실전 풀이까지, 실제 데이터로 한 스텝씩
 author: mark
 categories: [math, optimization, slam]

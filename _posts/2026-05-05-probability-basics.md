@@ -1,5 +1,5 @@
 ---
-title: Part 1·5 확률 입문 — MLE 전에 알아야 할 5가지
+title: Part 1·5 확률 입문
 description: PDF/PMF, 가우시안, 곱셈/독립, 조건부, 베이즈. 적분 직관과 가우시안 적분 전개까지 — MLE 들어가기 전 확률 격차 메우기.
 author: mark
 date: 2026-05-05 12:00:00 +0900

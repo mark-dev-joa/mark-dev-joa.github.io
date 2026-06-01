@@ -1,5 +1,5 @@
 ---
-title: 최적화 이론 기초 정리 (Gradient Descent, Newton, Gauss-Newton, Levenberg-Marquardt)
+title: 최적화 이론 기초
 description: 최적화 알고리즘을 직관적으로 이해하기
 author: mark
 categories: [math, optimization]

@@ -1,5 +1,5 @@
 ---
-title: Lie 이론 기초 — 회전이 더할 수 없는 이유부터 BCH 까지
+title: Lie 이론 기초
 description: SO(3) 와 SE(3) 위의 회전과 강체 변환을 다루는 Lie 이론 입문. Group, smooth manifold, tangent space, Lie algebra, Rodrigues 공식, exp/log map, IK/SLAM 응용, BCH 공식까지 한 cycle 정리.
 author: mark
 date: 2026-05-11 12:00:00 +0900

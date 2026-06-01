@@ -1,5 +1,5 @@
 ---
-title: Part 2·4 베이즈 정리 — 조건부 확률에서 추정 framework 까지
+title: Part 2·4 베이즈 정리
 description: 조건부 확률의 정의에서 베이즈 정리를 유도하고, posterior/likelihood/prior/evidence 의 의미와 MLE/MAP 으로의 연결을 주사위 예제와 시각화로 정리.
 author: mark
 date: 2026-05-03 12:00:00 +0900
