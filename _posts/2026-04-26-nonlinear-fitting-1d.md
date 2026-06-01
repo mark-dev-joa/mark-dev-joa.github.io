@@ -110,20 +110,20 @@ $$e_i(w_n + \Delta w) \approx e_i(w_n) + J_i(w_n) \cdot \Delta w$$
 
 ### 1D 비유
 
-<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:600px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
-  <rect x="0" y="0" width="600" height="280" fill="#fafbfc"/>
-  <text x="300" y="24" text-anchor="middle" fill="#222" font-size="14" font-weight="700">잔차 곡선과 1차 테일러 (접선) — w_n 근처에서만 곡선 ≈ 직선</text>
-  <line x1="60" y1="240" x2="560" y2="240" stroke="#999" stroke-width="1"/>
-  <line x1="60" y1="50" x2="60" y2="240" stroke="#999" stroke-width="1"/>
-  <text x="48" y="56" text-anchor="end" fill="#666" font-size="11">e</text>
-  <text x="556" y="258" text-anchor="end" fill="#666" font-size="11">w</text>
-  <path d="M 90,70 Q 250,150 540,225" fill="none" stroke="#1565c0" stroke-width="2.5"/>
-  <text x="455" y="205" fill="#1565c0" font-size="13" font-weight="700">잔차 e(w)</text>
-  <line x1="120" y1="95" x2="360" y2="200" stroke="#e53935" stroke-width="2.5" stroke-dasharray="6,4"/>
-  <text x="250" y="130" fill="#e53935" font-size="13" font-weight="700">1차 테일러 (접선)</text>
-  <circle cx="232" cy="160" r="5" fill="#222"/>
-  <text x="232" y="182" text-anchor="middle" fill="#222" font-size="12" font-weight="700">w_n</text>
-  <text x="300" y="266" text-anchor="middle" fill="#666" font-size="11">w_n 에서 곡선과 접선이 일치하고, 멀어질수록 차이가 벌어진다</text>
+<svg viewBox="0 0 600 270" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:600px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
+  <rect x="0" y="0" width="600" height="270" fill="#ffffff"/>
+  <text x="300" y="22" text-anchor="middle" fill="#333" font-size="13" font-weight="600">잔차 곡선과 그 접선 (1차 테일러)</text>
+  <line x1="70" y1="230" x2="560" y2="230" stroke="#ccc" stroke-width="1"/>
+  <line x1="90" y1="50" x2="90" y2="230" stroke="#ccc" stroke-width="1"/>
+  <text x="82" y="58" text-anchor="end" fill="#999" font-size="11">e</text>
+  <text x="556" y="248" text-anchor="end" fill="#999" font-size="11">w</text>
+  <polyline fill="none" stroke="#3a6ea5" stroke-width="2.2" points="90.0,74.6 101.2,85.4 112.5,95.4 123.8,104.7 135.0,113.4 146.2,121.5 157.5,129.0 168.8,136.0 180.0,142.4 191.2,148.5 202.5,154.1 213.8,159.3 225.0,164.2 236.2,168.7 247.5,172.9 258.8,176.8 270.0,180.4 281.2,183.8 292.5,186.9 303.8,189.9 315.0,192.6 326.2,195.1 337.5,197.5 348.8,199.7 360.0,201.7 371.2,203.6 382.5,205.3 393.8,207.0 405.0,208.5 416.3,209.9 427.5,211.2 438.8,212.5 450.0,213.6 461.2,214.7 472.5,215.6 483.8,216.6 495.0,217.4 506.2,218.2 517.5,218.9 528.8,219.6 540.0,220.3"/>
+  <text x="455" y="212" fill="#3a6ea5" font-size="12">잔차 e(w)</text>
+  <line x1="97.8" y1="97.6" x2="337" y2="228" stroke="#b0392b" stroke-width="1.6" stroke-dasharray="6,4"/>
+  <text x="250" y="135" fill="#b0392b" font-size="12">접선 (1차 테일러)</text>
+  <circle cx="183.1" cy="144.2" r="4" fill="#b0392b"/>
+  <text x="183.1" y="135" text-anchor="middle" fill="#333" font-size="11">w_n</text>
+  <text x="300" y="258" text-anchor="middle" fill="#777" font-size="11">w_n 에서 곡선과 접선이 맞닿고, 멀어질수록 벌어진다</text>
 </svg>
 
 ### 왜 이렇게 하나
@@ -199,25 +199,25 @@ $w_n = 1.5$ 에서 세 계수를 계산하면 다음과 같고, 한 걸음의 �
 ### 흐름도
 
 <svg viewBox="0 0 560 470" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:560px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
-  <rect x="0" y="0" width="560" height="470" fill="#fafbfc"/>
-  <text x="280" y="24" text-anchor="middle" fill="#222" font-size="14" font-weight="700">Gauss-Newton 한 걸음의 유도 흐름</text>
-  <rect x="130" y="40" width="300" height="40" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
-  <text x="280" y="65" text-anchor="middle" fill="#0d47a1" font-size="12">잔차 1차 테일러: e(w_n+Δw) ≈ e(w_n) + J·Δw</text>
-  <rect x="160" y="98" width="240" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="280" y="120" text-anchor="middle" fill="#37474f" font-size="12">SSE 에 대입 ([·]² 합)</text>
-  <rect x="130" y="150" width="300" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="280" y="172" text-anchor="middle" fill="#37474f" font-size="12">a + 2b·Δw + c·Δw² (Δw 의 이차함수)</text>
-  <rect x="180" y="202" width="200" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="280" y="224" text-anchor="middle" fill="#37474f" font-size="12">미분: 2b + 2c·Δw</text>
-  <rect x="170" y="254" width="220" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="280" y="276" text-anchor="middle" fill="#37474f" font-size="12">= 0 (포물선 바닥 조건)</text>
-  <rect x="160" y="306" width="240" height="40" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-  <text x="280" y="331" text-anchor="middle" fill="#e65100" font-size="13" font-weight="700">Δw = −b/c = −G/H (한 걸음)</text>
-  <rect x="175" y="364" width="210" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-  <text x="280" y="386" text-anchor="middle" fill="#1b5e20" font-size="12">w_{n+1} = w_n + Δw</text>
-  <rect x="180" y="416" width="200" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="280" y="438" text-anchor="middle" fill="#37474f" font-size="12">반복 (새 w_n 에서 처음부터)</text>
-  <g stroke="#888" stroke-width="1.3">
+  <rect x="0" y="0" width="560" height="470" fill="#ffffff"/>
+  <text x="280" y="24" text-anchor="middle" fill="#333" font-size="13" font-weight="600">Gauss-Newton 한 걸음의 유도 흐름</text>
+  <rect x="130" y="40" width="300" height="40" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+  <text x="280" y="65" text-anchor="middle" fill="#333" font-size="12">잔차 1차 테일러: e(w_n+Δw) ≈ e(w_n) + J·Δw</text>
+  <rect x="160" y="98" width="240" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="280" y="120" text-anchor="middle" fill="#333" font-size="12">SSE 에 대입 ([·]² 합)</text>
+  <rect x="130" y="150" width="300" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="280" y="172" text-anchor="middle" fill="#333" font-size="12">a + 2b·Δw + c·Δw² (Δw 의 이차함수)</text>
+  <rect x="180" y="202" width="200" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="280" y="224" text-anchor="middle" fill="#333" font-size="12">미분: 2b + 2c·Δw</text>
+  <rect x="170" y="254" width="220" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="280" y="276" text-anchor="middle" fill="#333" font-size="12">= 0 (포물선 바닥 조건)</text>
+  <rect x="160" y="306" width="240" height="40" rx="3" fill="#eeeeee" stroke="#555" stroke-width="1.4"/>
+  <text x="280" y="331" text-anchor="middle" fill="#222" font-size="13" font-weight="600">Δw = −b/c = −G/H (한 걸음)</text>
+  <rect x="175" y="364" width="210" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="280" y="386" text-anchor="middle" fill="#333" font-size="12">w_{n+1} = w_n + Δw</text>
+  <rect x="180" y="416" width="200" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="280" y="438" text-anchor="middle" fill="#333" font-size="12">반복 (새 w_n 에서 처음부터)</text>
+  <g stroke="#aaa" stroke-width="1.2">
     <line x1="280" y1="80" x2="280" y2="98" marker-end="url(#nfa)"/>
     <line x1="280" y1="132" x2="280" y2="150" marker-end="url(#nfa)"/>
     <line x1="280" y1="184" x2="280" y2="202" marker-end="url(#nfa)"/>
@@ -228,7 +228,7 @@ $w_n = 1.5$ 에서 세 계수를 계산하면 다음과 같고, 한 걸음의 �
   </g>
   <defs>
     <marker id="nfa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#888"/>
+      <path d="M0,0 L10,5 L0,10 z" fill="#aaa"/>
     </marker>
   </defs>
 </svg>
@@ -336,23 +336,23 @@ $$\boxed{E''(w) = 2 \sum_i J_i^2 \;+\; 2 \sum_i e_i \cdot J_i'}$$
 #### 흐름 요약
 
 <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:620px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
-  <rect x="0" y="0" width="620" height="320" fill="#fafbfc"/>
-  <text x="310" y="24" text-anchor="middle" fill="#222" font-size="14" font-weight="700">SSE 의 두 번 미분 — 진짜 헤시안의 두 항</text>
-  <rect x="220" y="40" width="180" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
-  <text x="310" y="62" text-anchor="middle" fill="#0d47a1" font-size="13">E(w) = Σ eᵢ²</text>
-  <text x="330" y="92" fill="#888" font-size="10">d/dw (Step 1)</text>
-  <rect x="180" y="100" width="260" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="310" y="122" text-anchor="middle" fill="#37474f" font-size="12">E'(w) = 2·Σ eᵢ·Jᵢ  (그래디언트 G)</text>
-  <text x="330" y="152" fill="#888" font-size="10">d/dw (Step 2, 곱미분)</text>
-  <rect x="150" y="160" width="320" height="40" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="310" y="185" text-anchor="middle" fill="#37474f" font-size="12">E''(w) = 2·Σ Jᵢ² + 2·Σ eᵢ·Jᵢ'  (진짜 헤시안)</text>
-  <rect x="120" y="240" width="220" height="50" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-  <text x="230" y="262" text-anchor="middle" fill="#1b5e20" font-size="12" font-weight="700">2·Σ Jᵢ² 항</text>
-  <text x="230" y="280" text-anchor="middle" fill="#1b5e20" font-size="11">GN 이 사용 (1차 정보)</text>
-  <rect x="360" y="240" width="220" height="50" rx="6" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
-  <text x="470" y="262" text-anchor="middle" fill="#b71c1c" font-size="12" font-weight="700">2·Σ eᵢ·Jᵢ' 항</text>
-  <text x="470" y="280" text-anchor="middle" fill="#b71c1c" font-size="11">GN 이 버림 (2차 미분)</text>
-  <g stroke="#888" stroke-width="1.3">
+  <rect x="0" y="0" width="620" height="320" fill="#ffffff"/>
+  <text x="310" y="24" text-anchor="middle" fill="#333" font-size="13" font-weight="600">SSE 의 두 번 미분 — 진짜 헤시안의 두 항</text>
+  <rect x="220" y="40" width="180" height="34" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+  <text x="310" y="62" text-anchor="middle" fill="#333" font-size="13">E(w) = Σ eᵢ²</text>
+  <text x="330" y="92" fill="#999" font-size="10">d/dw (Step 1)</text>
+  <rect x="180" y="100" width="260" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="310" y="122" text-anchor="middle" fill="#333" font-size="12">E'(w) = 2·Σ eᵢ·Jᵢ  (그래디언트 G)</text>
+  <text x="330" y="152" fill="#999" font-size="10">d/dw (Step 2, 곱미분)</text>
+  <rect x="150" y="160" width="320" height="40" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="310" y="185" text-anchor="middle" fill="#333" font-size="12">E''(w) = 2·Σ Jᵢ² + 2·Σ eᵢ·Jᵢ'  (진짜 헤시안)</text>
+  <rect x="120" y="240" width="220" height="50" rx="3" fill="#eeeeee" stroke="#555" stroke-width="1.3"/>
+  <text x="230" y="262" text-anchor="middle" fill="#222" font-size="12" font-weight="600">2·Σ Jᵢ² 항</text>
+  <text x="230" y="280" text-anchor="middle" fill="#444" font-size="11">GN 이 사용 (1차 정보)</text>
+  <rect x="360" y="240" width="220" height="50" rx="3" fill="#ffffff" stroke="#bbb" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="470" y="262" text-anchor="middle" fill="#999" font-size="12">2·Σ eᵢ·Jᵢ' 항</text>
+  <text x="470" y="280" text-anchor="middle" fill="#aaa" font-size="11">GN 이 버림 (2차 미분)</text>
+  <g stroke="#aaa" stroke-width="1.2">
     <line x1="310" y1="74" x2="310" y2="100" marker-end="url(#nha)"/>
     <line x1="310" y1="134" x2="310" y2="160" marker-end="url(#nha)"/>
     <line x1="310" y1="200" x2="230" y2="240" marker-end="url(#nha)"/>
@@ -360,7 +360,7 @@ $$\boxed{E''(w) = 2 \sum_i J_i^2 \;+\; 2 \sum_i e_i \cdot J_i'}$$
   </g>
   <defs>
     <marker id="nha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#888"/>
+      <path d="M0,0 L10,5 L0,10 z" fill="#aaa"/>
     </marker>
   </defs>
 </svg>
@@ -452,24 +452,24 @@ $\lambda$ 가 0 이면 순수 Gauss-Newton 이라 점프가 크고 위험하며,
 LM 의 핵심은 $\lambda$ 를 고정하지 않고 매 단계 SSE 변화에 따라 조절하는 데 있다. 한 걸음을 시도해 SSE 가 줄면 그 걸음을 받아들이고 $\lambda$ 를 10 으로 나눠 다음 걸음을 더 과감하게 잡고, SSE 가 늘면 걸음을 거부하고 $\lambda$ 에 10 을 곱해 더 보수적으로 만든다.
 
 <svg viewBox="0 0 620 360" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:620px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
-  <rect x="0" y="0" width="620" height="360" fill="#fafbfc"/>
-  <text x="310" y="24" text-anchor="middle" fill="#222" font-size="14" font-weight="700">LM 적응형 λ — SSE 변화에 따른 수락 / 거부</text>
-  <rect x="200" y="40" width="220" height="40" rx="6" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5"/>
-  <text x="310" y="60" text-anchor="middle" fill="#e65100" font-size="12">시도: w_try = w_n + Δw</text>
-  <text x="310" y="74" text-anchor="middle" fill="#f57c00" font-size="11">(현재 λ 로 계산)</text>
-  <rect x="195" y="100" width="230" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="310" y="122" text-anchor="middle" fill="#37474f" font-size="12">SSE_after vs SSE_before</text>
-  <rect x="70" y="180" width="230" height="50" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-  <text x="185" y="202" text-anchor="middle" fill="#1b5e20" font-size="12" font-weight="700">감소 (좋음): 점프 수락</text>
-  <text x="185" y="220" text-anchor="middle" fill="#1b5e20" font-size="11">λ ÷ 10 (GN 처럼 빠르게)</text>
-  <rect x="320" y="180" width="230" height="50" rx="6" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
-  <text x="435" y="202" text-anchor="middle" fill="#b71c1c" font-size="12" font-weight="700">증가 (나쁨): 점프 거부</text>
-  <text x="435" y="220" text-anchor="middle" fill="#b71c1c" font-size="11">λ × 10 (GD 처럼 안전하게)</text>
-  <rect x="85" y="270" width="200" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="185" y="292" text-anchor="middle" fill="#37474f" font-size="12">다음 iteration</text>
-  <rect x="335" y="270" width="200" height="34" rx="6" fill="#fff" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="435" y="292" text-anchor="middle" fill="#37474f" font-size="12">같은 w 유지, 재시도</text>
-  <g stroke="#888" stroke-width="1.3">
+  <rect x="0" y="0" width="620" height="360" fill="#ffffff"/>
+  <text x="310" y="24" text-anchor="middle" fill="#333" font-size="13" font-weight="600">LM 적응형 λ — SSE 변화에 따른 수락 / 거부</text>
+  <rect x="200" y="40" width="220" height="40" rx="3" fill="#f5f5f5" stroke="#bbb" stroke-width="1"/>
+  <text x="310" y="60" text-anchor="middle" fill="#333" font-size="12">시도: w_try = w_n + Δw</text>
+  <text x="310" y="74" text-anchor="middle" fill="#777" font-size="11">(현재 λ 로 계산)</text>
+  <rect x="195" y="100" width="230" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="310" y="122" text-anchor="middle" fill="#333" font-size="12">SSE_after vs SSE_before</text>
+  <rect x="70" y="180" width="230" height="50" rx="3" fill="#eeeeee" stroke="#555" stroke-width="1.3"/>
+  <text x="185" y="202" text-anchor="middle" fill="#222" font-size="12" font-weight="600">감소: 점프 수락</text>
+  <text x="185" y="220" text-anchor="middle" fill="#444" font-size="11">λ ÷ 10 (GN 처럼 빠르게)</text>
+  <rect x="320" y="180" width="230" height="50" rx="3" fill="#ffffff" stroke="#999" stroke-width="1.2"/>
+  <text x="435" y="202" text-anchor="middle" fill="#333" font-size="12" font-weight="600">증가: 점프 거부</text>
+  <text x="435" y="220" text-anchor="middle" fill="#666" font-size="11">λ × 10 (GD 처럼 안전하게)</text>
+  <rect x="85" y="270" width="200" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="185" y="292" text-anchor="middle" fill="#333" font-size="12">다음 iteration</text>
+  <rect x="335" y="270" width="200" height="34" rx="3" fill="#ffffff" stroke="#ccc" stroke-width="1"/>
+  <text x="435" y="292" text-anchor="middle" fill="#333" font-size="12">같은 w 유지, 재시도</text>
+  <g stroke="#aaa" stroke-width="1.2">
     <line x1="310" y1="80" x2="310" y2="100" marker-end="url(#nla)"/>
     <line x1="290" y1="134" x2="185" y2="180" marker-end="url(#nla)"/>
     <line x1="330" y1="134" x2="435" y2="180" marker-end="url(#nla)"/>
@@ -478,7 +478,7 @@ LM 의 핵심은 $\lambda$ 를 고정하지 않고 매 단계 SSE 변화에 따�
   </g>
   <defs>
     <marker id="nla" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#888"/>
+      <path d="M0,0 L10,5 L0,10 z" fill="#aaa"/>
     </marker>
   </defs>
 </svg>
@@ -756,30 +756,30 @@ function sseGradient(w) {
 
 ## 12. 한 그래프에서 보이는 모든 핵심 개념
 
-<svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:640px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
-  <rect x="0" y="0" width="640" height="380" fill="#fafbfc"/>
-  <text x="320" y="24" text-anchor="middle" fill="#222" font-size="14" font-weight="700">한 그래프에 담은 모든 개념 — SSE, 접선(G), 이차근사, 한 걸음</text>
-  <line x1="70" y1="320" x2="600" y2="320" stroke="#999" stroke-width="1"/>
-  <line x1="70" y1="50" x2="70" y2="320" stroke="#999" stroke-width="1"/>
-  <text x="58" y="60" text-anchor="end" fill="#666" font-size="11">SSE</text>
-  <text x="596" y="338" text-anchor="end" fill="#666" font-size="11">w</text>
-  <path d="M 95,80 Q 200,360 300,250 Q 400,150 580,90" fill="none" stroke="#1565c0" stroke-width="2.5"/>
-  <text x="500" y="115" fill="#1565c0" font-size="12" font-weight="700">실제 SSE (비선형)</text>
-  <path d="M 230,300 Q 320,140 410,300" fill="none" stroke="#7b1fa2" stroke-width="2" stroke-dasharray="6,4"/>
-  <text x="430" y="180" fill="#7b1fa2" font-size="12" font-weight="700">이차근사 포물선 (GN 시야)</text>
-  <line x1="225" y1="225" x2="370" y2="320" stroke="#f57c00" stroke-width="2"/>
-  <text x="300" y="250" fill="#f57c00" font-size="12" font-weight="700">접선 (기울기 = G)</text>
-  <circle cx="265" cy="282" r="6" fill="#e53935"/>
-  <text x="245" y="302" text-anchor="end" fill="#e53935" font-size="12" font-weight="700">현재 w_n</text>
-  <circle cx="320" cy="252" r="6" fill="#7b1fa2"/>
-  <text x="335" y="248" fill="#7b1fa2" font-size="12" font-weight="700">포물선 바닥 = w_{n+1}</text>
-  <line x1="265" y1="335" x2="320" y2="335" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#nca)"/>
-  <text x="293" y="356" text-anchor="middle" fill="#2e7d32" font-size="11" font-weight="700">Δw 만큼 점프</text>
-  <line x1="265" y1="282" x2="265" y2="320" stroke="#bbb" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="320" y1="252" x2="320" y2="320" stroke="#bbb" stroke-width="1" stroke-dasharray="3,3"/>
+<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:640px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
+  <rect x="0" y="0" width="640" height="360" fill="#ffffff"/>
+  <text x="320" y="22" text-anchor="middle" fill="#333" font-size="13" font-weight="600">한 그래프에 담은 개념 — SSE, 접선(G), 이차근사, 한 걸음</text>
+  <line x1="70" y1="300" x2="600" y2="300" stroke="#ccc" stroke-width="1"/>
+  <line x1="90" y1="55" x2="90" y2="300" stroke="#ccc" stroke-width="1"/>
+  <text x="82" y="64" text-anchor="end" fill="#999" font-size="11">SSE</text>
+  <text x="596" y="318" text-anchor="end" fill="#999" font-size="11">w</text>
+  <polyline fill="none" stroke="#3a6ea5" stroke-width="2.2" points="90.0,80.8 101.8,99.4 113.5,117.3 125.2,134.6 137.0,151.1 148.8,166.8 160.5,181.6 172.2,195.7 184.0,208.8 195.8,220.9 207.5,232.1 219.2,242.2 231.0,251.2 242.8,259.2 254.5,266.0 266.2,271.7 278.0,276.3 289.8,279.6 301.5,281.8 313.2,282.8 325.0,282.6 336.8,281.3 348.5,278.8 360.2,275.2 372.0,270.5 383.8,264.7 395.5,258.0 407.2,250.2 419.0,241.5 430.8,231.9 442.5,221.4 454.2,210.1 466.0,198.0 477.8,185.2 489.5,171.6 501.2,157.4 513.0,142.6 524.8,127.1 536.5,111.0 548.2,94.4 560.0,77.1"/>
+  <text x="476" y="120" fill="#3a6ea5" font-size="12">실제 SSE (비선형)</text>
+  <polyline fill="none" stroke="#8a7aa8" stroke-width="1.8" stroke-dasharray="6,4" points="101.8,88.4 111.7,106.5 121.7,123.6 131.7,139.7 141.7,154.9 151.7,169.2 161.7,182.5 171.7,194.9 181.7,206.3 191.7,216.8 201.7,226.3 211.7,234.9 221.7,242.6 231.7,249.3 241.7,255.1 251.7,259.9 261.7,263.8 271.7,266.7 281.7,268.7 291.7,269.8 298.4,269.9 308.4,269.4 318.4,268.0 328.4,265.6 338.4,262.2 348.4,257.9 358.4,252.7 368.4,246.5"/>
+  <text x="372" y="240" fill="#8a7aa8" font-size="12">이차근사 (GN)</text>
+  <line x1="113.5" y1="133.0" x2="255" y2="285.1" stroke="#b0392b" stroke-width="1.6"/>
+  <text x="110" y="150" fill="#b0392b" font-size="12">접선 = G</text>
+  <circle cx="184.0" cy="208.8" r="4" fill="#b0392b"/>
+  <text x="176" y="200" text-anchor="end" fill="#333" font-size="11">w_n</text>
+  <circle cx="297.9" cy="269.9" r="4" fill="#2e6b4f"/>
+  <text x="308" y="264" fill="#2e6b4f" font-size="11">w_{n+1}</text>
+  <line x1="184.0" y1="208.8" x2="184.0" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="297.9" y1="269.9" x2="297.9" y2="300" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="184.0" y1="330" x2="297.9" y2="330" stroke="#2e6b4f" stroke-width="1.8" marker-end="url(#nca)"/>
+  <text x="241" y="348" text-anchor="middle" fill="#2e6b4f" font-size="11">Δw 만큼 이동</text>
   <defs>
     <marker id="nca" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/>
+      <path d="M0,0 L10,5 L0,10 z" fill="#2e6b4f"/>
     </marker>
   </defs>
 </svg>
@@ -804,19 +804,23 @@ $$\Rightarrow \;\; w_{n+1} = w_n - \frac{G}{H}$$
 
 ### 시각적
 
-<svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:560px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
-  <rect x="0" y="0" width="560" height="280" fill="#fafbfc"/>
-  <text x="280" y="24" text-anchor="middle" fill="#222" font-size="14" font-weight="700">SSE 포물선 — 미분 = 0 인 바닥이 다음 걸음</text>
-  <line x1="50" y1="230" x2="510" y2="230" stroke="#999" stroke-width="1"/>
-  <text x="506" y="248" text-anchor="end" fill="#666" font-size="11">Δw</text>
-  <text x="40" y="60" text-anchor="end" fill="#666" font-size="11">SSE</text>
-  <path d="M 110,60 Q 280,310 450,60" fill="none" stroke="#1565c0" stroke-width="2.5"/>
-  <line x1="200" y1="200" x2="360" y2="200" stroke="#e53935" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="395" y="120" fill="#1565c0" font-size="12">기울기 ≠ 0</text>
-  <text x="130" y="120" fill="#1565c0" font-size="12">기울기 ≠ 0</text>
-  <circle cx="280" cy="200" r="6" fill="#e53935"/>
-  <text x="280" y="222" text-anchor="middle" fill="#e53935" font-size="12" font-weight="700">미분 = 0 (수평 접선)</text>
-  <text x="280" y="262" text-anchor="middle" fill="#666" font-size="11">포물선 바닥 = w_{n+1}, 그 외 모든 곳은 기울기가 0 이 아니다</text>
+<svg viewBox="0 0 560 270" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:560px; display:block; margin:8px 0; font-family:system-ui, sans-serif;">
+  <rect x="0" y="0" width="560" height="270" fill="#ffffff"/>
+  <text x="280" y="22" text-anchor="middle" fill="#333" font-size="13" font-weight="600">SSE 이차근사 포물선 — 미분 = 0 인 바닥</text>
+  <line x1="70" y1="220" x2="500" y2="220" stroke="#ccc" stroke-width="1"/>
+  <line x1="90" y1="55" x2="90" y2="220" stroke="#ccc" stroke-width="1"/>
+  <text x="496" y="238" text-anchor="end" fill="#999" font-size="11">w</text>
+  <text x="82" y="63" text-anchor="end" fill="#999" font-size="11">SSE</text>
+  <polyline fill="none" stroke="#3a6ea5" stroke-width="2.2" points="90.0,74.2 105.2,96.6 120.4,117.1 135.6,135.8 150.8,152.6 166.0,167.5 181.2,180.6 196.4,191.8 211.6,201.1 226.8,208.6 242.0,214.2 257.2,217.9 272.4,219.8 287.6,219.8 302.8,217.9 318.0,214.2 333.2,208.6 348.4,201.1 363.6,191.8 378.8,180.6 394.0,167.5 409.2,152.6 424.4,135.8 439.6,117.1 454.8,96.6 470.0,74.2"/>
+  <line x1="240" y1="220" x2="320" y2="220" stroke="#b0392b" stroke-width="2"/>
+  <circle cx="280" cy="220" r="5" fill="#b0392b"/>
+  <text x="280" y="208" text-anchor="middle" fill="#b0392b" font-size="11">미분 = 0 (수평 접선)</text>
+  <line x1="280" y1="220" x2="280" y2="238" stroke="#bbb" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="280" y="252" text-anchor="middle" fill="#333" font-size="11">바닥 = w_{n+1}</text>
+  <circle cx="181.2" cy="180.6" r="3" fill="#888"/>
+  <text x="150" y="172" text-anchor="middle" fill="#777" font-size="10">기울기 ≠ 0</text>
+  <circle cx="378.8" cy="180.6" r="3" fill="#888"/>
+  <text x="410" y="172" text-anchor="middle" fill="#777" font-size="10">기울기 ≠ 0</text>
 </svg>
 
 ---
