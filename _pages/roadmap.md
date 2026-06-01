@@ -24,6 +24,7 @@ nav_order: 2
 - [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/)
 - [평면의 방정식](/blog/2024/equations-of-planes/)
 - [직선의 방정식](/blog/2019/equations-of-lines/)
+- [도함수, 그라디언트, 자코비안](/blog/2026/derivative-gradient-jacobian/) — 1 차 미분이 입출력 차원에 따라 바뀌는 흐름
 
 ### 🔧 Part 1: 1D 최적화 기초
 
@@ -50,7 +51,8 @@ nav_order: 2
 - [Part 2·1 최대우도추정(MLE) — 동전과 가우시안](/blog/2026/mle-basics/) ★ 편 5+6 통합
 - [Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증](/blog/2026/mle-sse-1d-walkthrough/)
 - [Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도](/blog/2026/wls-basics/) ★ Stage 3
-- [Part 2·4 MAP — 사전 지식 추가, LM 의 λ 정체](/blog/2026/map-basics/) ★ Stage 4
+- [Part 2·4 베이즈 정리 — 조건부 확률에서 추정 framework 까지](/blog/2026/bayes-theorem/) — MAP 의 토대
+- [Part 2·5 MAP — 사전 지식 추가, LM 의 λ 정체](/blog/2026/map-basics/) ★ Stage 4
 - MSE / Cross-entropy 와 ML 위계 *(예정)*
 
 ### 🎬 Part 3: 컴퓨터 비전 응용
@@ -76,8 +78,6 @@ nav_order: 2
 
 ### 🚀 Part 5: 확장 (장기)
 
-- WLS — 가중 SSE *(예정)*
-- MAP / Regularization — LM 의 λ 정체 *(예정)*
 - Kalman Filter, SLAM, 번들조정 *(예정)*
 
 ---
