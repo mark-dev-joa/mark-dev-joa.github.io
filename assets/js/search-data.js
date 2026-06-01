@@ -148,7 +148,7 @@ ninja.data = [{
         
           title: "Part 1·2 비선형 최소제곱",
         
-        description: "파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.",
+        description: "파라미터 1 개로 비선형 최소제곱의 핵심 알고리즘 (Gauss-Newton, Newton, Levenberg-Marquardt) 을 한 그래프에서 정리한다. 인터랙티브 데모로 수렴과 발산을 확인한다.",
         section: "Posts",
         handler: () => {
           
