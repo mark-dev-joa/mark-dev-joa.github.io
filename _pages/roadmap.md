@@ -33,6 +33,7 @@ nav_order: 2
 - [최적화 이론 기초](/blog/2026/basic-optimization/)
 - [Part 1·1 선형 최소제곱과 정규방정식](/blog/2026/three-lines-visualization/)
 - [Part 1·2 비선형 최소제곱](/blog/2026/nonlinear-fitting-1d/)
+- [Part 1·3 오차 제곱합 (SSE)](/blog/2026/sse-overview/)
 
 ### 🎲 Part 1.5: 확률 입문
 
