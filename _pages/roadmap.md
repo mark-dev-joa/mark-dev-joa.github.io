@@ -30,9 +30,8 @@ nav_order: 2
 
 미분 = 0 직관부터 비선형 최소제곱까지.
 
+- [최적화 이론 기초](/blog/2026/basic-optimization/) — GD, Newton, GN, LM 알고리즘 카탈로그 (큰 그림)
 - [Part 1·1 선형 최소제곱과 정규방정식](/blog/2026/three-lines-visualization/) — 선형 LSE 의 기초 (Ax=b, 정규방정식)
-- [최적화 이론 기초](/blog/2026/basic-optimization/) — GD, Newton, GN, LM 카탈로그
-- [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/) — SLAM 시점 MLE + GN 실전
 - [Part 1·2 비선형 최소제곱 — 4가지 알고리즘 비교](/blog/2026/nonlinear-fitting-1d/)
 
 ### 🎲 Part 1.5: 확률 입문 (MLE 가기 전 워밍업)
@@ -53,6 +52,7 @@ nav_order: 2
 - [Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도](/blog/2026/wls-basics/) ★ Stage 3
 - [Part 2·4 베이즈 정리 — 조건부 확률에서 추정 framework 까지](/blog/2026/bayes-theorem/) — MAP 의 토대
 - [Part 2·5 MAP — 사전 지식 추가, LM 의 λ 정체](/blog/2026/map-basics/) ★ Stage 4
+- [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/) — MLE + GN 의 SLAM 실전 응용
 - MSE / Cross-entropy 와 ML 위계 *(예정)*
 
 ### 🎬 Part 3: 컴퓨터 비전 응용
