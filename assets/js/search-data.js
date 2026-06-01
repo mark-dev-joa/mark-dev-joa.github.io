@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-학습-로드맵",
           title: "학습 로드맵",
-          description: "기초부터 컴퓨터 비전, 로보틱스까지 한 시리즈로",
+          description: "기초 수학에서 컴퓨터 비전, 로보틱스까지의 학습 로드맵",
           section: "Navigation",
           handler: () => {
             window.location.href = "/roadmap/";
