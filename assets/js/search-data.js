@@ -67,9 +67,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/probability-basics/";
           
         },
-      },{id: "post-part-2-5-베이즈-정리-조건부-확률에서-추정-framework-까지",
+      },{id: "post-part-2-4-베이즈-정리-조건부-확률에서-추정-framework-까지",
         
-          title: "Part 2·5 베이즈 정리 — 조건부 확률에서 추정 framework 까지",
+          title: "Part 2·4 베이즈 정리 — 조건부 확률에서 추정 framework 까지",
         
         description: "조건부 확률의 정의에서 베이즈 정리를 유도하고, posterior/likelihood/prior/evidence 의 의미와 MLE/MAP 으로의 연결을 주사위 예제와 시각화로 정리.",
         section: "Posts",
@@ -78,9 +78,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/bayes-theorem/";
           
         },
-      },{id: "post-part-2-4-map-사전-지식-추가-lm-의-λ-정체",
+      },{id: "post-part-2-5-map-사전-지식-추가-lm-의-λ-정체",
         
-          title: "Part 2·4 MAP — 사전 지식 추가, LM 의 λ 정체",
+          title: "Part 2·5 MAP — 사전 지식 추가, LM 의 λ 정체",
         
         description: "MLE 위에 prior 를 추가한 MAP. 가우시안 prior 가 어떻게 L2 정칙화로 자연 도출되는지, LM 의 λ 가 사실 prior 강도임을 밝히는 글. 동전 예제로 MLE vs MAP 전 과정 포함.",
         section: "Posts",
