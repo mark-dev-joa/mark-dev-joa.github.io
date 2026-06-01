@@ -2,20 +2,20 @@
 layout: page
 permalink: /roadmap/
 title: 학습 로드맵
-description: 기초부터 컴퓨터 비전, 로보틱스까지 한 시리즈로
+description: 기초 수학에서 컴퓨터 비전, 로보틱스까지의 학습 로드맵
 nav: true
 nav_order: 2
 ---
 
-> **기초부터 컴퓨터 비전, 로보틱스까지 학습 로드맵**.
+> 기초 수학부터 컴퓨터 비전, 로보틱스까지의 학습 로드맵.
 >
-> 미적분 → 선형대수 → 비선형 최적화 → MLE → 로봇팔 IK 까지 차근차근.
+> 미적분에서 출발해 선형대수, 비선형 최적화, MLE 를 거쳐 로봇팔 IK 까지 다룬다.
 
 ## 시리즈 구조
 
 ### 📐 Part 0: 수학 기초
 
-미적분, 선형대수, 기하의 기본 도구. 이후 모든 글의 토대.
+미적분, 선형대수, 기하의 기본 도구.
 
 - [자연상수 e](/blog/2025/eulers-number-e/)
 - [테일러 급수 (Taylor Series)](/math/taylor/)
@@ -28,15 +28,15 @@ nav_order: 2
 
 ### 🔧 Part 1: 1D 최적화 기초
 
-미분 = 0 직관부터 비선형 최소제곱까지.
+미분 = 0 조건에서 비선형 최소제곱까지의 최적화 알고리즘.
 
 - [최적화 이론 기초](/blog/2026/basic-optimization/)
 - [Part 1·1 선형 최소제곱과 정규방정식](/blog/2026/three-lines-visualization/)
 - [Part 1·2 비선형 최소제곱](/blog/2026/nonlinear-fitting-1d/)
 
-### 🎲 Part 1.5: 확률 입문 (MLE 가기 전 워밍업)
+### 🎲 Part 1.5: 확률 입문
 
-확률 vs 확률 밀도, 가우시안, 곱셈 규칙, 조건부, 베이즈 — 5단계로 단숨에.
+MLE 에 필요한 확률 기초 — PMF/PDF, 가우시안, 조건부, 베이즈.
 
 - [Part 1·5 확률 입문](/blog/2026/probability-basics/)
 - [부록 확률 분포 개관](/blog/2026/distributions-overview/)
@@ -45,7 +45,7 @@ nav_order: 2
 
 ### 🎯 Part 2: MLE 통일 시점
 
-확률적 시점에서 본 손실 함수의 정체.
+손실 함수를 확률 모델의 최대우도추정으로 해석한다.
 
 - [Part 2·1 최대우도추정 (MLE)](/blog/2026/mle-basics/)
 - [Part 2·2 MLE = SSE 의 동치성](/blog/2026/mle-sse-1d-walkthrough/)
@@ -57,7 +57,7 @@ nav_order: 2
 
 ### 🎬 Part 3: 컴퓨터 비전 응용
 
-기하 + 최적화의 실전 응용.
+기하와 최적화의 컴퓨터 비전 응용.
 
 - [핀홀 카메라 캘리브레이션](/blog/2024/pinhole-camera/)
 - [Optical Flow](/blog/2024/optical-flow/)
