@@ -9,6 +9,7 @@ math: true
 ---
 
 
+
 함수의 1 차 미분은 입력과 출력의 차원에 따라 형태가 달라진다. 1 변수 함수의 도함수가 가장 단순하고, 다변수 입력에 스칼라 출력이면 그라디언트, 다변수 입력에 다변수 출력이면 자코비안이 된다. 셋 모두 같은 1 차 미분의 일반화이며, IK 와 최적화에서 등장하는 자코비안도 이 흐름의 끝에 있다.
 
 ---
@@ -255,60 +256,4 @@ $$\begin{bmatrix} f_1(\mathbf{x} + \Delta \mathbf{x}) \\\\ f_2(\mathbf{x} + \Del
 
 $$f_k(\mathbf{x} + \Delta \mathbf{x}) \approx f_k(\mathbf{x}) + \nabla f_k(\mathbf{x})^T \Delta \mathbf{x} \qquad (k = 1, \ldots, m)$$
 
-행렬 형태 $\mathbf{f} + J \Delta \mathbf{x}$ 와 풀어 쓴 $m$ 개의 그라디언트 근사식은 글자 그대로 같은 식이다. 자코비안은 그 $m$ 개의 근사를 한 행렬 식으로 압축한 표기이며, §3 의 점곱 묶음 (편미분 합 → 그라디언트 점곱) 이 출력 차원으로 한 단계 더 진행한 형태로 볼 수 있다.
-
-### 4.4 — 예제 — 평면 2 관절 팔 FK
-
-xy 평면에서 도는 2 자유도 팔의 FK 함수를 자코비안으로 계산한다. 두 관절 모두 z 축 둘레로 회전한다.
-
-입력은 두 관절 각도 $\mathbf{q} = (\theta_1, \theta_2)^T \in \mathbb{R}^2$, 출력은 EE 의 평면 위치 $\mathbf{p} = (p_x, p_y)^T \in \mathbb{R}^2$ 이다.
-
-FK 식:
-
-$$p_x(\theta_1, \theta_2) = L_1 \cos\theta_1 + L_2 \cos(\theta_1 + \theta_2)$$
-
-$$p_y(\theta_1, \theta_2) = L_1 \sin\theta_1 + L_2 \sin(\theta_1 + \theta_2)$$
-
-각 출력에 대한 편미분을 차례로 구한다.
-
-$$\frac{\partial p_x}{\partial \theta_1} = -L_1 \sin\theta_1 - L_2 \sin(\theta_1 + \theta_2)$$
-
-$$\frac{\partial p_x}{\partial \theta_2} = -L_2 \sin(\theta_1 + \theta_2)$$
-
-$$\frac{\partial p_y}{\partial \theta_1} = L_1 \cos\theta_1 + L_2 \cos(\theta_1 + \theta_2)$$
-
-$$\frac{\partial p_y}{\partial \theta_2} = L_2 \cos(\theta_1 + \theta_2)$$
-
-자코비안으로 묶으면 2×2 행렬이 된다.
-
-$$J(\mathbf{q}) = \begin{bmatrix} -L_1 \sin\theta_1 - L_2 \sin(\theta_1 + \theta_2) & -L_2 \sin(\theta_1 + \theta_2) \\\\ L_1 \cos\theta_1 + L_2 \cos(\theta_1 + \theta_2) & L_2 \cos(\theta_1 + \theta_2) \end{bmatrix}$$
-
-입력 차원 (가로 2) 과 출력 차원 (세로 2) 이 같아 정사각 행렬이다.
-
-### 4.5 — 수치 검증
-
-$L_1 = L_2 = 1$, $\mathbf{q} = (\pi/4, \pi/4)^T$, 변화 $\Delta \mathbf{q} = (0.05, 0.05)^T$ 로 근사값과 진짜 값을 비교한다.
-
-먼저 현재 위치를 계산한다. $\theta_1 = \pi/4$, $\theta_1 + \theta_2 = \pi/2$ 이므로:
-
-$$p_x = \cos(\pi/4) + \cos(\pi/2) = \tfrac{\sqrt{2}}{2} + 0 \approx 0.707$$
-
-$$p_y = \sin(\pi/4) + \sin(\pi/2) = \tfrac{\sqrt{2}}{2} + 1 \approx 1.707$$
-
-자코비안은:
-
-$$J = \begin{bmatrix} -\sin(\pi/4) - \sin(\pi/2) & -\sin(\pi/2) \\\\ \cos(\pi/4) + \cos(\pi/2) & \cos(\pi/2) \end{bmatrix} = \begin{bmatrix} -1.707 & -1 \\\\ 0.707 & 0 \end{bmatrix}$$
-
-근사값:
-
-$$\Delta \mathbf{p} \approx J \Delta \mathbf{q} = \begin{bmatrix} -1.707 & -1 \\\\ 0.707 & 0 \end{bmatrix} \begin{bmatrix} 0.05 \\\\ 0.05 \end{bmatrix} = \begin{bmatrix} -0.135 \\\\ 0.035 \end{bmatrix}$$
-
-$$\mathbf{p}_{\text{근사}} \approx \begin{bmatrix} 0.707 - 0.135 \\\\ 1.707 + 0.035 \end{bmatrix} = \begin{bmatrix} 0.572 \\\\ 1.742 \end{bmatrix}$$
-
-진짜 값. 새 각도 $\theta_1 = \pi/4 + 0.05$, $\theta_1 + \theta_2 = \pi/2 + 0.1$ 로 직접 계산:
-
-$$p_x = \cos(\pi/4 + 0.05) + \cos(\pi/2 + 0.1) \approx 0.7424 - 0.0998 = 0.643$$
-
-근사값 $0.572$ 와 진짜 값 $0.643$ 의 차이는 약 $0.07$ 이다. 변화량 $\Delta \mathbf{q}$ 가 작을수록 오차가 빠르게 줄어드는 1 차 근사의 일반적인 특성을 보인다.
-
-자코비안과 변화량의 행렬 곱이 출력 변화를 1 차로 근사하며, 이 형태가 IK 의 한 step 에서 그대로 사용되는 식이다.
+행렬 형태 $\mathbf{f} + J \Delta \mathbf{x}$ 와 풀어 쓴 $m$ 개의 그라디언트 근사식은 글자 그대로 같은 식이다. 자코비안은 그 $m$ 개의 근사를 한 행렬 식으로 압축한 표기이며, §3 의 점곱 묶음 (편미분 합 → 그라디언트 점곱) 이 출력 차원으로 한 단계 더 진행한 형태로 볼 수 있다. 자코비안과 변화량의 행렬 곱이 출력 변화를 1 차로 근사하는 이 형태는 IK 의 한 step (관절 변화 → end-effector 변화) 에서 그대로 사용되며, 구체적인 로봇 팔 자코비안의 계산은 FK / IK 문서에서 다룬다.
