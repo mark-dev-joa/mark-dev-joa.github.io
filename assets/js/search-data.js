@@ -34,9 +34,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/derivative-gradient-jacobian/";
           
         },
-      },{id: "post-lie-이론-기초-회전이-더할-수-없는-이유부터-bch-까지",
+      },{id: "post-lie-이론-기초",
         
-          title: "Lie 이론 기초 — 회전이 더할 수 없는 이유부터 BCH 까지",
+          title: "Lie 이론 기초",
         
         description: "SO(3) 와 SE(3) 위의 회전과 강체 변환을 다루는 Lie 이론 입문. Group, smooth manifold, tangent space, Lie algebra, Rodrigues 공식, exp/log map, IK/SLAM 응용, BCH 공식까지 한 cycle 정리.",
         section: "Posts",
@@ -45,9 +45,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/lie-theory-basics/";
           
         },
-      },{id: "post-부록-확률-분포-개관-pdf-pmf-와-자주-쓰는-10-개-분포",
+      },{id: "post-부록-확률-분포-개관",
         
-          title: "부록 확률 분포 개관 — PDF/PMF 와 자주 쓰는 10 개 분포",
+          title: "부록 확률 분포 개관",
         
         description: "확률 분포의 큰 지도. 연속/이산 분류, 자주 쓰는 10 개 분포의 식·적분·평균·분산 카탈로그, Lambert W 등 비초등 함수 정리.",
         section: "Posts",
@@ -56,9 +56,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/distributions-overview/";
           
         },
-      },{id: "post-part-1-5-확률-입문-mle-전에-알아야-할-5가지",
+      },{id: "post-part-1-5-확률-입문",
         
-          title: "Part 1·5 확률 입문 — MLE 전에 알아야 할 5가지",
+          title: "Part 1·5 확률 입문",
         
         description: "PDF/PMF, 가우시안, 곱셈/독립, 조건부, 베이즈. 적분 직관과 가우시안 적분 전개까지 — MLE 들어가기 전 확률 격차 메우기.",
         section: "Posts",
@@ -67,9 +67,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/probability-basics/";
           
         },
-      },{id: "post-part-2-4-베이즈-정리-조건부-확률에서-추정-framework-까지",
+      },{id: "post-part-2-4-베이즈-정리",
         
-          title: "Part 2·4 베이즈 정리 — 조건부 확률에서 추정 framework 까지",
+          title: "Part 2·4 베이즈 정리",
         
         description: "조건부 확률의 정의에서 베이즈 정리를 유도하고, posterior/likelihood/prior/evidence 의 의미와 MLE/MAP 으로의 연결을 주사위 예제와 시각화로 정리.",
         section: "Posts",
@@ -78,9 +78,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/bayes-theorem/";
           
         },
-      },{id: "post-part-2-5-map-사전-지식-추가-lm-의-λ-정체",
+      },{id: "post-part-2-5-map",
         
-          title: "Part 2·5 MAP — 사전 지식 추가, LM 의 λ 정체",
+          title: "Part 2·5 MAP",
         
         description: "MLE 위에 prior 를 추가한 MAP. 가우시안 prior 가 어떻게 L2 정칙화로 자연 도출되는지, LM 의 λ 가 사실 prior 강도임을 밝히는 글. 동전 예제로 MLE vs MAP 전 과정 포함.",
         section: "Posts",
@@ -89,9 +89,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/map-basics/";
           
         },
-      },{id: "post-part-2-3-가중-최소제곱-wls-점마다-다른-노이즈-신뢰도",
+      },{id: "post-part-2-3-가중-최소제곱-wls",
         
-          title: "Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도",
+          title: "Part 2·3 가중 최소제곱 (WLS)",
         
         description: "Stage 2 의 가정 (모든 점이 같은 노이즈) 을 풀어준 자연스러운 다음 단계. 점마다 다른 σᵢ 인정하면 가중 SSE 가 자연 등장.",
         section: "Posts",
@@ -111,9 +111,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/learning-roadmap/";
           
         },
-      },{id: "post-part-2-2-mle-sse-의-동치성-1d-회귀-검증",
+      },{id: "post-part-2-2-mle-sse-의-동치성",
         
-          title: "Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증",
+          title: "Part 2·2 MLE = SSE 의 동치성",
         
         description: "노이즈가 가우시안이면 MLE = SSE 최소화 — 추상 명제를 1D 데이터로 숫자까지 직접 계산해서 확인하는 worked example.",
         section: "Posts",
@@ -122,9 +122,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/mle-sse-1d-walkthrough/";
           
         },
-      },{id: "post-part-2-1-최대우도추정-mle-동전과-가우시안",
+      },{id: "post-part-2-1-최대우도추정-mle",
         
-          title: "Part 2·1 최대우도추정(MLE) — 동전과 가우시안",
+          title: "Part 2·1 최대우도추정 (MLE)",
         
         description: "Maximum Likelihood Estimation 의 직관 — 동전 한 번부터 시작해 회귀의 SSE 가 어떻게 자연스럽게 도출되는지 단계별로",
         section: "Posts",
@@ -133,9 +133,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/mle-basics/";
           
         },
-      },{id: "post-part-1-2-비선형-최소제곱-4가지-알고리즘-비교",
+      },{id: "post-part-1-2-비선형-최소제곱",
         
-          title: "Part 1·2 비선형 최소제곱 — 4가지 알고리즘 비교",
+          title: "Part 1·2 비선형 최소제곱",
         
         description: "파라미터 1개로 비선형 최소제곱의 모든 핵심 알고리즘을 한 그래프에 시각화. 인터랙티브 데모로 수렴 / 발산 / 거꾸로 가기까지 직접 체험.",
         section: "Posts",
@@ -155,9 +155,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/three-lines-visualization/";
           
         },
-      },{id: "post-에러와-자코비안-정리-errors-and-jacobians-slam-최적화의-핵심",
+      },{id: "post-에러와-자코비안-정리",
         
-          title: "에러와 자코비안 정리 (Errors and Jacobians) — SLAM 최적화의 핵심",
+          title: "에러와 자코비안 정리",
         
         description: "MLE 기반 에러 함수 유도부터 Gauss-Newton 실전 풀이까지, 실제 데이터로 한 스텝씩",
         section: "Posts",
@@ -166,9 +166,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/errors-and-jacobians/";
           
         },
-      },{id: "post-최적화-이론-기초-정리-gradient-descent-newton-gauss-newton-levenberg-marquardt",
+      },{id: "post-최적화-이론-기초",
         
-          title: "최적화 이론 기초 정리 (Gradient Descent, Newton, Gauss-Newton, Levenberg-Marquardt)",
+          title: "최적화 이론 기초",
         
         description: "최적화 알고리즘을 직관적으로 이해하기",
         section: "Posts",
