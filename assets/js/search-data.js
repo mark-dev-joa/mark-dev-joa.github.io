@@ -100,6 +100,17 @@ ninja.data = [{
             window.location.href = "/blog/2026/wls-basics/";
           
         },
+      },{id: "post-part-1-3-오차-제곱합-sse",
+        
+          title: "Part 1·3 오차 제곱합 (SSE)",
+        
+        description: "선형·비선형 최소제곱, MLE, WLS, MAP, IK 까지 모든 추정이 수렴하는 중심 개념 SSE. 정의와 제곱의 정당성, 그리고 각 방법에서 SSE 가 나타나는 형태를 한곳에 모은 참조 정리.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/sse-overview/";
+          
+        },
       },{id: "post-가이드-학습-로드맵",
         
           title: "가이드 학습 로드맵",
