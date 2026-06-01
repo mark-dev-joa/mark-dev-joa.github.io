@@ -24,22 +24,22 @@ nav_order: 2
 - [동차좌표에서의 외적](/blog/2024/cross-product-in-homogeneous-coords/)
 - [평면의 방정식](/blog/2024/equations-of-planes/)
 - [직선의 방정식](/blog/2019/equations-of-lines/)
-- [도함수, 그라디언트, 자코비안](/blog/2026/derivative-gradient-jacobian/) — 1 차 미분이 입출력 차원에 따라 바뀌는 흐름
+- [도함수, 그라디언트, 자코비안](/blog/2026/derivative-gradient-jacobian/)
 
 ### 🔧 Part 1: 1D 최적화 기초
 
 미분 = 0 직관부터 비선형 최소제곱까지.
 
-- [최적화 이론 기초](/blog/2026/basic-optimization/) — GD, Newton, GN, LM 알고리즘 카탈로그 (큰 그림)
-- [Part 1·1 선형 최소제곱과 정규방정식](/blog/2026/three-lines-visualization/) — 선형 LSE 의 기초 (Ax=b, 정규방정식)
-- [Part 1·2 비선형 최소제곱 — 4가지 알고리즘 비교](/blog/2026/nonlinear-fitting-1d/)
+- [최적화 이론 기초](/blog/2026/basic-optimization/)
+- [Part 1·1 선형 최소제곱과 정규방정식](/blog/2026/three-lines-visualization/)
+- [Part 1·2 비선형 최소제곱](/blog/2026/nonlinear-fitting-1d/)
 
 ### 🎲 Part 1.5: 확률 입문 (MLE 가기 전 워밍업)
 
 확률 vs 확률 밀도, 가우시안, 곱셈 규칙, 조건부, 베이즈 — 5단계로 단숨에.
 
-- [Part 1·5 확률 입문 — MLE 전에 알아야 할 5가지](/blog/2026/probability-basics/)
-- [부록 확률 분포 개관 — 자주 쓰는 10 개 분포 카탈로그](/blog/2026/distributions-overview/)
+- [Part 1·5 확률 입문](/blog/2026/probability-basics/)
+- [부록 확률 분포 개관](/blog/2026/distributions-overview/)
 
 ---
 
@@ -47,12 +47,12 @@ nav_order: 2
 
 확률적 시점에서 본 손실 함수의 정체.
 
-- [Part 2·1 최대우도추정(MLE) — 동전과 가우시안](/blog/2026/mle-basics/) ★ 편 5+6 통합
-- [Part 2·2 MLE = SSE 의 동치성 — 1D 회귀 검증](/blog/2026/mle-sse-1d-walkthrough/)
-- [Part 2·3 가중 최소제곱 (WLS) — 점마다 다른 노이즈 신뢰도](/blog/2026/wls-basics/) ★ Stage 3
-- [Part 2·4 베이즈 정리 — 조건부 확률에서 추정 framework 까지](/blog/2026/bayes-theorem/) — MAP 의 토대
-- [Part 2·5 MAP — 사전 지식 추가, LM 의 λ 정체](/blog/2026/map-basics/) ★ Stage 4
-- [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/) — MLE + GN 의 SLAM 실전 응용
+- [Part 2·1 최대우도추정 (MLE)](/blog/2026/mle-basics/)
+- [Part 2·2 MLE = SSE 의 동치성](/blog/2026/mle-sse-1d-walkthrough/)
+- [Part 2·3 가중 최소제곱 (WLS)](/blog/2026/wls-basics/)
+- [Part 2·4 베이즈 정리](/blog/2026/bayes-theorem/)
+- [Part 2·5 MAP](/blog/2026/map-basics/)
+- [에러와 자코비안 정리](/blog/2026/errors-and-jacobians/)
 - MSE / Cross-entropy 와 ML 위계 *(예정)*
 
 ### 🎬 Part 3: 컴퓨터 비전 응용
@@ -62,7 +62,7 @@ nav_order: 2
 - [핀홀 카메라 캘리브레이션](/blog/2024/pinhole-camera/)
 - [Optical Flow](/blog/2024/optical-flow/)
 - [공간에서 직선과 직선의 교차점 (1)](/blog/2024/intersection-point-by-cross-product/)
-- [공간에서 직선과 직선의 교차점 (2) — Triangulation](/blog/2024/intersection-point-by-non-linear-triangulation/)
+- [공간에서 직선과 직선의 교차점 (2)](/blog/2024/intersection-point-by-non-linear-triangulation/)
 - [구와 직선의 교차](/blog/2024/intersection-ray-sphere/)
 - [원과 직선의 교차](/blog/2024/intersection-line-circle/)
 - [3개의 점을 이용한 원 그리기](/blog/2024/circle-by-3-points/)
